@@ -2,6 +2,10 @@ body {
   width: 96%;
 }
 
+div.sticky textarea {
+  font-size: 1em;
+}
+
 div.clear {
   clear: both;
 }
@@ -14,7 +18,25 @@ header .logo {
 
 header .ad {
   float: right;
-  vertical-align: bottom;
+}
+
+div#board article {
+  float: left;
+  width: 79%
+}
+
+div#board article section {
+  float: left;
+  width: 24%;
+  height: 420px;
+  border-right: 1px solid black;
+}
+
+div#board aside {
+  height: 420px;
+  width: 19%;
+  float: right;
+  border-left: 2px solid black;
 }
 
 footer {
