@@ -1,6 +1,3 @@
-# retroard.rb
-#
-
 require 'sinatra'
 require 'erb'
 
