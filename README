@@ -1,1 +1,4 @@
 Retrospective Board
+
+to Run the application
+$> ruby -rubygems app.rb
