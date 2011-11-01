@@ -1,0 +1,22 @@
+body {
+  width: 96%;
+}
+
+div.clear {
+  clear: both;
+}
+
+header .logo {
+  float: left;
+  width: 25%;
+  margin-right: 10px;
+}
+
+header .ad {
+  float: left;
+  vertical-align: bottom;
+}
+
+footer {
+  text-align: center;
+}
