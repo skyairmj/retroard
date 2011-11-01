@@ -9,7 +9,7 @@ if Retroard::Application.env == 'development'
   use Rack::Reloader, 0
 
   # Serve assets from /public
-  use Rack::Static, :urls => ["/javascripts"], :root => Retroard::Application.root(:public)
+  use Rack::Static, :urls => ["/javascripts", "/stylesheets"], :root => Retroard::Application.root(:public)
 end
 
 # Running thin :
