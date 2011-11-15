@@ -1,0 +1,86 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+h2, h3 {
+	display: inline;
+}
+.clear {
+	clear: both;
+}
+body {
+	min-width: 1000px;
+}
+header {
+	text-align: right;
+	background-color: gray;
+}
+header img {
+	float: left;
+	height: 30px;
+	width: 100px;
+}
+
+#walls {
+	margin:0 auto;
+	background-color: black;
+	text-align: center;
+}
+.wall {
+	width: 20%;
+	height:600px;
+	display:inline-block;
+	vertical-align:top;
+	background-color: red;
+}
+.wallHeader{
+	background-color: blue;
+}
+
+.wallHeader .icon{
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	background-size: 100%;
+}
+
+#well .wallHeader .icon {
+	background-image: url(/images/logo.jpg);
+}
+#lessWell .wallHeader .icon {
+	background-image: url(/images/logo.jpg);
+}
+#puzzle .wallHeader .icon {
+	background-image: url(/images/logo.jpg);
+}
+#idea .wallHeader .icon {
+	background-image: url(/images/logo.jpg);
+}
+
+.addSticky{
+	display:block;
+	float:right;
+	height: 24px;
+	width: 24px;
+	background-image: url(/images/logo.jpg);
+}
+
+.wallBody{
+}
+
+.wallRow{
+
+}
+
+.sticky {
+	display:inline-block;
+	width: 47%;
+	margin-top:5px;
+	margin-left:5px;
+	height: 70px;
+	background-color: yellow;
+}
+
+footer {
+	text-align: center;
+}

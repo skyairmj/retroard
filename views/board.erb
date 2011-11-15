@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agile Retrospective Board</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
+    <meta name="description"
+          content="This is an online retrospective board, which enables distributed teams to organize retrospectives just like they are co-located."/>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css"
+          type="text/css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+</head>
+<body>
+<header>
+    <img id="logo" src="/images/logo.jpg"/>
+
+    <h2>Team Name</h2>
+    <a href="#">Create</a>
+    <a href="#">Export</a>
+    |
+    <a href="#">Group</a>
+    <a href="#">Vote</a>
+    <a href="#">Action</a>
+    <a href="#">Complete</a>
+    |
+    <select>
+        <option>None</option>
+    </select>
+
+    <div class="clear"></div>
+</header>
+
+<article id="walls">
+    <section class="wall" id="well">
+        <div class="wallHeader">
+            <h3>WELL</h3>
+
+            <div class="icon"></div>
+            <a href="#" class="addSticky"></a>
+
+            <div class="clear"></div>
+        </div>
+        <div class="wallBody">
+            <div class="wallRow">
+                <div class="sticky">Some info</div>
+                <div class="sticky">Some info</div>
+            </div>
+            <div class="wallRow">
+                <div class="sticky">Some info</div>
+                <div class="sticky">Some info</div>
+            </div>
+            <div class="wallRow">
+                <div class="sticky">Some info</div>
+                <div class="sticky">Some info</div>
+            </div>
+        </div>
+    </section>
+    <section class="wall" id="lessWell">
+        <div class="wallHeader">
+            <h3>LESS WELL</h3>
+
+            <div class="icon"></div>
+            <a href="#" class="addSticky"></a>
+        </div>
+    </section>
+    <section class="wall" id="puzzle">
+        <div class="wallHeader">
+            <h3>PUZZLE</h3>
+
+            <div class="icon"></div>
+            <a href="#" class="addSticky"></a>
+        </div>
+    </section>
+    <section class="wall" id="idea">
+        <div class="wallHeader">
+            <h3>IDEA</h3>
+
+            <div class="icon"></div>
+            <a href="#" class="addSticky"></a>
+        </div>
+    </section>
+</article>
+
+<footer>© 2011 DeliverAgile Inc.</footer>
+</body>
+</html>

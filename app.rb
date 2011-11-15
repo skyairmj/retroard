@@ -8,7 +8,8 @@ get '/' do
 end
 
 get '/:team' do
-  "hello #{params[:team]}"
+  #"hello #{params[:team]}"
+  erb :board
 end
 
 post '/signin' do
