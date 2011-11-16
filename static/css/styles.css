@@ -2,20 +2,19 @@
 	padding: 0;
 	margin: 0;
 }
-h2, h3 {
+h1, h2, h3 {
 	display: inline;
 }
-.clear {
-	clear: both;
-}
+
 body {
 	min-width: 1000px;
+	padding: 30px;
 }
 header {
 	text-align: right;
-	background-color: gray;
+	margin-bottom: 5px;
 }
-header img {
+header img#logo {
 	float: left;
 	height: 30px;
 	width: 100px;
@@ -23,62 +22,75 @@ header img {
 
 #walls {
 	margin:0 auto;
-	background-color: black;
 	text-align: center;
+	border: 5px solid gray;
+	border-radius: 10px;
 }
+
 .wall {
-	width: 20%;
+	width: 24%;
 	height:600px;
-	display:inline-block;
-	vertical-align:top;
-	background-color: red;
+	border-left: 1px solid gray;
+	border-right: 1px solid gray;
+	display: inline-block;
+	vertical-align: top;
 }
 .wallHeader{
-	background-color: blue;
+	padding-top: 2px;
 }
 
-.wallHeader .icon{
-	display: inline-block;
-	height: 24px;
-	width: 24px;
-	background-size: 100%;
+.wallHeader h3{
+	display:inline-block;
+	line-height:27px;
+	padding-right:24px;
+	background-position: right top;
+	background-repeat:no-repeat;
 }
 
-#well .wallHeader .icon {
-	background-image: url(/images/logo.jpg);
+#well .wallHeader h3{
+	background-image: url(/images/face_smile.png);
 }
-#lessWell .wallHeader .icon {
-	background-image: url(/images/logo.jpg);
+#lessWell .wallHeader h3{
+	background-image: url(/images/face_crying.png);
 }
-#puzzle .wallHeader .icon {
-	background-image: url(/images/logo.jpg);
+#puzzle .wallHeader h3{
+	background-image: url(/images/face_confused.png);
 }
-#idea .wallHeader .icon {
-	background-image: url(/images/logo.jpg);
+#idea .wallHeader h3{
+	background-image: url(/images/face_angel.png);
 }
 
 .addSticky{
-	display:block;
-	float:right;
 	height: 24px;
 	width: 24px;
-	background-image: url(/images/logo.jpg);
+	display:block;
+	float:right;
+	background-image: url(/images/note_add.png);
+	background-size: cover;
+	margin-right: 2px;
+	cursor: pointer;
 }
 
 .wallBody{
-}
-
-.wallRow{
-
 }
 
 .sticky {
 	display:inline-block;
 	width: 47%;
 	margin-top:5px;
-	margin-left:5px;
 	height: 70px;
 	background-color: yellow;
+	vertical-align:top;
+	border-radius: 10px 10px 20px 10px;
+	box-shadow: 2px 2px 2px gray;
+	position: relative;
+	padding: 2px;
+}
+
+.stickyCount {
+	position: absolute;
+	bottom: 2%;
+	left: 10%;
 }
 
 footer {
