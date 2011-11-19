@@ -13,9 +13,12 @@ body {
   font: 13px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
 }
 header {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
+  height: 30px;
   padding: 5px 0;
-  background-color: #006599;
+  color: white;
+  background: -webkit-gradient(linear,left top,left bottom,from(#333),to(#111));
+  background: -moz-linear-gradient(top,#333,#111);
 }
 header div.header {
   text-align: right;
