@@ -15,8 +15,11 @@
 	</head>
 	<body>
 		<header>
-			<img id="logo" src="/images/logo.jpg"/>
-			<h2>Team Name</h2>
+      <div id="logo">
+        <img src="/images/logo.jpg"/>
+        <h2>Team Retro</h2>
+      </div>
+      <h2><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></h2>
 			<a href="#">Create</a>
 			<a href="#">Export</a>
 			| <a href="#">Group</a>
@@ -256,7 +259,7 @@
 			</section>
 		</article>
 		<footer>
-			© 2011 Team-Cares Inc.
+			© 2011 Team-Cares
 		</footer>
 	</body>
 </html>

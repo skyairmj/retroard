@@ -8,16 +8,22 @@ h1, h2, h3 {
 
 body {
 	min-width: 1000px;
-	padding: 30px;
+  width: 1002px;
+  margin: 0 auto;
 }
 header {
 	text-align: right;
 	margin-bottom: 5px;
+  padding: 5px 0;
 }
-header img#logo {
+header div#logo {
 	float: left;
 	height: 30px;
-	width: 100px;
+}
+
+header div#logo img {
+  height: 100%;
+  width: auto;
 }
 
 #walls {
