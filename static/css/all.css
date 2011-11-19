@@ -1,6 +1,5 @@
 * {
   padding: 0px;
-  margin: 0px;
 }
 body {
   width: 1002px;
@@ -8,6 +7,8 @@ body {
   font: 13px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
   text-align: center;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 div.left {
   float: left;
@@ -28,10 +29,11 @@ form .holding {
   width: 550px;
 }
 .front-page div.left-content div{
-  padding: 30px 0px;
+  padding: 20px 0px;
 }
 .front-page div.right-content {
   width: 450px;
+  text-align: left;
 }
 .front-page .front-signin {
   position: absolute;
@@ -39,7 +41,7 @@ form .holding {
 }
 .front-page .front-signup {
   position: absolute;
-  top: 150px;
+  top: 120px;
 }
 .front-page form .holding input {
   -moz-transition: opacity 1s ease 0s;

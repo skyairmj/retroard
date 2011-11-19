@@ -17,3 +17,9 @@ post '/signin' do
     redirect "/#{params[:team]}", 303
   end
 end
+
+post '/signup' do
+  unless params[:team].nil?
+    redirect "/#{params[:team]}", 303
+  end
+end
