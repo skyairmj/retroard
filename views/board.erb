@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Agile Retrospective Board</title>
+		<title>Team Retrospective</title>
 		<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 		<meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
 		<meta name="description"
@@ -15,21 +15,23 @@
 	</head>
 	<body>
 		<header>
-      <div id="logo">
-        <img src="/images/logo.jpg"/>
-        <h2>Team Retro</h2>
+      <div class="header">
+        <div id="logo">
+          <img src="/images/logo.jpg"/>
+          <h2>Team Retro</h2>
+        </div>
+        <h3><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></h3>
+        <a href="#">Create</a>
+        <a href="#">Export</a>
+        | <a href="#">Group</a>
+        <a href="#">Vote</a>
+        <a href="#">Action</a>
+        <a href="#">Complete</a>
+        |
+        <select>
+          <option>None</option>
+        </select>
       </div>
-      <h3><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></h3>
-			<a href="#">Create</a>
-			<a href="#">Export</a>
-			| <a href="#">Group</a>
-			<a href="#">Vote</a>
-			<a href="#">Action</a>
-			<a href="#">Complete</a>
-			|
-			<select>
-				<option>None</option>
-			</select>
 		</header>
 		<article id="walls">
 			<section class="wall" id="well">
