@@ -10,6 +10,7 @@ body {
 	min-width: 1000px;
   width: 1002px;
   margin: 0 auto;
+  font: 13px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
 }
 header {
 	text-align: right;
