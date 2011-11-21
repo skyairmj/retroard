@@ -4,6 +4,8 @@ gem 'rspec'
 gem 'rake'
 gem 'sinatra'
 gem 'cramp'
+gem 'rspec-cramp'
+gem 'yajl-ruby'
 
 gem "hiredis" 
 gem "em-synchrony"
