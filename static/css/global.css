@@ -1,0 +1,14 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3 {
+	display: inline;
+}
+.hide {
+    display:none;
+}
+
+body {
+    font: 13px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
+}

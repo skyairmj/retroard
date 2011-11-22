@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Team Retrospective</title>
-		<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-		<meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
-		<meta name="description"
-		content="This is an online retrospective board, which enables distributed teams to organize retrospectives just like they are co-located."/>
-		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css"
-		type="text/css" media="all"/>
-		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-		<script type="text/javascript"
-		src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-	</head>
-	<body>
-		<header>
-      <div class="header">
+<head>
+    <title>Team Retrospective</title>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
+    <meta name="description"
+          content="This is an online retrospective board, which enables distributed teams to organize retrospectives just like they are co-located."/>
+    <link rel="stylesheet" type="text/css" href="css/global.css"/>
+    <link rel="stylesheet" type="text/css" href="css/board.css"/>
+
+    <script type="text/javascript" src="javascripts/libs/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="javascripts/sticky.js"></script>
+</head>
+<body>
+<div class="wrap">
+<header>
+    <div class="header">
         <div id="logo">
-          <img src="/images/logo.jpg"/>
-          <h2>Team Retro</h2>
+            <img src="/images/logo.jpg"/>
+
+            <h2>Team Retro</h2>
         </div>
         <h3><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></h3>
         <a href="#">Create</a>
@@ -29,239 +30,247 @@
         <a href="#">Complete</a>
         |
         <select>
-          <option>None</option>
+            <option>None</option>
         </select>
-      </div>
-		</header>
-		<article id="walls">
-			<section class="wall" id="well">
-				<div class="wallHeader">
-					<h3>WELL</h3>
-					<div class="addSticky"></div>
-				</div>
-				<div class="wallBody">
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="wall" id="lessWell">
-				<div class="wallHeader">
-					<h3>LESS WELL</h3>
-					<div class="addSticky"></div>
-				</div>
-				<div class="wallBody">
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="wall" id="puzzle">
-				<div class="wallHeader">
-					<h3>PUZZLE</h3>
-					<div class="addSticky"></div>
-				</div>
-				<div class="wallBody">
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-				</div>
-			</section>
-			<section class="wall" id="idea">
-				<div class="wallHeader">
-					<h3>IDEA</h3>
-					<div class="addSticky"></div>
-				</div>
-				<div class="wallBody">
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-							asdfasfasdfasdfasdfasd
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-					<div class="sticky">
-						<div class="stickyText">
-							Some info
-						</div>
-						<div class="stickyCount">
-							+0
-						</div>
-					</div>
-				</div>
-			</section>
-		</article>
-		<footer>
-			© 2011 Team-Cares
-		</footer>
-	</body>
+    </div>
+</header>
+<article id="walls">
+<section class="wall" id="well">
+    <div class="wallHeader">
+        <h3>WELL</h3>
+
+        <div class="addSticky"></div>
+    </div>
+    <div class="wallBody">
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wall" id="lessWell">
+    <div class="wallHeader">
+        <h3>LESS WELL</h3>
+
+        <div class="addSticky"></div>
+    </div>
+    <div class="wallBody">
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wall" id="puzzle">
+    <div class="wallHeader">
+        <h3>PUZZLE</h3>
+
+        <div class="addSticky"></div>
+    </div>
+    <div class="wallBody">
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+    </div>
+</section>
+<section class="wall" id="idea">
+    <div class="wallHeader">
+        <h3>IDEA</h3>
+
+        <div class="addSticky"></div>
+    </div>
+    <div class="wallBody">
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+                asdfasfa sdfasdf asdfasd
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+        <div class="sticky">
+            <div class="stickyText">
+                Some info
+            </div>
+            <div class="stickyCount">
+                +0
+            </div>
+        </div>
+    </div>
+</section>
+<div id="dialogAddSticky">
+
+</div>
+</article>
+<footer>
+    © 2011 Team-Cares
+</footer>
+</div>
+</body>
 </html>

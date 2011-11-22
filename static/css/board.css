@@ -1,3 +1,7 @@
+wrap {
+	min-width: 1000px;
+    margin: 0 auto;
+}
 header {
     margin-bottom: 5px;
     height: 30px;
@@ -22,8 +26,8 @@ header div#logo img {
 }
 
 #walls {
-	margin:0 auto;
-  width: 1002px;
+	margin: 0 auto;
+    width: 94%;
 	text-align: center;
 	border: 5px solid gray;
 	border-radius: 10px;
