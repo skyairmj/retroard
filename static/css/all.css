@@ -1,20 +1,55 @@
 * {
-  padding: 0px;
+  padding: 0;
+  margin: 0;
 }
 body {
-  width: 1002px;
-  height: 600px;
+  background: url("../images/front/bg.png") repeat-x scroll 0 0 #FFFFFF;
   font: 13px/1.5 Helvetica Neue,Arial,Helvetica,'Liberation Sans',FreeSans,sans-serif;
   text-align: center;
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
-  background: url("../images/front/bg.png") repeat-x scroll 0 0 #FFFFFF;
 }
-div#doc {
-  background: url("../img/front/logo-map.png") no-repeat scroll center top transparent;
+.front-page {
+  color: white;
+}
+.front-page #doc {
+  background: url("../images/front/logo-map.png") no-repeat scroll center top transparent;
   min-width: 1000px;
+  height: 600px;
   overflow: hidden;
+}
+#doc {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+}
+.front-page #page-outer {
+    padding-top: 0;
+    position: relative;
+    width: 1000px;
+}
+#page-outer {
+    margin: 0 auto;
+    padding-top: 60px;
+    width: 1000px;
+}
+.front-page #front-container {
+    -moz-user-select: none;
+    cursor: default;
+    display: block;
+    overflow: visible;
+}
+.front-page #top-bar-outer, #front-container {
+    display: none;
+}
+#front-container, #page-container {
+    border-radius: 5px 5px 5px 5px;
+    margin: 0 40px;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    width: 920px;
+    z-index: 1;
 }
 div.left {
   float: left;
@@ -33,17 +68,70 @@ form .holding {
 }
 .front-page div.left-content {
   width: 550px;
+  top: 15px;
 }
 .front-page div.left-content div{
   padding: 20px 0px;
 }
+.front-page .signin .submit {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  right: 0px;
+  min-width: 64px;
+  padding: 6px;
+  position: absolute;
+  text-align: center;
+  white-space: nowrap;
+}
+.front-page .front-signin .button, .front-page .front-signup .button {
+    border: medium none;
+}
+.button {
+  background: url("../images/buttons/bg-btn.gif") repeat-x scroll 0 0 #DDDDDD;
+  border-color: #BBBBBB #BBBBBB #999999;
+  border-radius: 4px 4px 4px 4px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 0 1px 0 #F8F8F8;
+  color: #333333 !important;
+  cursor: pointer;
+  display: inline-block;
+  font: 12px/15px Helvetica Neue,Arial,"Lucida Grande",Sans-serif;
+  margin: 0;
+  overflow: hidden;
+  padding: 5px 9px;
+  text-shadow: 0 1px #F0F0F0;
+}
+.front-page .front-signin .button, .front-page .front-signup .button {
+    border: medium none;
+}
+.front-signup .submit {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  float: right;
+  height: 35px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+a.promotional, button.promotional {
+  background: url("../images/buttons/bg-btn-signup.png") repeat-x scroll 0 0 #FFAA22;
+  border: 1px solid #FFAA22;
+  border-radius: 5px 5px 5px 5px;
+  box-shadow: 0 1px 0 #FFFFFF;
+  color: #333333;
+  cursor: pointer;
+  display: block;
+  font: bold 16px Helvetica Neue,Arial,Sans-serif;
+  padding: 4px 8px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #FFEE66;
+}
 .front-page div.right-content {
-  width: 450px;
+  width: 310px;
   text-align: left;
 }
 .front-page .front-signin {
-  position: absolute;
-  top: 30px;
+  padding: 28px 0 0 0;
 }
 .front-page .front-signup {
   position: absolute;
@@ -67,7 +155,9 @@ form .holding {
   white-space: nowrap;
   z-index: 1;
 }
-
+.front-page .signin .textbox {
+    height: 27px;
+}
 .front-page form.signin .holding input {
   padding: 6px;
   border-radius: 3px 3px 3px 3px;
@@ -102,4 +192,7 @@ form .holding {
   box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1) inset, 0 0 10px rgba(255, 255, 255, 0.9);
   opacity: 1;
   outline: medium none;
+}
+footer {
+  color: black;
 }
