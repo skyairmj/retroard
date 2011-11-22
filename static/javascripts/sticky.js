@@ -10,6 +10,7 @@ Sticky = (function() {
         var me = this;
         this.addStickyButton.on('click', function() {
             me.addStickyDialog.dom.show();
+            me.addStickyDialog.modal.show();
         });
     }
 
@@ -20,14 +21,20 @@ AddStickyDialog = (function() {
     function AddStickyDialog() {
         this.dom = $('#dialogAddSticky');
         this.cancelButton = $('#dialogAddSticky .cancelButton');
+        this.okButton = $('#dialogAddSticky .okButton');
+        this.modal = $('#modal');
         this.bindEvents();
     }
 
     AddStickyDialog.prototype.bindEvents = function() {
         var me = this;
         this.cancelButton.on('click', function() {
-            console.log(1)
             me.dom.hide();
+            me.modal.hide();
+        });
+        this.okButton.on('click', function() {
+            me.dom.hide();
+            me.modal.hide();
         });
     }
 
