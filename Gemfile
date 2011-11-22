@@ -10,3 +10,5 @@ gem 'yajl-ruby'
 gem "hiredis" 
 gem "em-synchrony"
 gem "redis", :require => ["redis/connection/hiredis", "redis"]
+
+gem 'jasmine'
