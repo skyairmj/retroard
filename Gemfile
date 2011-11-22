@@ -2,6 +2,8 @@ source :rubygems
 
 gem 'rspec'
 gem 'rake'
+gem 'rack'
+gem 'thin'
 gem 'sinatra'
 gem 'cramp'
 gem 'rspec-cramp'
