@@ -145,16 +145,6 @@ a.promotional, button.promotional {
   color: #567792;
   opacity: 0.7;
 }
-.front-page form .holding .holder {
-  -moz-transition: opacity 0.1s ease 0s, font-size 0.1s ease 0s;
-  color: #999999;
-  cursor: text;
-  left: 8px;
-  position: absolute;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-  white-space: nowrap;
-  z-index: 1;
-}
 .front-page .signin .textbox {
     height: 27px;
 }
@@ -170,13 +160,11 @@ a.promotional, button.promotional {
   padding:9px 7px 10px;
   width:296px;
 }
-.front-page form.signin .holding input, .front-page form.signin .holding .holder {
+.front-page form.signin .holding input {
   font:13px "Helvetica Neue",Arial,sans-serif;
-  line-height: 33px;
 }
-.front-page form.signup .holding input, .front-page form.signup .holding .holder {
+.front-page form.signup .holding input {
   font:15px "Helvetica Neue",Arial,sans-serif;
-  line-height: 38px;
 }
 .front-signup h3 {
   font-size: 16px;

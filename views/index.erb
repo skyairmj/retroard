@@ -24,10 +24,9 @@
 	    <div class="right-content left">
 	      <div class="front-signin">
 	        <form class="signin" method="post" action="/signin">
-		      <div class="holding left textbox">
-	          	<input type="text" autocomplete="on" title="Team Name" name="team"/>
-		        <span class="holder">Team Name</span>
-			  </div>
+            <div class="holding left textbox">
+              <input type="text" autocomplete="on" title="Team Name" placeholder="Team Name" name="team"/>
+            </div>
 	          <button class="submit button" type="submit">Sign In</button>
 	          <p>
 	            <label class="remember">
@@ -41,8 +40,7 @@
 	        <h3>New team to TeamRetro? Join now:</h3>
 	        <form class="signup" method="post" action="/signup">
 	          <div class="holding">
-	            <input type="text" maxLength="20" name="team" value="" autocomplete="off"/>
-	            <span class="holder">Team Name</span>
+	            <input type="text" maxLength="20" name="team" value="" autocomplete="off" placeholder="Team Name"/>
 	          </div>
 	          <button class="submit button promotional" type="submit">Sign up</button>
 	        </form>
