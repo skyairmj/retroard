@@ -1,19 +1,37 @@
-var Connection = {
-  initialize: function() {
-    this.connect();
-  },
+var Connection = (function() {
 
-  connect: function() {
-    try{
-      this.socket = new MozWebSocket('ws://localhost:4000/');
-    }catch(e){
-      alert(e)
+    function Connection(connectionUrl) {
+        this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:4000/';
     }
-    this.socket.onmessage = this.onmessage;
-  },
 
-  onmessage: function(m) {
-    alert(m.data)
-    alert(JSON.parse(m.data));
-  }
-}
+    Connection.prototype = {
+        initialize : function() {
+            this.socket = connect(this.connectionUrl);
+//            this.socket.onmessage = this.onMessage;
+        },
+
+        sendMessage : function(data) {
+            this.socket.send(data);
+        },
+//
+//        onMessage : function(message) {
+//            console.log(message.data);
+//            console.log(JSON.parse(message.data).content);
+//        }
+    }
+
+    function connect(connectionUrl) {
+        var socket;
+        try {
+            if (window.MozWebSocket) {
+                window.WebSocket = window.MozWebSocket;
+            }
+            socket = new WebSocket(connectionUrl);
+            return socket;
+        } catch(e) {
+            console.log(e)
+        }
+    }
+
+    return Connection;
+})();

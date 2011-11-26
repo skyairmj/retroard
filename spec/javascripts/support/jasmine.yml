@@ -12,7 +12,7 @@
 #
 src_files:
     - static/javascripts/**/*.js
-    - static/javascripts/sticky.js
+    - static/javascripts/*.js
 
 # stylesheets
 #
