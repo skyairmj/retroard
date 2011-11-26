@@ -16,4 +16,16 @@ describe('web socket', function() {
             expect(dataHolder).toBe('hello');
         });
     });
+
+    describe('get message', function() {
+        it('should bind event handler with data', function() {
+            var messageHolder;
+            var handler = function(message) {
+                messageHolder = message;
+            }
+            connection.onMessage(handler);
+            connection.socket.onmessage('hello');
+            expect(messageHolder).toBe('hello');
+        });
+    });
 });

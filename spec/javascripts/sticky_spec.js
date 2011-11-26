@@ -7,8 +7,8 @@ describe('sticky', function() {
         });
 
         it('should pop up sticky adding dialog and modal when click add sticky button', function() {
-            expect(sticky.addStickyDialog.dom).toBeHidden();
-            expect(sticky.addStickyDialog.modal).toBeHidden();
+            sticky.addStickyDialog.dom.hide();
+            sticky.addStickyDialog.modal.hide();
 
             sticky.addStickyButton.click();
 

@@ -7,17 +7,15 @@ var Connection = (function() {
     Connection.prototype = {
         initialize : function() {
             this.socket = connect(this.connectionUrl);
-//            this.socket.onmessage = this.onMessage;
         },
 
         sendMessage : function(data) {
             this.socket.send(data);
         },
-//
-//        onMessage : function(message) {
-//            console.log(message.data);
-//            console.log(JSON.parse(message.data).content);
-//        }
+
+        onMessage : function(handler) {
+            this.socket.onmessage = handler;
+        }
     }
 
     function connect(connectionUrl) {

@@ -11,7 +11,7 @@
 #   - dist/**/*.js
 #
 src_files:
-    - static/javascripts/**/*.js
+    - static/javascripts/libs/*.js
     - static/javascripts/*.js
 
 # stylesheets
@@ -26,7 +26,7 @@ src_files:
 #   - stylesheets/*.css
 #
 stylesheets:
-    - static/css/board.css
+
 
 # helpers
 #
