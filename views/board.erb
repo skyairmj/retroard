@@ -9,35 +9,47 @@
     <link rel="stylesheet" type="text/css" href="css/global.css"/>
     <link rel="stylesheet" type="text/css" href="css/board.css"/>
 
+    <script type="text/javascript" src="javascripts/webSocket.js"></script>
     <script type="text/javascript" src="javascripts/libs/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="javascripts/sticky.js"></script>
-    <script type="text/javascript" src="javascripts/websocket.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        Connection.initialize();
-      });
-    </script>
+    <script type="text/javascript" src="javascripts/history.js"></script>
+    <script type="text/javascript" src="javascripts/boardView.js"></script>
+
 </head>
 <body>
 <div class="wrap">
 <header>
-    <div class="headerWrap">
-        <div id="logo">
-            <img src="/images/logo.jpg"/>
-
-            <h2>Team Retro</h2>
-        </div>
+    <div class="headerWrap clearFloat">
+        <img id="logo" src="/images/logo.jpg"/>
+        <h2>Team Retro</h2>
         <h3><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></h3>
+        <span class="separator">|</span>
         <a href="#">Create</a>
         <a href="#">Export</a>
-        | <a href="#">Group</a>
+        <span class="separator">|</span>
+        <a href="#">Group</a>
         <a href="#">Vote</a>
         <a href="#">Action</a>
         <a href="#">Complete</a>
-        |
-        <select>
-            <option>None</option>
-        </select>
+        <span class="separator">|</span>
+        <a href="#" id="historyHeaderButton">
+            <span>
+                History
+            </span>
+        </a>
+        <div id="historyDialog">
+            <ul>
+                <li>
+                    <a href="#">Sprint1</a>
+                </li>
+                <li>
+                    <a href="#">Sprint2</a>
+                </li>
+                <li>
+                    <a href="#">Sprint3</a>
+                </li>
+            </ul>
+        </div>
     </div>
 </header>
 <article id="walls">
