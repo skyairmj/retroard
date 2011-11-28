@@ -1,7 +1,8 @@
 require 'sinatra/base' 
 
 class StaticController < Sinatra::Base
-  enable :inline_templates
+  enable :inline_templates, :method_override, :sessions, :logging
+  disable :run
   set :root, File.dirname(__FILE__)+ '/..'
   set :public_folder, Proc.new { File.join(root, "static") }
   set :views, Proc.new { File.join(root, "views") }
