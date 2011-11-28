@@ -4,11 +4,11 @@ require "rspec"
 require "http_router"
 require "rspec/cramp"
 
-require File.join(File.dirname(__FILE__), "../../../controllers", "retro_controller")
+require File.join(File.dirname(__FILE__), "../../../controllers", "websocket_controller")
 
-describe RetroController, :cramp => true do
+describe WebsocketController, :cramp => true do
   def app
-    RetroController
+    WebsocketController
   end
 
   it "should respond to websocket requrest" do

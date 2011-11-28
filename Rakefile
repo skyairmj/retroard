@@ -4,11 +4,19 @@ require 'rack'
 # Everything else
 Dir.glob('lib/tasks/*.rake').each { |r| import r }
 
-task :server do
-  sh "ruby -rubygems application.rb"
+namespace :server do
+  task :start do
+    sh 'ruby -rubygems application.rb'
+  end
 end
 
-task :default => :server
+namespace :redis do
+  task :start do
+    sh 'redis-server'
+  end  
+end
+
+task :default => 'server:start'
 
 begin
   require 'jasmine'

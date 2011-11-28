@@ -2,7 +2,7 @@ require 'stringio'
 require 'cramp'
 require 'yajl'  
 
-class RetroController < Cramp::Websocket
+class WebsocketController < Cramp::Websocket
   on_start :create_redis
   on_finish :handle_leave, :destroy_redis
   on_data :handle_data
