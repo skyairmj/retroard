@@ -79,7 +79,6 @@ form .holding {
   right: 0px;
   min-width: 64px;
   padding: 6px;
-  position: absolute;
   text-align: center;
   white-space: nowrap;
 }
@@ -128,7 +127,6 @@ a.promotional, button.promotional {
 }
 .front-page div.right-content {
   width: 310px;
-  text-align: left;
 }
 .front-page .front-signin {
   padding: 28px 0 0 0;
@@ -151,7 +149,8 @@ a.promotional, button.promotional {
 .front-page form.signin .holding input {
   padding: 6px;
   border-radius: 3px 3px 3px 3px;
-  width: 200px;
+  width: 228px;
+  margin-right:6px;
 }
 .front-page form.signup .holding input {
   border-radius: 4px 4px 4px 4px;
