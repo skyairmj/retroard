@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../../../model', 'team')
+require File.join(File.dirname(__FILE__), '../../../models', 'team')
 
 describe Team do
   it "should " do
