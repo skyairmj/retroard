@@ -1,4 +1,4 @@
-Sticky = (function() {
+var Sticky = (function() {
     function Sticky() {
         this.addStickyButton = $('.addSticky');
         this.bindEvents();

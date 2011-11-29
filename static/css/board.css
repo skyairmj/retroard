@@ -89,7 +89,7 @@ header .separator {
     color: #545454;
 }
 
-#walls {
+#sections {
 	margin: 0 auto;
     width: 94%;
 	text-align: center;
@@ -97,7 +97,7 @@ header .separator {
 	border-radius: 10px;
 }
 
-.wall {
+.section {
 	width: 24%;
 	height:600px;
 	border-left: 1px solid gray;
@@ -105,11 +105,11 @@ header .separator {
 	display: inline-block;
 	vertical-align: top;
 }
-.wallHeader{
+.sectionHeader{
 	padding-top: 2px;
 }
 
-.wallHeader h3{
+.sectionHeader h3{
 	display:inline-block;
 	line-height:27px;
 	padding-right:24px;
@@ -117,16 +117,16 @@ header .separator {
 	background-repeat:no-repeat;
 }
 
-#well .wallHeader h3{
+#well .sectionHeader h3{
 	background-image: url(/images/face_smile.png);
 }
-#lessWell .wallHeader h3{
+#lessWell .sectionHeader h3{
 	background-image: url(/images/face_crying.png);
 }
-#puzzle .wallHeader h3{
+#puzzle .sectionHeader h3{
 	background-image: url(/images/face_confused.png);
 }
-#idea .wallHeader h3{
+#idea .sectionHeader h3{
 	background-image: url(/images/face_angel.png);
 }
 
@@ -141,7 +141,7 @@ header .separator {
 	cursor: pointer;
 }
 
-.wallBody{
+.sectionBody{
 }
 
 .sticky {
