@@ -1,29 +1,29 @@
 StickyDialog = (function() {
-    var modal;
-    var dom;
+    var that;
     function StickyDialog() {
+        that = this;
         this.dom = $('#stickyDialog');
-        dom = this.dom;
+        var dom = this.dom;
         this.cancelButton = $('#stickyDialog .cancelButton');
         this.okButton = $('#stickyDialog .okButton');
         this.modal = $('#modal');
-        modal = this.modal;
+        var modal = this.modal;
     }
 
     StickyDialog.prototype.initialize = function() {
         this.cancelButton.on('click', function() {
-            dom.hide();
-            modal.hide();
+            that.dom.hide();
+            that.modal.hide();
         });
         this.okButton.on('click', function() {
-            dom.hide();
-            modal.hide();
+            that.dom.hide();
+            that.modal.hide();
         });
     }
 
     StickyDialog.prototype.display = function() {
-        dom.show();
-        modal.show();
+        that.dom.show();
+        that.modal.show();
     }
 
     return StickyDialog;

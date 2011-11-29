@@ -31,7 +31,7 @@ describe('board', function() {
             expect(getSection(ideaId).dom).toBe($('#' + ideaId));
         });
 
-        it('should register listener for sticky add button click event to display sticky dialog', function() {
+        xit('should register listener for sticky add button click event to display sticky dialog', function() {
             var listenerHolder;
             var eventHolder;
             spyOn(getSection(wellId), 'registerAddStickyButtonListener').andCallFake(function(event, listener) {
@@ -44,6 +44,8 @@ describe('board', function() {
             expect(eventHolder).toBe('click');
             expect(listenerHolder).toBe(board.stickyDialog.display);
         });
+
+        it('should bind ')
     });
 
 });
