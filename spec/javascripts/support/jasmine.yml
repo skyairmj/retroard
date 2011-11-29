@@ -12,7 +12,10 @@
 #
 src_files:
     - static/javascripts/libs/*.js
-    - static/javascripts/*.js
+    - static/javascripts/history.js
+    - static/javascripts/dialog.js
+    - static/javascripts/wall.js
+    - static/javascripts/board.js
 
 # stylesheets
 #
@@ -51,6 +54,9 @@ helpers:
 #   - **/*[sS]pec.js
 #
 spec_files:
+    - history_spec.js
+    - dialog_spec.js
+    - board_spec.js
 
 # src_dir
 #
@@ -62,6 +68,7 @@ spec_files:
 # src_dir: public
 #
 src_dir:
+#    - static/javascripts
 
 # spec_dir
 #

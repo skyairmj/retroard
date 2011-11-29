@@ -1,4 +1,4 @@
-describe('histroy', function() {
+describe('history', function() {
 
     var history;
     beforeEach(function() {
