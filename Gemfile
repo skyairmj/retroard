@@ -18,3 +18,5 @@ gem 'redis', :require => ['redis/connection/synchrony', 'redis']
 gem 'rspec', :group => :test
 gem 'rspec-cramp', :group => :test
 gem 'jasmine', :group => :test
+gem 'redis_orm'
+gem 'json'
