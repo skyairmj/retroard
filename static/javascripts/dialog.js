@@ -21,10 +21,5 @@ StickyDialog = (function() {
         });
     }
 
-    StickyDialog.prototype.display = function() {
-        that.dom.show();
-        that.modal.show();
-    }
-
     return StickyDialog;
 })();

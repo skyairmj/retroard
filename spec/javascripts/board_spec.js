@@ -31,21 +31,21 @@ describe('board', function() {
             expect(getSection(ideaId).dom).toBe($('#' + ideaId));
         });
 
-        xit('should register listener for sticky add button click event to display sticky dialog', function() {
-            var listenerHolder;
-            var eventHolder;
-            spyOn(getSection(wellId), 'registerAddStickyButtonListener').andCallFake(function(event, listener) {
-                eventHolder = event;
-                listenerHolder = listener;
-            });
-
+        it('should initialize history', function() {
+            var history = board.history;
+            spyOn(history, 'initialize');
             board.initialize();
 
-            expect(eventHolder).toBe('click');
-            expect(listenerHolder).toBe(board.stickyDialog.display);
+            expect(history.initialize).toHaveBeenCalled();
         });
 
-        it('should bind ')
+        it('should initialize sticky dialog', function() {
+           var stickyDialog = board.stickyDialog;
+           spyOn(stickyDialog, 'initialize');
+           board.initialize();
+
+           expect(stickyDialog.initialize).toHaveBeenCalled();
+        });
     });
 
 });

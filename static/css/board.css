@@ -130,7 +130,7 @@ header .separator {
 	background-image: url(/images/face_angel.png);
 }
 
-.addSticky{
+.addStickyButton{
 	height: 24px;
 	width: 24px;
 	display:block;
@@ -163,7 +163,7 @@ header .separator {
 	left: 10%;
 }
 
-#dialogAddSticky {
+#stickyDialog {
     position:absolute;
     padding: 10px;
     left:50%;
@@ -180,7 +180,7 @@ header .separator {
     z-index: 2;
 }
 
-#dialogAddSticky textarea {
+#stickyDialog textarea {
     min-height: 300px;
     min-width: 400px;
     background: none;
@@ -189,7 +189,7 @@ header .separator {
     font-size: 20px;
 }
 
-#dialogAddSticky textarea:focus {
+#stickyDialog textarea:focus {
     background-color: #FFFFAD;
 }
 

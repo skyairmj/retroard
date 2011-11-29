@@ -12,8 +12,17 @@
     <script type="text/javascript" src="javascripts/webSocket.js"></script>
     <script type="text/javascript" src="javascripts/libs/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="javascripts/sticky.js"></script>
+    <script type="text/javascript" src="javascripts/dialog.js"></script>
+    <script type="text/javascript" src="javascripts/section.js"></script>
     <script type="text/javascript" src="javascripts/history.js"></script>
-    <script type="text/javascript" src="javascripts/boardView.js"></script>
+    <script type="text/javascript" src="javascripts/board.js"></script>
+
+    <script  type="text/javascript">
+        $(document).ready(function() {
+            var board = new Board('well', 'lessWell', 'puzzle', 'idea');
+            board.initialize();
+        })
+    </script>
 
 </head>
 <body>

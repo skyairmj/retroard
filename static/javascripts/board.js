@@ -6,12 +6,12 @@ var Board = (function() {
             this.sections.push(new Section(sectionIds[i]));
         }
         this.stickyDialog = new StickyDialog();
+        this.history = new History();
     }
 
     Board.prototype.initialize = function() {
-        for (var i in this.sections) {
-            this.sections[i].registerAddStickyButtonListener('click', this.stickyDialog.display);
-        }
+        this.history.initialize();
+        this.stickyDialog.initialize();
     }
 
     return Board;

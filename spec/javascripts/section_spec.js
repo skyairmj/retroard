@@ -1,20 +1,25 @@
 describe('section', function() {
 
-    var type = 'well';
+    var name = 'well';
     var section;
     beforeEach(function() {
-        section = new Section(type);
+        setFixtures('<div id="well"></div>');
+        section = new Section(name);
     });
 
-    describe('initialize', function(){
-        it('should hold a type', function(){
-            expect(section.type).toBe(type);
-        })
+    describe('initialize', function() {
+        it('should hold a dom element', function() {
+            expect(section.dom).toBe($('#well'));
+        });
 
-        it('should hold empty sticky list', function(){
+        it('should hold a name', function() {
+            expect(section.name).toBe(name);
+        });
+
+        it('should hold empty sticky list', function() {
             expect(section.stickies.length).toBe(0);
-        })
-    })
+        });
+    });
     describe('add sticky', function() {
         it('should add a new sticky', function() {
             var newSticky = section.addSticky();

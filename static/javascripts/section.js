@@ -1,11 +1,14 @@
 var Section = (function() {
-    function Section(type) {
-//        this.dom = $('#' + sectionId);
+    var that;
+
+    function Section(name) {
+        that = this;
+        this.dom = $('#' + name);
         this.addStickyButton = $('.addStickyButton');
-        this.type = type;
+        this.name = name;
         this.stickies = [];
         this.addStickyButton.on('click', function() {
-            this.addSticky();
+            that.addSticky();
         });
     }
 
@@ -13,10 +16,6 @@ var Section = (function() {
         var newSticky = new Sticky();
         this.stickies.push(newSticky);
         return newSticky;
-    }
-
-    Section.prototype.registerAddStickyButtonListener = function(event, listener) {
-        this.addStickyButton.on(event, listener);
     }
 
     return Section;

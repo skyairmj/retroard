@@ -13,13 +13,6 @@ describe('dialog', function() {
             stickyDialog.modal.hide();
         });
 
-        it('should display sticky dialog and modal when call display function', function() {
-            stickyDialog.display();
-
-            expect(stickyDialog.dom).toBeVisible();
-            expect(stickyDialog.modal).toBeVisible();
-        });
-
         it('should hide sticky dialog and modal when click cancel button', function() {
             stickyDialog.cancelButton.click();
 
