@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/create_sticky_handler'
+require 'action_handlers/create_sticky_handler'
 
 class ActionDispatcher
   @@op_code_mapping = {

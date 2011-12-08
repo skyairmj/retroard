@@ -1,4 +1,4 @@
-Dir[File.dirname(__FILE__) + '/../../action_handlers/*.rb'].each {|file| require file }
+require 'ruby/spec_helper'
 
 describe ActionDispatcher do
   it "should return the right handler" do

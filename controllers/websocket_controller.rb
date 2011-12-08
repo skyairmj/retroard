@@ -1,8 +1,8 @@
 require 'stringio'
 require 'cramp'
 require 'yajl'  
-require File.join(File.dirname(__FILE__), '..', 'redis_connection')
-require File.join(File.dirname(__FILE__), '../helpers', 'json_helper')
+require 'redis_connection'
+require 'helpers/json_helper'
 
 class WebsocketController < Cramp::Websocket
   include JSonHelper

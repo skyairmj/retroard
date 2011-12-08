@@ -3,8 +3,7 @@ require "cramp"
 require "rspec"
 require "http_router"
 require "rspec/cramp"
-
-require File.join(File.dirname(__FILE__), "../../../controllers", "websocket_controller")
+require 'ruby/spec_helper'
 
 describe WebsocketController, :cramp => true do
   def app

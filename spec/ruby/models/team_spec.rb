@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../../../models', 'team')
+require 'ruby/spec_helper'
 
 describe Team do
   it "should " do

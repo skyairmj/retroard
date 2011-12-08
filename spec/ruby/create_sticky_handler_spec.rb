@@ -1,5 +1,4 @@
-Dir[File.dirname(__FILE__) + '/../../action_handlers/*.rb'].each {|file| require file }
-Dir[File.dirname(__FILE__) + '/../../models/*.rb'].each {|file| require file }
+require 'ruby/spec_helper'
 
 describe CreateStickyHandler do
   it "should store the sticky" do

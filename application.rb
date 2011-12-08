@@ -1,8 +1,9 @@
 require 'rubygems'
 require 'eventmachine'
+require File.expand_path('../boot', __FILE__)
 
-require File.join(File.dirname(__FILE__), 'controllers', 'websocket_controller')
-require File.join(File.dirname(__FILE__), 'controllers', 'static_controller')
+require 'controllers/websocket_controller'
+require 'controllers/static_controller'
 
 EventMachine.run {
   Cramp::Websocket.backend = :thin
