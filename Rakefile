@@ -1,5 +1,16 @@
 require 'rake'
 require 'rack'
+require 'rspec/core/rake_task'
+
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
+end
+
+RSpec::Core::RakeTask.new(:rcov) do |t|
+  t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
+  t.rcov = true
+  t.rcov_opts = ['--exclude', 'spec']
+end
 
 # Everything else
 Dir.glob('lib/tasks/*.rake').each { |r| import r }
@@ -16,7 +27,7 @@ namespace :redis do
   end  
 end
 
-task :default => 'server:start'
+task :default => :spec
 
 begin
   require 'jasmine'

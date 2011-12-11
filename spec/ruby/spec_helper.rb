@@ -1,3 +1,4 @@
+require 'rspec'
 require File.expand_path('../../../boot', __FILE__)
 
 folders_to_test = ['action_handlers', 'controllers', 'models']

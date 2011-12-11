@@ -1,11 +1,6 @@
 Gemfile.lock
-
 .project
-
 .idea
-
 *.iml
-
-.gitignore
-
 document
+coverage
