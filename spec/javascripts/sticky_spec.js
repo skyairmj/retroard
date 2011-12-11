@@ -4,8 +4,9 @@ describe('sticky', function() {
         var fixture = '<div id="stickyDialog"></div>'
                         + '<div id="modal"></div>';
         setFixtures(fixture);
-        $('#stickyDialog').hide();
-        $('#modal').hide();
+        StickyDialog.initialize();
+        StickyDialog.dom.hide();
+        StickyDialog.modal.hide();
         sticky = new Sticky();
     });
 
@@ -16,8 +17,8 @@ describe('sticky', function() {
         });
 
         it('should pop up a sticky dialog and the modal', function() {
-            expect($('#stickyDialog')).toBeVisible();
-            expect($('#modal')).toBeVisible();
+            expect(StickyDialog.dom).toBeVisible();
+            expect(StickyDialog.modal).toBeVisible();
         });
 
         it('should not be able to scroll the window', function() {

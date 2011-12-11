@@ -7,7 +7,6 @@ var Section = (function() {
         this.name = name;
         this.stickies = [];
         this.addStickyButton.on('click', function() {
-            console.log(that);
             that.addSticky();
         });
     }

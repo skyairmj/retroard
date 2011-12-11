@@ -40,11 +40,10 @@ describe('board', function() {
         });
 
         it('should initialize sticky dialog', function() {
-           var stickyDialog = board.stickyDialog;
-           spyOn(stickyDialog, 'initialize');
+           spyOn(StickyDialog, 'initialize');
            board.initialize();
 
-           expect(stickyDialog.initialize).toHaveBeenCalled();
+           expect(StickyDialog.initialize).toHaveBeenCalled();
         });
     });
 

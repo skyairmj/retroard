@@ -5,13 +5,13 @@ var Board = (function() {
         for (var i in sectionIds) {
             this.sections.push(new Section(sectionIds[i]));
         }
-        this.stickyDialog = new StickyDialog();
+
         this.history = new History();
     }
 
     Board.prototype.initialize = function() {
         this.history.initialize();
-        this.stickyDialog.initialize();
+        StickyDialog.initialize();
     }
 
     return Board;

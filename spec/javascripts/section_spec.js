@@ -61,4 +61,36 @@ describe('section', function() {
             expect(section.dom.find('.sectionBody')).toContain('.sticky');
         });
     });
+
+    describe('update sticky', function() {
+        beforeEach(function() {
+            var fixture = '<div id="well">'
+                            + '<div class="addStickyButton"></div>'
+                            + '<div class="sectionBody"></div>'
+                        + '</div>'
+                        + '<div id="someSection">'
+                            + '<div class="sectionBody"></div>'
+                        + '</div>'
+                        + '<div id="stickyDialog">'
+                                + '<textarea></textarea>'
+                                + '<button class="okButton"></button>'
+                                + '<button class="cancelButton"></button>'
+                        + '</div>';
+            setFixtures(fixture);
+            StickyDialog.initialize();
+            section = new Section('well');
+            section.addStickyButton.click();
+        });
+
+        it('should bind the current sticky to sticky dialog data', function() {
+            expect(StickyDialog.currentSticky).toBe(section.stickies[0]);
+        });
+
+        it('should update sticky with input text', function() {
+            StickyDialog.dom.find('textarea').text('some text');
+            StickyDialog.okButton.click();
+
+            expect(section.stickies[0].content).toBe('some text');
+        });
+    });
 });
