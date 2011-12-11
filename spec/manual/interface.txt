@@ -1,0 +1,24 @@
+initialize:
+request:
+{
+    'class' : 'system',
+    'method' : 'initialize',
+    'data' : {
+        'teamName' : 'team name',
+    }
+}
+response:
+{
+    'class' : 'system',
+    'method' : 'initialize',
+    'data' : {
+        'boardName' : '',
+        'sections' : [{
+            'name' : '',
+            'stickies' : [{
+                'id' : '',
+                'content' : ''
+            }]
+        }]
+    }
+}
