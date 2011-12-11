@@ -1,10 +1,13 @@
 describe('section', function() {
 
-    var name = 'well';
     var section;
     beforeEach(function() {
-        setFixtures('<div id="well"></div>');
-        section = new Section(name);
+        var fixture = '<div id="well">'
+                        + '<div class="sectionBody"></div>'
+                    + '</div>'
+        setFixtures(fixture);
+
+        section = new Section('well');
     });
 
     describe('initialize', function() {
@@ -13,7 +16,7 @@ describe('section', function() {
         });
 
         it('should hold a name', function() {
-            expect(section.name).toBe(name);
+            expect(section.name).toBe('well');
         });
 
         it('should hold empty sticky list', function() {
@@ -21,6 +24,24 @@ describe('section', function() {
         });
     });
     describe('add sticky', function() {
+        it('should call add sticky with section', function() {
+            var fixture = '<div id="well">'
+                            + '<div class="addStickyButton"></div>'
+                            + '<div class="sectionBody"></div>'
+                        + '</div>'
+                        + '<div id="someSection">'
+                            + '<div class="sectionBody"></div>'
+                        + '</div>';
+            setFixtures(fixture);
+            section = new Section('well');
+            new Section('someSection');
+
+            spyOn(section, 'addSticky');
+            section.addStickyButton.click();
+
+            expect(section.addSticky).toHaveBeenCalled();
+        });
+
         it('should add a new sticky', function() {
             var newSticky = section.addSticky();
 
@@ -32,6 +53,12 @@ describe('section', function() {
             var newSticky = section.addSticky();
 
             expect(newSticky.status).toBe('modifying');
+        });
+
+        it('should add a new sticky dom', function() {
+            section.addSticky();
+
+            expect(section.dom.find('.sectionBody')).toContain('.sticky');
         });
     });
 });

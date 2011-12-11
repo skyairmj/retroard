@@ -1,13 +1,13 @@
 var Section = (function() {
-    var that;
 
     function Section(name) {
-        that = this;
+        var that = this;
         this.dom = $('#' + name);
-        this.addStickyButton = $('.addStickyButton');
+        this.addStickyButton = this.dom.find('.addStickyButton');
         this.name = name;
         this.stickies = [];
         this.addStickyButton.on('click', function() {
+            console.log(that);
             that.addSticky();
         });
     }
@@ -15,6 +15,7 @@ var Section = (function() {
     Section.prototype.addSticky = function() {
         var newSticky = new Sticky();
         this.stickies.push(newSticky);
+        this.dom.find('.sectionBody').append(newSticky.dom);
         return newSticky;
     }
 

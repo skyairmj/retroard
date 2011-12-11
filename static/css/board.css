@@ -1,12 +1,12 @@
 .wrap {
-	min-width: 1000px;
+    min-width: 1000px;
     margin: 0 auto;
 }
 
 header {
     margin-bottom: 5px;
-    background: -webkit-gradient(linear,left top,left bottom,from(#333),to(#111));
-    background: -moz-linear-gradient(top,#333,#111);
+    background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
+    background: -moz-linear-gradient(top, #333, #111);
     box-shadow: 0 1px 2px #555;
 }
 
@@ -20,7 +20,7 @@ header .headerWrap {
 }
 
 header #logo {
-	float: left;
+    float: left;
     height: 30px;
     width: auto;
     margin-right: 10px;
@@ -37,13 +37,13 @@ header a {
     display: inline-block;
     vertical-align: top;
     padding-left: 5px;
-    padding-right:5px;
+    padding-right: 5px;
     text-decoration: none;
 }
 
 header a:hover, #historyHeaderButton.active {
     color: white;
-    background: -webkit-gradient(linear,left top,left bottom,from(#444),to(#222));
+    background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#222));
 }
 
 #historyHeaderButton span {
@@ -90,87 +90,93 @@ header .separator {
 }
 
 #sections {
-	margin: 0 auto;
+    margin: 0 auto;
     width: 94%;
-	text-align: center;
-	border: 5px solid gray;
-	border-radius: 10px;
+    text-align: center;
+    border: 5px solid gray;
+    border-radius: 10px;
 }
 
 .section {
-	width: 24%;
-	height:600px;
-	border-left: 1px solid gray;
-	border-right: 1px solid gray;
-	display: inline-block;
-	vertical-align: top;
-}
-.sectionHeader{
-	padding-top: 2px;
+    width: 24%;
+    height: 600px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    display: inline-block;
+    vertical-align: top;
 }
 
-.sectionHeader h3{
-	display:inline-block;
-	line-height:27px;
-	padding-right:24px;
-	background-position: right top;
-	background-repeat:no-repeat;
+.sectionHeader {
+    padding-top: 2px;
 }
 
-#well .sectionHeader h3{
-	background-image: url(/images/face_smile.png);
-}
-#lessWell .sectionHeader h3{
-	background-image: url(/images/face_crying.png);
-}
-#puzzle .sectionHeader h3{
-	background-image: url(/images/face_confused.png);
-}
-#idea .sectionHeader h3{
-	background-image: url(/images/face_angel.png);
+.sectionHeader h3 {
+    display: inline-block;
+    line-height: 27px;
+    padding-right: 24px;
+    background-position: right top;
+    background-repeat: no-repeat;
 }
 
-.addStickyButton{
-	height: 24px;
-	width: 24px;
-	display:block;
-	float:right;
-	background-image: url(/images/note_add.png);
-	background-size: cover;
-	margin-right: 2px;
-	cursor: pointer;
+#well .sectionHeader h3 {
+    background-image: url(/images/face_smile.png);
 }
 
-.sectionBody{
+#lessWell .sectionHeader h3 {
+    background-image: url(/images/face_crying.png);
+}
+
+#puzzle .sectionHeader h3 {
+    background-image: url(/images/face_confused.png);
+}
+
+#idea .sectionHeader h3 {
+    background-image: url(/images/face_angel.png);
+}
+
+.addStickyButton {
+    height: 24px;
+    width: 24px;
+    display: block;
+    float: right;
+    background-image: url(/images/note_add.png);
+    background-size: cover;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.sectionBody {
+    text-align: left;
 }
 
 .sticky {
-	display:inline-block;
-	width: 47%;
-	margin-top:5px;
-	height: 70px;
-	background-color: yellow;
-	vertical-align:top;
-	border-radius: 10px 10px 20px 10px;
-	box-shadow: 2px 2px 2px gray;
-	position: relative;
-	padding: 2px;
+    display: inline-block;
+    width: 47%;
+    margin-top: 5px;
+    margin-left: 2px;
+    height: 70px;
+    background-color: yellow;
+    vertical-align: top;
+    border-radius: 10px 10px 20px 10px;
+    box-shadow: 2px 2px 2px gray;
+    position: relative;
+    padding: 2px;
 }
 
 .stickyCount {
-	position: absolute;
-	bottom: 2%;
-	left: 10%;
+    position: absolute;
+    bottom: 2%;
+    left: 10%;
 }
 
 #stickyDialog {
-    position:absolute;
+    position: absolute;
     padding: 10px;
-    left:50%;
-    top:50%;
-    margin-left:-200px;
-    margin-top:-200px;
-    z-index:1;
+    left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+    z-index: 1;
     background-color: #FFFF7A;
     border-radius: 20px 20px 30px 20px;
     box-shadow: 0px 0px 10px gray;
@@ -217,5 +223,5 @@ header .separator {
 }
 
 footer {
-	text-align: center;
+    text-align: center;
 }
