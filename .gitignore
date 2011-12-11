@@ -4,3 +4,5 @@ Gemfile.lock
 *.iml
 document
 coverage
+*.rdb
+

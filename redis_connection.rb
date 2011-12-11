@@ -9,6 +9,6 @@ class RedisConnection
   end
 
   def method_missing(method, *args, &block)
-    @redis.send method, *args
+    @redis.send method, *args, &block
   end
 end
