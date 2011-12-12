@@ -2,39 +2,29 @@ describe('section', function() {
 
     var section;
     beforeEach(function() {
-        var fixture = '<div id="well">'
-                        + '<div class="sectionBody"></div>'
-                    + '</div>'
-        setFixtures(fixture);
+        loadFixtures('section.html');
 
-        section = new Section('well');
+        section = new Section('section1');
     });
 
     describe('initialize', function() {
         it('should hold a dom element', function() {
-            expect(section.dom).toBe($('#well'));
+            expect(section.dom).toBe($('#section1'));
         });
 
         it('should hold a name', function() {
-            expect(section.name).toBe('well');
+            expect(section.name).toBe('section1');
         });
 
-        it('should hold empty sticky list', function() {
+        it('should hold an empty sticky list', function() {
             expect(section.stickies.length).toBe(0);
         });
     });
+
     describe('add sticky', function() {
         it('should call add sticky with section', function() {
-            var fixture = '<div id="well">'
-                            + '<div class="addStickyButton"></div>'
-                            + '<div class="sectionBody"></div>'
-                        + '</div>'
-                        + '<div id="someSection">'
-                            + '<div class="sectionBody"></div>'
-                        + '</div>';
-            setFixtures(fixture);
-            section = new Section('well');
-            new Section('someSection');
+            section = new Section('section1');
+            new Section('section2');
 
             spyOn(section, 'addSticky');
             section.addStickyButton.click();
@@ -62,23 +52,10 @@ describe('section', function() {
         });
     });
 
+
     describe('update sticky', function() {
         beforeEach(function() {
-            var fixture = '<div id="well">'
-                            + '<div class="addStickyButton"></div>'
-                            + '<div class="sectionBody"></div>'
-                        + '</div>'
-                        + '<div id="someSection">'
-                            + '<div class="sectionBody"></div>'
-                        + '</div>'
-                        + '<div id="stickyDialog">'
-                                + '<textarea></textarea>'
-                                + '<button class="okButton"></button>'
-                                + '<button class="cancelButton"></button>'
-                        + '</div>';
-            setFixtures(fixture);
             StickyDialog.initialize();
-            section = new Section('well');
             section.addStickyButton.click();
         });
 
@@ -86,11 +63,32 @@ describe('section', function() {
             expect(StickyDialog.currentSticky).toBe(section.stickies[0]);
         });
 
-        it('should update sticky with input text', function() {
+        it('should update sticky with input text when click ok button', function() {
             StickyDialog.dom.find('textarea').text('some text');
             StickyDialog.okButton.click();
 
             expect(section.stickies[0].content).toBe('some text');
         });
+
+        it('should clear dialog after update', function() {
+            StickyDialog.dom.find('textarea').text('some text');
+            StickyDialog.okButton.click();
+
+            expect(StickyDialog.dom.find('textarea').val()).toBe('');
+        });
+    });
+
+    xdescribe('remove sticky', function() {
+        beforeEach(function() {
+            StickyDialog.initialize();
+            section.addStickyButton.click();
+        });
+
+        it('should remove sticky when click cancel button', function() {
+            StickyDialog.cancelButton.click();
+
+            expect(section.stickies.length).toBe(0);
+        });
+
     });
 });
