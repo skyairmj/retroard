@@ -7,7 +7,7 @@ describe('sticky', function() {
         StickyDialog.initialize();
         StickyDialog.dom.hide();
         StickyDialog.modal.hide();
-        sticky = new Sticky();
+        sticky = new Sticky(function(){});
     });
 
     describe('initialize', function() {
@@ -47,6 +47,23 @@ describe('sticky', function() {
             });
 
             expect(sticky.dom.find('.stickyText')).toHaveText('some content');
+        });
+    });
+
+    describe('remove', function() {
+        it('should remove the dom', function() {
+            var container = $('<div></div>');
+            container.append(sticky.dom);
+            sticky.remove();
+
+            expect(container).toBeEmpty();
+        });
+
+        it('should call onRemove function', function() {
+            spyOn(sticky, 'onRemove');
+            sticky.remove();
+
+            expect(sticky.onRemove).toHaveBeenCalled();
         });
     });
 });

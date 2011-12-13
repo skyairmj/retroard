@@ -9,7 +9,7 @@ StickyDialog = (function() {
         stickyDialog.cancelButton.on('click', function() {
             hideStickyDialog(stickyDialog);
             if (stickyDialog.currentSticky != null) {
-
+                stickyDialog.currentSticky.remove();
             }
         });
         stickyDialog.okButton.on('click', function() {

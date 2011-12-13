@@ -50,6 +50,12 @@ describe('section', function() {
 
             expect(section.dom.find('.sectionBody')).toContain('.sticky');
         });
+
+        it('should bind the sticky onRemove function with onStickyRemove', function() {
+            var newSticky = section.addSticky();
+
+            expect(newSticky.onRemove).toEqual(section.onStickyRemove)
+        });
     });
 
 
@@ -78,17 +84,29 @@ describe('section', function() {
         });
     });
 
-    xdescribe('remove sticky', function() {
+    describe('remove sticky', function() {
         beforeEach(function() {
             StickyDialog.initialize();
             section.addStickyButton.click();
         });
 
-        it('should remove sticky when click cancel button', function() {
+        it('should call the sticky onRemove function', function() {
+            spyOn(StickyDialog.currentSticky, 'onRemove');
+            StickyDialog.cancelButton.click();
+
+            expect(StickyDialog.currentSticky.onRemove).toHaveBeenCalled();
+        });
+
+        it('should remove the sticky dom', function() {
+            StickyDialog.cancelButton.click();
+
+            expect(section.dom.find('.sectionBody')).toBeEmpty();
+        });
+
+        it('should remove the sticky holder', function() {
             StickyDialog.cancelButton.click();
 
             expect(section.stickies.length).toBe(0);
         });
-
     });
 });
