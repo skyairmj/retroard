@@ -1,18 +1,16 @@
 describe('web socket', function() {
 
-    var connection;
     beforeEach(function() {
-        connection = new Connection();
-        connection.initialize();
+        Connection.initialize();
     })
 
     describe('send message', function() {
         it('should send message with data', function() {
             var dataHolder;
-            spyOn(connection.socket, 'send').andCallFake(function(data) {
+            spyOn(Connection.socket, 'send').andCallFake(function(data) {
                 dataHolder = data;
             });
-            connection.sendMessage('hello');
+            Connection.sendMessage('hello');
             expect(dataHolder).toBe('hello');
         });
     });
@@ -23,8 +21,8 @@ describe('web socket', function() {
             var handler = function(message) {
                 messageHolder = message;
             }
-            connection.onMessage(handler);
-            connection.socket.onmessage('hello');
+            Connection.onMessage(handler);
+            Connection.socket.onmessage('hello');
             expect(messageHolder).toBe('hello');
         });
     });

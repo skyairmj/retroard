@@ -1,11 +1,20 @@
 var Connection = (function() {
-
-    function Connection(connectionUrl) {
-        this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:4000/';
+    function connect(connectionUrl) {
+        var socket;
+        try {
+            if (window.MozWebSocket) {
+                window.WebSocket = window.MozWebSocket;
+            }
+            socket = new WebSocket(connectionUrl);
+            return socket;
+        } catch(e) {
+            console.log(e);
+        }
     }
 
-    Connection.prototype = {
-        initialize : function() {
+    return {
+        initialize : function(connectionUrl) {
+            this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:4000/';
             this.socket = connect(this.connectionUrl);
         },
 
@@ -17,18 +26,4 @@ var Connection = (function() {
             this.socket.onmessage = handler;
         }
     }
-
-    function connect(connectionUrl) {
-        var socket;
-        try {
-            if (window.MozWebSocket) {
-                window.WebSocket = window.MozWebSocket;
-            }
-            socket = new WebSocket(connectionUrl);
-            return socket;
-        } catch(e) {
-            console.log(e)
-        }
-    }
-    return Connection;
 })();
