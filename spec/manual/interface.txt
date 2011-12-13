@@ -1,24 +1,47 @@
 initialize:
 request:
 {
-    'class' : 'system',
-    'method' : 'initialize',
+    'class' : 'board',
+    'method' : 'get',
     'data' : {
-        'teamName' : 'team name',
+        'teamName' : 'some team name',
     }
 }
 response:
 {
-    'class' : 'system',
-    'method' : 'initialize',
+    'class' : 'board',
+    'method' : 'get',
     'data' : {
-        'boardName' : '',
+        'boardName' : 'some board name',
         'sections' : [{
-            'name' : '',
+            'name' : 'some name',
             'stickies' : [{
-                'id' : '',
-                'content' : ''
+                'id' : 'some id',
+                'content' : 'some content'
             }]
         }]
+    }
+}
+
+add sticky:
+request:
+{
+    'class' : 'sticky',
+    'method' : 'post',
+    'data' : {
+        'uuid' : 'some uuid',
+        'lastModify' : 'some time',
+        'content' : 'some content'
+    }
+}
+
+request:
+{
+    'class' : 'sticky',
+    'method' : 'post',
+    'data' : {
+        'uuid' : 'some uuid',
+        'lastModify' : 'some time',
+        'content' : 'some content'
     }
 }
