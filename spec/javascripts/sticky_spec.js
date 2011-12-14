@@ -14,6 +14,10 @@ describe('sticky', function() {
         it('should initialize a sticky with empty content and modifying status', function() {
             expect(sticky.content).toBe('');
             expect(sticky.status).toBe('modifying');
+            expect(sticky.lastModified).toBe('');
+            expect(sticky.uuid).toBeDefined();
+            expect(sticky.uuid).not.toBeNull();
+            expect(sticky.uuid).not.toBe('');
         });
 
         it('should pop up a sticky dialog and the modal', function() {
@@ -32,13 +36,16 @@ describe('sticky', function() {
 
     describe('update', function() {
         it('should update sticky with data', function() {
+            var someDate = new Date();
             sticky.update({
                 content: 'some content',
-                status: 'some status'
+                status: 'some status',
+                lastModified: someDate
             });
 
             expect(sticky.content).toBe('some content');
             expect(sticky.status).toBe('some status');
+            expect(sticky.lastModified).toBe(someDate);
         });
 
         it('should update dom with content', function() {
@@ -47,6 +54,28 @@ describe('sticky', function() {
             });
 
             expect(sticky.dom.find('.stickyText')).toHaveText('some content');
+        });
+
+        it('should send socket message with sticky data', function() {
+            Connection.initialize();
+            var dataHolder;
+            spyOn(Connection, 'sendMessage').andCallFake(function(data) {
+                dataHolder = data;
+            });
+            sticky.update({
+                content: 'some content',
+                status: 'some status'
+            });
+
+            expect(dataHolder).toEqual({
+                'class': 'sticky',
+                'status': 'post',
+                'data': {
+                    'uuid': sticky.uuid,
+                    'lastModified': sticky.lastModified,
+                    'content': sticky.content
+                }
+            });
         });
     });
 

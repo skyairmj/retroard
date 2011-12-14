@@ -40,10 +40,20 @@ describe('board', function() {
         });
 
         it('should initialize sticky dialog', function() {
-           spyOn(StickyDialog, 'initialize');
-           board.initialize();
+            spyOn(StickyDialog, 'initialize');
+            board.initialize();
 
-           expect(StickyDialog.initialize).toHaveBeenCalled();
+            expect(StickyDialog.initialize).toHaveBeenCalled();
+        });
+
+        it('should initialize websockt connection', function() {
+            this.after(function() {
+                Connection.close();
+            });
+            spyOn(Connection, 'initialize');
+            board.initialize();
+
+            expect(Connection.initialize).toHaveBeenCalled();
         });
     });
 

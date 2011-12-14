@@ -13,17 +13,23 @@ var Connection = (function() {
     }
 
     return {
-        initialize : function(connectionUrl) {
+        initialize: function(connectionUrl) {
             this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:4000/';
             this.socket = connect(this.connectionUrl);
         },
 
-        sendMessage : function(data) {
+        sendMessage: function(data) {
             this.socket.send(data);
         },
 
-        onMessage : function(handler) {
+        onMessage: function(handler) {
             this.socket.onmessage = handler;
+        },
+
+        close: function() {
+            if(this.socket.readyState != this.socket.CLOSED || this.socket.readyState != this.socket.CLOSING)
+                this.socket.close();
+            this.socket = undefined;
         }
     }
 })();

@@ -12,6 +12,7 @@ var Board = (function() {
     Board.prototype.initialize = function() {
         this.history.initialize();
         StickyDialog.initialize();
+        Connection.initialize();
     }
 
     return Board;
