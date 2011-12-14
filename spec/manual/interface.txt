@@ -1,7 +1,7 @@
 initialize:
 request:
 {
-    'class' : 'board',
+    'resource' : 'board',
     'method' : 'get',
     'data' : {
         'teamName' : 'some team name',
@@ -9,7 +9,7 @@ request:
 }
 response:
 {
-    'class' : 'board',
+    'resource' : 'board',
     'method' : 'get',
     'data' : {
         'boardName' : 'some board name',
@@ -26,22 +26,22 @@ response:
 add sticky:
 request:
 {
-    'class' : 'sticky',
-    'method' : 'post',
+    'resource' : 'sticky',
+    'method' : 'save',
     'data' : {
-        'uuid' : 'some uuid',
-        'lastModify' : 'some time',
+        'id' : 'some uuid',
+        'last-modified' : 'some time',
         'content' : 'some content'
     }
 }
 
 request:
 {
-    'class' : 'sticky',
-    'method' : 'post',
+    'resource' : 'sticky',
+    'method' : 'save',
     'data' : {
-        'uuid' : 'some uuid',
-        'lastModify' : 'some time',
+        'id' : 'some uuid',
+        'last-modified' : 'some time',
         'content' : 'some content'
     }
 }

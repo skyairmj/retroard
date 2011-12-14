@@ -7,9 +7,13 @@ require 'helpers/json_helper'
 class WebsocketController < Cramp::Websocket
   include JSonHelper
 
-  on_start :create_redis
-  on_finish :handle_leave, :destroy_redis
+  on_start :handle_join, :create_redis
+  on_finish :destroy_redis, :handle_leave
   on_data :handle_data
+  
+  def handle_join
+    render "{'haha':'hehe'}"
+  end
 
   def create_redis
     @pub = RedisConnection.new
