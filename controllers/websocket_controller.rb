@@ -3,6 +3,7 @@ require 'cramp'
 require 'yajl'  
 require 'redis_connection'
 require 'helpers/json_helper'
+require 'lib/db_operator'
 
 class WebsocketController < Cramp::Websocket
   include JSonHelper
@@ -15,6 +16,10 @@ class WebsocketController < Cramp::Websocket
     render "{'haha':'hehe'}"
   end
 
+  def initialize opt
+    super opt
+    @dbOperator = DBOperator.new
+  end
   def create_redis
     @pub = RedisConnection.new
     @sub = RedisConnection.new
@@ -35,7 +40,9 @@ class WebsocketController < Cramp::Websocket
     sticky = msg[:data]
     sticky[:lastModified] = Time.new.to_s
     puts "------#{sticky}"
+    @dbOperator.handle(msg)
     #publish msg
+    publish(msg)
   end
 
   private
