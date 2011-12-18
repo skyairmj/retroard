@@ -18,11 +18,11 @@ class WebsocketController < Cramp::Websocket
   def create_redis
     @pub = RedisConnection.new
     @sub = RedisConnection.new
-    subscribe
+    #subscribe
   end
 
   def handle_leave
-    unsubscribe
+    #unsubscribe
   end
 
   def destroy_redis
@@ -33,7 +33,9 @@ class WebsocketController < Cramp::Websocket
   def handle_data(data)
     msg = parse_json(data)
     sticky = msg[:data]
-    publish msg
+    sticky[:lastModified] = Time.new.to_s
+    puts "------#{sticky}"
+    #publish msg
   end
 
   private

@@ -30,18 +30,18 @@ request:
     'method' : 'save',
     'data' : {
         'id' : 'some uuid',
-        'last-modified' : 'some time',
+        'lastModified' : 'some time',
         'content' : 'some content'
     }
 }
 
-request:
+response:
 {
     'resource' : 'sticky',
-    'method' : 'save',
+    'status' : 'save',
     'data' : {
         'id' : 'some uuid',
-        'last-modified' : 'some time',
+        'lastModified' : 'some time',
         'content' : 'some content'
     }
 }

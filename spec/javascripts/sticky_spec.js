@@ -60,7 +60,7 @@ describe('sticky', function() {
             Connection.initialize();
             var dataHolder;
             spyOn(Connection, 'sendMessage').andCallFake(function(data) {
-                dataHolder = data;
+                dataHolder = $.evalJSON(data);
             });
             sticky.update({
                 content: 'some content',
@@ -68,10 +68,10 @@ describe('sticky', function() {
             });
 
             expect(dataHolder).toEqual({
-                'class': 'sticky',
-                'status': 'post',
+                'resource': 'sticky',
+                'method': 'save',
                 'data': {
-                    'uuid': sticky.uuid,
+                    'id': sticky.uuid,
                     'lastModified': sticky.lastModified,
                     'content': sticky.content
                 }

@@ -24,15 +24,15 @@ var Sticky = (function() {
             this.lastModified = option.lastModified;
         }
         if(Connection.socket) {
-            Connection.sendMessage({
-            'class': 'sticky',
-                'status': 'post',
+            Connection.sendMessage($.toJSON({
+                'resource': 'sticky',
+                'method': 'save',
                 'data': {
-                    'uuid': uuid,
+                    'id': uuid,
                     'lastModified': lastModified,
                     'content': content
                 }
-            });
+            }));
         }
     }
 
