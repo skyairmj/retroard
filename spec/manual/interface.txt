@@ -29,7 +29,7 @@ request:
     'resource' : 'sticky',
     'method' : 'save',
     'data' : {
-        'id' : 'some uuid',
+        'uuid' : 'some uuid',
         'lastModified' : 'some time',
         'content' : 'some content'
     }
@@ -40,7 +40,7 @@ response:
     'resource' : 'sticky',
     'status' : 'save',
     'data' : {
-        'id' : 'some uuid',
+        'uuid' : 'some uuid',
         'lastModified' : 'some time',
         'content' : 'some content'
     }

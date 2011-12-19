@@ -71,7 +71,7 @@ describe('sticky', function() {
                 'resource': 'sticky',
                 'method': 'save',
                 'data': {
-                    'id': sticky.uuid,
+                    'uuid': sticky.uuid,
                     'lastModified': sticky.lastModified,
                     'content': sticky.content
                 }

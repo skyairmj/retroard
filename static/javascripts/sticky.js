@@ -28,7 +28,7 @@ var Sticky = (function() {
                 'resource': 'sticky',
                 'method': 'save',
                 'data': {
-                    'id': uuid,
+                    'uuid': uuid,
                     'lastModified': lastModified,
                     'content': content
                 }

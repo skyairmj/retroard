@@ -1,6 +1,8 @@
-require File.dirname(__FILE__) + '/base_model'
+require 'models/base_model'
 
 class Sticky < BaseModel
+  property :uuid, String
+  property :lastModified, String
   property :content, String
   
   belongs_to :section
