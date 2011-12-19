@@ -16,6 +16,7 @@ var Connection = (function() {
         initialize: function(connectionUrl) {
             this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:4000/';
             this.socket = connect(this.connectionUrl);
+            this.onMessage(function(evt){alert(evt.data)});
         },
 
         sendMessage: function(data) {

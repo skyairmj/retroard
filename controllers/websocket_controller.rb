@@ -12,7 +12,6 @@ class WebsocketController < Cramp::Websocket
   on_data :handle_data
   
   def handle_join
-    render "{'haha':'hehe'}"
   end
 
   def create_redis
@@ -34,7 +33,8 @@ class WebsocketController < Cramp::Websocket
     msg = parse_json(data)
     sticky = msg[:data]
     sticky[:lastModified] = Time.new.to_s
-    puts "------#{sticky}"
+    response = encode_json(msg)
+    render response
     #publish msg
   end
 
