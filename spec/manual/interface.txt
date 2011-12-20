@@ -1,47 +1,50 @@
 initialize:
 request:
 {
-    'resource' : 'board',
-    'method' : 'get',
-    'data' : {
-        'teamName' : 'some team name',
+    'resource': 'board',
+    'method': 'get',
+    'data': {
+        'teamName': 'some team name',
     }
 }
 response:
 {
-    'resource' : 'board',
-    'method' : 'get',
-    'data' : {
-        'boardName' : 'some board name',
-        'sections' : [{
-            'name' : 'some name',
-            'stickies' : [{
-                'id' : 'some id',
-                'content' : 'some content'
+    'resource': 'board',
+    'method': 'get',
+    'data': {
+        'boardName': 'some board name',
+        'sections': [{
+            'name': 'some name',
+            'stickies': [{
+                'uuid': 'some uuid',
+                'lastModified': 'some time',
+                'content': 'some content'
             }]
         }]
     }
 }
 
-add sticky:
+add/update sticky:
 request:
 {
-    'resource' : 'sticky',
-    'method' : 'save',
-    'data' : {
-        'uuid' : 'some uuid',
-        'lastModified' : 'some time',
-        'content' : 'some content'
+    'resource': 'sticky',
+    'method': 'save',
+    'data': {
+        'uuid': 'some uuid',
+        'lastModified': 'some time',
+        'content': 'some content',
+        'section': 'some section name'
     }
 }
 
 response:
 {
-    'resource' : 'sticky',
-    'status' : 'save',
-    'data' : {
-        'uuid' : 'some uuid',
-        'lastModified' : 'some time',
-        'content' : 'some content'
+    'resource': 'sticky',
+    'status': 'save',
+    'data': {
+        'uuid': 'some uuid',
+        'lastModified': 'some time',
+        'content': 'some content',
+        'section': 'some section name'
     }
 }
