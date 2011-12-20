@@ -16,11 +16,11 @@ var Connection = (function() {
         initialize: function(connectionUrl) {
             this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:4000/';
             this.socket = connect(this.connectionUrl);
-            this.onMessage(function(evt){alert(evt.data)});
         },
 
         sendMessage: function(data) {
-            this.socket.send(data);
+            if(this.socket.readyState == this.socket.OPEN)
+                this.socket.send(data);
         },
 
         onMessage: function(handler) {
@@ -28,9 +28,10 @@ var Connection = (function() {
         },
 
         close: function() {
-            if(this.socket.readyState != this.socket.CLOSED || this.socket.readyState != this.socket.CLOSING)
+            if(this.socket.readyState == this.socket.OPEN) {
                 this.socket.close();
-            this.socket = undefined;
+                this.socket = undefined;
+            }
         }
     }
 })();

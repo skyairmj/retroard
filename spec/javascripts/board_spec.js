@@ -1,34 +1,22 @@
 describe('board', function() {
+
+    var board;
+    var wellId = 'well';
+    var lessWellId = 'lessWell';
+    var puzzleId = 'puzzle';
+    var ideaId = 'idea';
+    beforeEach(function() {
+        loadFixtures('board.html');
+        board = new Board([wellId, lessWellId, puzzleId, ideaId]);
+    });
+
     describe('initialize', function() {
-
-        var board;
-        var wellId = 'well';
-        var lessWellId = 'lessWell';
-        var puzzleId = 'puzzle';
-        var ideaId = 'idea';
-
-        function getSection(sectionId) {
-            var sections = board.sections;
-            for (var i in sections) {
-                var section = sections[i];
-                if (section.dom.attr('id') == sectionId) {
-                    return section;
-                }
-            }
-            return null;
-        }
-
-        beforeEach(function() {
-            loadFixtures('board.html');
-            board = new Board([wellId, lessWellId, puzzleId, ideaId]);
-        });
-
         it('should create sections of well, less well, puzzle, idea', function() {
 
-            expect(getSection(wellId).dom).toBe($('#' + wellId));
-            expect(getSection(lessWellId).dom).toBe($('#' + lessWellId));
-            expect(getSection(puzzleId).dom).toBe($('#' + puzzleId));
-            expect(getSection(ideaId).dom).toBe($('#' + ideaId));
+            expect(board.getSection(wellId).dom).toBe($('#' + wellId));
+            expect(board.getSection(lessWellId).dom).toBe($('#' + lessWellId));
+            expect(board.getSection(puzzleId).dom).toBe($('#' + puzzleId));
+            expect(board.getSection(ideaId).dom).toBe($('#' + ideaId));
         });
 
         it('should initialize history', function() {
@@ -57,4 +45,11 @@ describe('board', function() {
         });
     });
 
+    describe('get section', function() {
+        it('should get section by section name', function() {
+            var wellDom = $('#' + wellId);
+
+            expect(board.getSection(wellId).dom).toBe(wellDom);
+        });
+    });
 });

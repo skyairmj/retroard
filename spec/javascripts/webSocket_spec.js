@@ -7,11 +7,11 @@ describe('web socket', function() {
     describe('send message', function() {
         it('should send message with data', function() {
             var dataHolder;
-            spyOn(Connection.socket, 'send').andCallFake(function(data) {
+            spyOn(Connection, 'sendMessage').andCallFake(function(data) {
                 dataHolder = data;
             });
-            Connection.sendMessage('hello');
-            expect(dataHolder).toBe('hello');
+            Connection.sendMessage('some message');
+            expect(dataHolder).toBe('some message');
         });
     });
 
@@ -22,8 +22,8 @@ describe('web socket', function() {
                 messageHolder = message;
             }
             Connection.onMessage(handler);
-            Connection.socket.onmessage('hello');
-            expect(messageHolder).toBe('hello');
+            Connection.socket.onmessage('some message');
+            expect(messageHolder).toBe('some message');
         });
     });
 });

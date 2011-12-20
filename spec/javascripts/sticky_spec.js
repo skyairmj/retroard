@@ -7,7 +7,7 @@ describe('sticky', function() {
         StickyDialog.initialize();
         StickyDialog.dom.hide();
         StickyDialog.modal.hide();
-        sticky = new Sticky(function(){});
+        sticky = new Sticky(function(){}, 'some uuid');
     });
 
     describe('initialize', function() {
