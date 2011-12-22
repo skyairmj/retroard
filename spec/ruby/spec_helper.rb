@@ -10,3 +10,14 @@ end
 RSpec.configure do |config|
   config.color_enabled = true
 end
+
+
+class DBClearer
+  @@models = [Sticky]
+  
+  def self.clear_all
+    @@models.each do |model|
+      model.delete_all
+    end
+  end
+end
