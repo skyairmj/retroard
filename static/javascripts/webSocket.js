@@ -6,6 +6,7 @@ var Connection = (function() {
                 window.WebSocket = window.MozWebSocket;
             }
             socket = new WebSocket(connectionUrl);
+            console.log(socket);
             return socket;
         } catch(e) {
             console.log(e);

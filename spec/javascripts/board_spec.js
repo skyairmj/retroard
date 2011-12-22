@@ -43,6 +43,19 @@ describe('board', function() {
 
             expect(Connection.initialize).toHaveBeenCalled();
         });
+
+        it('should initialize listener and hold the board', function() {
+            spyOn(Listener, 'initialize');
+            board.initialize();
+
+            expect(Listener.initialize).toHaveBeenCalled();
+        });
+
+        it('should initialize listener and hold the board', function() {
+            board.initialize();
+
+            expect(Listener.board).toBe(board);
+        });
     });
 
     describe('get section', function() {

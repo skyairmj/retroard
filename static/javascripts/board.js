@@ -13,6 +13,7 @@ var Board = (function() {
         this.history.initialize();
         StickyDialog.initialize();
         Connection.initialize();
+        Listener.initialize(this);
     }
 
     Board.prototype.getSection = function(name) {

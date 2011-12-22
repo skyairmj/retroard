@@ -23,7 +23,7 @@ var Sticky = (function() {
         if (option.lastModified) {
             this.lastModified = option.lastModified;
         }
-        Connection.sendMessage($.toJSON({
+        var sendData = $.toJSON({
             'resource': 'sticky',
             'method': 'save',
             'data': {
@@ -31,7 +31,9 @@ var Sticky = (function() {
                 'lastModified': lastModified,
                 'content': content
             }
-        }));
+        });
+        console.log(sendData);
+        Connection.sendMessage(sendData);
     }
 
     Sticky.prototype.remove = function() {
