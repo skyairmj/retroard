@@ -16,7 +16,7 @@ StickyDialog = (function() {
             hideStickyDialog(stickyDialog);
             if (stickyDialog.currentSticky != null) {
                 stickyDialog.currentSticky.update({
-                    content : stickyDialog.dom.find('textarea').val()
+                    content: stickyDialog.dom.find('textarea').val()
                 });
                 stickyDialog.dom.find('textarea').val('');
             }

@@ -15,5 +15,13 @@ var Board = (function() {
         Connection.initialize();
     }
 
+    Board.prototype.getSection = function(name) {
+        for (var index in this.sections) {
+            if(this.sections[index].name == name) {
+                return this.sections[index];
+            }
+        }
+    }
+
     return Board;
 })();

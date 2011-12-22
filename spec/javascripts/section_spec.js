@@ -17,12 +17,13 @@ describe('section', function() {
         });
 
         it('should hold an empty sticky list', function() {
-            expect(section.stickies.length).toBe(0);
+            expect(section.stickies).toEqual({});
+            expect(section.stickiesLength).toBe(0);
         });
     });
 
     describe('add sticky', function() {
-        it('should call add sticky with section', function() {
+        it('should call update sticky with section', function() {
             section = new Section('section1');
             new Section('section2');
 
@@ -35,8 +36,14 @@ describe('section', function() {
         it('should add a new sticky', function() {
             var newSticky = section.addSticky();
 
-            expect(section.stickies.length).toBe(1);
-            expect(section.stickies[0]).toBe(newSticky);
+            expect(section.stickiesLength).toBe(1);
+            expect(section.stickies[newSticky.uuid]).toBe(newSticky);
+        });
+
+        it('should add a new sticky with specific uuid', function() {
+            var newSticky = section.addSticky('some uuid');
+
+            expect(newSticky.uuid).toBe('some uuid');
         });
 
         it('should add a sticky with status modifying', function() {
@@ -58,22 +65,41 @@ describe('section', function() {
         });
     });
 
-
     describe('update sticky', function() {
+        it('should update sticky if ', function() {
+            var newSticky = section.addSticky();
+            var data = {
+                'uuid': newSticky.uuid,
+                'lastModified': 'some time',
+                'content': 'some content'
+            }
+            section.updateSticky(data);
+
+            expect(newSticky.lastModified).toBe('some time');
+            expect(newSticky.content).toBe('some content');
+        });
+    });
+
+    describe('update sticky in sticky dialog', function() {
+        var newSticky;
         beforeEach(function() {
             StickyDialog.initialize();
             section.addStickyButton.click();
+            for (var uuid in section.stickies) {
+                newSticky = section.stickies[uuid];
+                break;
+            }
         });
 
         it('should bind the current sticky to sticky dialog data', function() {
-            expect(StickyDialog.currentSticky).toBe(section.stickies[0]);
+            expect(StickyDialog.currentSticky).toBe(newSticky);
         });
 
         it('should update sticky with input text when click ok button', function() {
             StickyDialog.dom.find('textarea').text('some text');
             StickyDialog.okButton.click();
 
-            expect(section.stickies[0].content).toBe('some text');
+            expect(newSticky.content).toBe('some text');
         });
 
         it('should clear dialog after update', function() {
@@ -106,7 +132,8 @@ describe('section', function() {
         it('should remove the sticky holder', function() {
             StickyDialog.cancelButton.click();
 
-            expect(section.stickies.length).toBe(0);
+            expect(section.stickies).toEqual({});
+            expect(section.stickiesLength).toBe(0);
         });
     });
 });

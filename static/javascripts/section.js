@@ -5,29 +5,37 @@ var Section = (function() {
         this.dom = $('#' + name);
         this.addStickyButton = this.dom.find('.addStickyButton');
         this.name = name;
-        this.stickies = [];
+        this.stickies = {};
+        this.stickiesLength = 0;
         this.addStickyButton.on('click', function() {
             that.addSticky();
         });
         this.onStickyRemove = function() {
-            if(that.stickies.length == 1) {
-                that.stickies = [];
-            }
-            else {
-                for(var index in that.stickies) {
-                    if(that.stickies[index] == this) {
-                        that.stickies.slice(index, 1);
-                    }
-                }
-            }
+            delete that.stickies[this.uuid];
+            that.stickiesLength--;
         }
     }
 
-    Section.prototype.addSticky = function() {
-        var newSticky = new Sticky(this.onStickyRemove);
-        this.stickies.push(newSticky);
+    Section.prototype.addSticky = function(uuid) {
+        var uuid = uuid ? uuid : Utilities.generateUUID();
+        var newSticky = new Sticky(this.onStickyRemove, uuid);
+        this.stickies[uuid] = newSticky;
+        this.stickiesLength++;
         this.dom.find('.sectionBody').append(newSticky.dom);
         return newSticky;
+    }
+
+    Section.prototype.updateSticky = function(data) {
+        var newSticky = this.getSticky(data.uuid);
+        if (!newSticky) {
+            newSticky = this.addSticky(data.uuid);
+        }
+        newSticky.update(data);
+        return newSticky;
+    }
+
+    Section.prototype.getSticky = function(uuid) {
+        return this.stickies[uuid];
     }
 
     return Section;

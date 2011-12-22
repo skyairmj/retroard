@@ -1,14 +1,14 @@
 var Sticky = (function() {
-    function Sticky(onRemove) {
+    function Sticky(onRemove, uuid) {
         this.content = '';
         this.onRemove = onRemove;
         this.status = 'modifying';
         this.lastModified = '';
-        this.uuid = Utilities.generateUUID();
+        this.uuid = uuid;
         var template = '<div class="sticky" id="newSticky">'
-                        + '<div class="stickyText"></div>'
-                        + '<div class="stickyCount"></div>'
-                    + '</div>';
+            + '<div class="stickyText"></div>'
+            + '<div class="stickyCount"></div>'
+            + '</div>';
         this.dom = $(template);
         StickyDialog.popUp(this);
     }
@@ -20,20 +20,18 @@ var Sticky = (function() {
         this.content = content;
         this.status = option.status;
         this.dom.find('.stickyText').text(content);
-        if(option.lastModified) {
+        if (option.lastModified) {
             this.lastModified = option.lastModified;
         }
-        if(Connection.socket) {
-            Connection.sendMessage($.toJSON({
-                'resource': 'sticky',
-                'method': 'save',
-                'data': {
-                    'uuid': uuid,
-                    'lastModified': lastModified,
-                    'content': content
-                }
-            }));
-        }
+        Connection.sendMessage($.toJSON({
+            'resource': 'sticky',
+            'method': 'save',
+            'data': {
+                'uuid': uuid,
+                'lastModified': lastModified,
+                'content': content
+            }
+        }));
     }
 
     Sticky.prototype.remove = function() {
