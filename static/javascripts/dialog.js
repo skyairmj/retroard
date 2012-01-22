@@ -18,6 +18,7 @@ StickyDialog = (function() {
                 stickyDialog.currentSticky.update({
                     content: stickyDialog.dom.find('textarea').val()
                 });
+				Connection.sendMessage(stickyDialog.currentSticky.dataToSent());
                 stickyDialog.dom.find('textarea').val('');
             }
         });

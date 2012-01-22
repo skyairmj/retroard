@@ -1,14 +1,14 @@
 describe('listener', function() {
     describe('on get sticky', function() {
         var message = {
-            'resource': 'sticky',
-            'status': 'save',
-            'data': {
-                'uuid': 'some uuid',
-                'lastModified': 'some time',
-                'content': 'some content',
-                'section': 'some section name'
-            }
+            'data': "{\"resource\": \"sticky\",\
+            \"status\": \"save\",              \
+            \"data\": {                       \
+                \"uuid\": \"some uuid\",         \
+                \"lastModified\": \"some time\",  \
+                \"content\": \"some content\",     \
+                \"section\": \"some section name\"  \
+            }}"
         };
         var board;
         var section;
@@ -36,7 +36,7 @@ describe('listener', function() {
 
             Connection.socket.onmessage(message);
 
-            expect(dataHolder).toEqual(message.data);
+            expect(dataHolder).toEqual($.parseJSON(message.data).data);
         });
     });
 });

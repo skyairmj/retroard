@@ -1,5 +1,6 @@
 var Sticky = (function() {
-    function Sticky(onRemove, uuid) {
+    function Sticky(onRemove, uuid, section) {
+		this.section = section;
         this.content = '';
         this.onRemove = onRemove;
         this.status = 'modifying';
@@ -10,36 +11,35 @@ var Sticky = (function() {
             + '<div class="stickyCount"></div>'
             + '</div>';
         this.dom = $(template);
-        StickyDialog.popUp(this);
     }
 
     Sticky.prototype.update = function(option) {
         var content = option.content;
-        var lastModified = this.lastModified;
-        var uuid = this.uuid;
         this.content = content;
         this.status = option.status;
         this.dom.find('.stickyText').text(content);
         if (option.lastModified) {
             this.lastModified = option.lastModified;
         }
-        var sendData = $.toJSON({
+    }
+
+	Sticky.prototype.dataToSent = function() {
+		return $.toJSON({
             'resource': 'sticky',
             'method': 'save',
             'data': {
-                'uuid': uuid,
-                'lastModified': lastModified,
-                'content': content
+				'section': this.section,
+                'uuid': this.uuid,
+                'lastModified': this.lastModified,
+                'content': this.content
             }
         });
-        console.log(sendData);
-        Connection.sendMessage(sendData);
-    }
+	}
 
     Sticky.prototype.remove = function() {
         this.dom.remove();
         this.onRemove();
-    }
+    };
 
     return Sticky;
 })();

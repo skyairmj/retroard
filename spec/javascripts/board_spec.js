@@ -65,4 +65,13 @@ describe('board', function() {
             expect(board.getSection(wellId).dom).toBe(wellDom);
         });
     });
+
+    describe('create sticky', function() {
+        it('should pop up a sticky dialog and the modal when click add sticky', function() {
+            spyOn(StickyDialog, 'popUp');
+            board.initialize();
+            board.getSection(wellId).addStickyButton.click();
+            expect(StickyDialog.popUp).toHaveBeenCalled();
+        });
+    });
 });

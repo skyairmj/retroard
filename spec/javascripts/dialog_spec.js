@@ -10,9 +10,8 @@ describe('dialog', function() {
                         + '<div id="modal"></div>';
             setFixtures(fixture);
             StickyDialog.initialize();
-            StickyDialog.dom.show();
-            StickyDialog.modal.show();
-            $('body').css('overflow', 'hidden');
+            sticky = new Sticky(function() {}, "some uuid", "some section");
+            StickyDialog.popUp(sticky);
         });
 
         afterEach(function() {
@@ -34,6 +33,27 @@ describe('dialog', function() {
             });
         });
 
+        describe("click ok button with sending message", function() {
+            it('should send socket message with sticky data', function() {
+                Connection.initialize();
+                var dataHolder;
+                spyOn(Connection, 'sendMessage').andCallFake(function(data) {
+                    dataHolder = $.evalJSON(data);
+                });
+                $('div#stickyDialog textarea').text("content");
+                StickyDialog.okButton.click();
+                expect(dataHolder).toEqual({
+                    'resource': 'sticky',
+                    'method': 'save',
+                    'data': {
+                        'section' : 'some section',
+                        'uuid': sticky.uuid,
+                        'lastModified': sticky.lastModified,
+                        'content': "content"
+                    }
+                });
+            });
+        });
 
         describe('click cancel button', function() {
             beforeEach(function() {
@@ -49,6 +69,5 @@ describe('dialog', function() {
                 expect($('body').css('overflow')).toBe('visible');
             });
         });
-
     });
 });

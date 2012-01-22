@@ -7,7 +7,7 @@ describe('sticky', function() {
         StickyDialog.initialize();
         StickyDialog.dom.hide();
         StickyDialog.modal.hide();
-        sticky = new Sticky(function(){}, 'some uuid');
+        sticky = new Sticky(function(){}, 'some uuid', 'well');
     });
 
     describe('initialize', function() {
@@ -20,18 +20,9 @@ describe('sticky', function() {
             expect(sticky.uuid).not.toBe('');
         });
 
-        it('should pop up a sticky dialog and the modal', function() {
-            expect(StickyDialog.dom).toBeVisible();
-            expect(StickyDialog.modal).toBeVisible();
-        });
-
-        it('should not be able to scroll the window', function() {
-            this.after(function() {
-                $('body').css('overflow', 'visible');
-            });
-
-            expect($('body').css('overflow')).toBe('hidden');
-        });
+		it("should add section name to sticky", function() {
+			expect(sticky.section).toBe('well')
+		});
     });
 
     describe('update', function() {
@@ -54,28 +45,6 @@ describe('sticky', function() {
             });
 
             expect(sticky.dom.find('.stickyText')).toHaveText('some content');
-        });
-
-        it('should send socket message with sticky data', function() {
-            Connection.initialize();
-            var dataHolder;
-            spyOn(Connection, 'sendMessage').andCallFake(function(data) {
-                dataHolder = $.evalJSON(data);
-            });
-            sticky.update({
-                content: 'some content',
-                status: 'some status'
-            });
-
-            expect(dataHolder).toEqual({
-                'resource': 'sticky',
-                'method': 'save',
-                'data': {
-                    'uuid': sticky.uuid,
-                    'lastModified': sticky.lastModified,
-                    'content': sticky.content
-                }
-            });
         });
     });
 

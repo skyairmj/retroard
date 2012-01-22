@@ -15,7 +15,8 @@ var Listener = (function() {
             var that = this;
             this.board = board;
             Connection.onMessage(function(message) {
-                that.board.getSection(message.data.section).updateSticky(message.data);
+				var messageJSON = $.parseJSON(message.data);
+                that.board.getSection(messageJSON.data.section).updateSticky(messageJSON.data);
             });
         }
     }
