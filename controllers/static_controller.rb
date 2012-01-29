@@ -1,4 +1,6 @@
-require 'sinatra/base' 
+require 'sinatra/base'
+require 'models/team'
+require 'models/section'
 
 class StaticController < Sinatra::Base
   enable :inline_templates, :method_override, :sessions, :logging
@@ -6,6 +8,13 @@ class StaticController < Sinatra::Base
   set :root, File.dirname(__FILE__)+ '/..'
   set :public_folder, Proc.new { File.join(root, "static") }
   set :views, Proc.new { File.join(root, "views") }
+
+  @@sections_info = [
+      {:id => "well", :display => "WELL"},
+      {:id => "lessWell", :display => "LESS WELL"},
+      {:id => "puzzle", :display => "PUZZLE"},
+      {:id => "idea", :display => "IDEA"}
+  ]
 
   get '/' do
       erb :index
@@ -24,9 +33,22 @@ class StaticController < Sinatra::Base
   end
 
   get '/:team' do
-    erb :board                                                                                                                     end
+    @sections = @@sections_info
+    @team = Team.find_by_name(params[:team]) || new_team_with_sections(params[:team])
+    erb :board
+  end
 
   get '/:team/profile' do
     "hello! #{params[:team]}"
+  end
+
+  def new_team_with_sections team_name
+    team = Team.create(:name => team_name)
+    @@sections_info.each do |section_info|
+      section = Section.create(:name => section_info[:id])
+      team.sections << section
+    end
+
+    team
   end
 end

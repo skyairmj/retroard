@@ -11,9 +11,8 @@ RSpec.configure do |config|
   config.color_enabled = true
 end
 
-
 class DBClearer
-  @@models = [Sticky]
+  @@models = [Sticky, Team, Section]
   
   def self.clear_all
     @@models.each do |model|

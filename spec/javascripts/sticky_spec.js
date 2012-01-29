@@ -64,4 +64,22 @@ describe('sticky', function() {
             expect(sticky.onRemove).toHaveBeenCalled();
         });
     });
+
+    describe('dataToSent', function() {
+        it("should generate data to sent", function() {
+            window.teamName = 'rca';
+            sticky.content = 'content';
+            expect(sticky.dataToSent()).toBe($.toJSON({
+                'resource': 'sticky',
+                'method': 'save',
+                'data': {
+                    'section': 'well',
+                    'uuid': 'some uuid',
+                    'lastModified': '',
+                    'content': 'content',
+                    'teamName': 'rca'
+                }
+            }));
+        });
+    });
 });

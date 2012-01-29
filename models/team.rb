@@ -1,7 +1,12 @@
-class Team
-  attr_reader :name
+require 'models/base_model'
+require 'models/section'
 
-  def initialize name
-    @name = name
+class Team < BaseModel
+  property :name, String
+  index :name
+  has_many :sections
+
+  def section section_name
+    self.sections.select{|section| section.name == section_name}.first
   end
 end

@@ -4,6 +4,7 @@ gem 'rake'
 gem 'rcov', '0.9.10'
 
 gem 'rack'
+gem 'rack-test'
 gem 'thin'
 
 gem 'sinatra'

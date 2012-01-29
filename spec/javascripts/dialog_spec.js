@@ -41,6 +41,7 @@ describe('dialog', function() {
                     dataHolder = $.evalJSON(data);
                 });
                 $('div#stickyDialog textarea').text("content");
+                teamName = 'rca';
                 StickyDialog.okButton.click();
                 expect(dataHolder).toEqual({
                     'resource': 'sticky',
@@ -49,7 +50,8 @@ describe('dialog', function() {
                         'section' : 'some section',
                         'uuid': sticky.uuid,
                         'lastModified': sticky.lastModified,
-                        'content': "content"
+                        'content': "content",
+                        'teamName': 'rca'
                     }
                 });
             });

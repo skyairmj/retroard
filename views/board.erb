@@ -21,6 +21,7 @@
     <script type="text/javascript" src="javascripts/board.js"></script>
 
     <script  type="text/javascript">
+        window.teamName = "<%= params[:team] %>"
         $(document).ready(function() {
             var board = new Board(['well', 'lessWell', 'puzzle', 'idea']);
             board.initialize();
@@ -65,235 +66,24 @@
     </div>
 </header>
 <article id="sections">
-<section class="section" id="well">
-    <div class="sectionHeader">
-        <h3>WELL</h3>
+<% @sections.each do |section| %>
+    <section class="section" id="<%= section[:id] %>">
+        <div class="sectionHeader">
+            <h3><%= section[:display] %></h3>
 
-        <div class="addStickyButton"></div>
-    </div>
-    <div class="sectionBody">
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
+            <div class="addStickyButton"></div>
         </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
+        <div class="sectionBody">
+          <% @team.section(section[:id]).stickies.each do |sticky| %>
+              <div class="sticky">
+                <div class="stickyText">
+                  <%= sticky.content %>
+                </div>
+              </div>
+          <% end %>
         </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section" id="lessWell">
-    <div class="sectionHeader">
-        <h3>LESS WELL</h3>
-
-        <div class="addStickyButton"></div>
-    </div>
-    <div class="sectionBody">
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section" id="puzzle">
-    <div class="sectionHeader">
-        <h3>PUZZLE</h3>
-
-        <div class="addStickyButton"></div>
-    </div>
-    <div class="sectionBody">
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section" id="idea">
-    <div class="sectionHeader">
-        <h3>IDEA</h3>
-
-        <div class="addStickyButton"></div>
-    </div>
-    <div class="sectionBody">
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-                asdfasfa sdfasdf asdfasd
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-        <div class="sticky">
-            <div class="stickyText">
-                Some info
-            </div>
-            <div class="stickyCount">
-                +0
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
+<% end %>
 <div id="stickyDialog">
     <textarea></textarea>
     <div class="buttons">

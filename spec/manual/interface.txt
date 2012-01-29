@@ -30,6 +30,7 @@ request:
     'resource': 'sticky',
     'method': 'save',
     'data': {
+        'teamName': 'rca'
         'uuid': 'some uuid',
         'lastModified': 'some time',
         'content': 'some content',

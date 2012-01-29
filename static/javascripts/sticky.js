@@ -31,7 +31,8 @@ var Sticky = (function() {
 				'section': this.section,
                 'uuid': this.uuid,
                 'lastModified': this.lastModified,
-                'content': this.content
+                'content': this.content,
+                'teamName': window.teamName
             }
         });
 	}
