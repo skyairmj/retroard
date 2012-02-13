@@ -25,6 +25,15 @@
         $(document).ready(function() {
             var board = new Board(['well', 'lessWell', 'puzzle', 'idea']);
             board.initialize();
+			$.getJSON('/'+ teamName + '/existing_cards', function(sections) {
+				for (var sectionName in sections) {
+					var currentSection = board.getSection(sectionName);
+				    for(var uuid in sections[sectionName]) {
+						var sticky = currentSection.addSticky(uuid);
+						sticky.update({content:sections[sectionName][uuid].content});
+					}
+				}
+			})
         })
     </script>
 
@@ -74,13 +83,6 @@
             <div class="addStickyButton"></div>
         </div>
         <div class="sectionBody">
-          <% @team.section(section[:id]).stickies.each do |sticky| %>
-              <div class="sticky">
-                <div class="stickyText">
-                  <%= sticky.content %>
-                </div>
-              </div>
-          <% end %>
         </div>
     </section>
 <% end %>
