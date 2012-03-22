@@ -1,6 +1,7 @@
 require 'rake'
 require 'rack'
 require 'rspec/core/rake_task'
+require 'systemu'
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
@@ -24,7 +25,7 @@ end
 namespace :redis do
   task :start do
     sh 'redis-server'
-  end  
+  end
 end
 
 task :default => :spec

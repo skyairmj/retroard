@@ -24,13 +24,13 @@ class StaticController < Sinatra::Base
   post '/signin' do
     unless params[:team].nil?
       redirect "/#{params[:team]}", 303
-    end  
+    end
   end
 
   post '/signup' do
     unless params[:team].nil?
       redirect "/#{params[:team]}", 303
-    end  
+    end
   end
 
   get '/:team' do
@@ -42,7 +42,7 @@ class StaticController < Sinatra::Base
   get '/:team/profile' do
     "hello! #{params[:team]}"
   end
-  
+
   get '/:team/existing_cards' do
     @team = Team.find_by_name(params[:team]) || new_team_with_sections(params[:team])
     team_hash = {}
@@ -52,7 +52,7 @@ class StaticController < Sinatra::Base
     content_type :json
     team_hash.to_json
   end
-  
+
   def section_hash section
     hash = {}
     section.stickies.each do |sticky|

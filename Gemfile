@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'rake'
 gem 'rcov', '0.9.10'
+gem 'systemu'
 
 gem 'rack'
 gem 'rack-test'
