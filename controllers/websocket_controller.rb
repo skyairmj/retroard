@@ -1,10 +1,6 @@
-require 'stringio'
 require 'cramp'
-require 'yajl'
-require 'redis_connection'
 require 'helpers/json_helper'
 require 'lib/db_operator'
-require 'models/sticky'
 
 class WebsocketController < Cramp::Websocket
   include JSonHelper

@@ -55,7 +55,7 @@ class StaticController < Sinatra::Base
 
   def section_hash section
     hash = {}
-    section.stickies.each do |sticky|
+    section.stickies.find(:all, :order => [:created_at]).each do |sticky|
       hash.merge! sticky.uuid => {'content' => sticky.content}
     end
     hash

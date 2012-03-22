@@ -5,11 +5,12 @@ require 'models/team'
 class Sticky < BaseModel
   property :uuid, String
   index :uuid
-  property :lastModified, String
   property :content, String
+  property :created_at, Time
+  property :modified_at, Time
   belongs_to :section
-  
-  
+
+
   def self.save data
     data_without_extra_info = data.clone
     data_without_extra_info.delete(:teamName)

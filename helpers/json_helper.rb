@@ -1,3 +1,5 @@
+require 'yajl'
+
 module JSonHelper
   def encode_json(obj)
     Yajl::Encoder.encode(obj)
