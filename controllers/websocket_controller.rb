@@ -20,15 +20,16 @@ class WebsocketController < Cramp::Websocket
 
   def handle_data(data)
     msg = parse_json(data)
-    @dbOperator.handle(msg)
-    publish(data)
+    sticky = @dbOperator.handle(msg)
+    msg[:data][:lastModified] = sticky.modified_at.to_s
+    publish(encode_json(msg))
   end
 
   private
 
   def publish message
     @@connections.each do |connection|
-      connection.render(message) if connection != self
+      connection.render(message)
     end
   end
 

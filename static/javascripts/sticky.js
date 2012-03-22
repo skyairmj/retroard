@@ -18,9 +18,7 @@ var Sticky = (function() {
         this.content = content;
         this.status = option.status;
         this.dom.find('.stickyText').text(content);
-        if (option.lastModified) {
-            this.lastModified = option.lastModified;
-        }
+        this.lastModified = option.lastModified;
     }
 
 	Sticky.prototype.dataToSent = function() {

@@ -22,5 +22,6 @@ class Sticky < BaseModel
     elsif
       existing_sticky.update_attributes(data_without_extra_info)
     end
+    find_by_uuid(data[:uuid])
   end
 end
