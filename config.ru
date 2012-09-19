@@ -75,7 +75,7 @@ end
 class SinatraApp < Sinatra::Application
 
 	# load the Sinatra app.
-	require './application.rb'
+	require './app.rb'
 end
 
 # Set service point for the websockets. This way we can run both web sockets and sinatra on the same server and port number.
