@@ -15,7 +15,7 @@ var Connection = (function() {
 
     return {
         initialize: function(connectionUrl) {
-            this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:4000/';
+            this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:3000/ws';
             this.socket = connect(this.connectionUrl);
         },
 

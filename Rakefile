@@ -18,13 +18,13 @@ Dir.glob('lib/tasks/*.rake').each { |r| import r }
 
 namespace :server do
   task :start do
-    system('ruby', 'application.rb')
+    system 'ruby', 'application.rb'
   end
 end
 
 namespace :redis do
   task :start do
-    sh 'redis-server'
+    system 'redis-server'
   end
 end
 

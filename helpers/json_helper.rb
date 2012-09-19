@@ -6,6 +6,7 @@ module JSonHelper
   end
 
   def parse_json(str)
+    print str
     Yajl::Parser.parse(str, :symbolize_keys => true)
   end
 end

@@ -1,5 +1,5 @@
-require 'models/base_model'
-require 'models/section'
+require File.expand_path('base_model', File.dirname(__FILE__))
+require File.expand_path('section', File.dirname(__FILE__))
 
 class Team < BaseModel
   property :name, String

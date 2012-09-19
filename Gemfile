@@ -9,7 +9,7 @@ gem 'rack-test'
 gem 'thin'
 
 gem 'sinatra'
-gem 'cramp'
+gem 'websocket-rack'
 
 gem 'yajl-ruby'
 
