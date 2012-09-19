@@ -9,10 +9,10 @@ var Board = (function() {
         this.history = new History();
     }
 
-    Board.prototype.initialize = function() {
+    Board.prototype.initialize = function(option) {
         this.history.initialize();
         StickyDialog.initialize();
-        Connection.initialize();
+        Connection.initialize(option['serverHost'], option['serverPort']);
         Listener.initialize(this);
     }
 

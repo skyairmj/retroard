@@ -23,8 +23,9 @@
     <script  type="text/javascript">
         window.teamName = "<%= params[:team] %>"
         $(document).ready(function() {
+			var option = {'serverHost': '<%= request.host %>', 'serverPort': '<%= request.port %>'}
             var board = new Board(['well', 'lessWell', 'puzzle', 'idea']);
-            board.initialize();
+            board.initialize(option);
 			$.getJSON('/'+ teamName + '/existing_cards', function(sections) {
 				for (var sectionName in sections) {
 					var currentSection = board.getSection(sectionName);

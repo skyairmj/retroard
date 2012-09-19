@@ -1,7 +1,7 @@
 require File.expand_path('models/team', File.dirname(__FILE__))
 require File.expand_path('models/section', File.dirname(__FILE__))
 require 'json'
-#require File.expand_path('../boot', __FILE__)
+require File.expand_path('../boot', __FILE__)
 
 enable :inline_templates, :method_override, :sessions, :logging
 disable :run
