@@ -63,12 +63,9 @@ class WebSocketApp < Rack::WebSocket::Application
   private
 
   def publish message
-=begin
     @@connections.each do |connection|
-      connection.render(message)
+      connection.send_data(message)
     end
-=end
-    send_data message
   end
 end
 

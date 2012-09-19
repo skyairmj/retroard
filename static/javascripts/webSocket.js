@@ -1,4 +1,7 @@
 var Connection = (function() {
+	var websocket_server_ip_address = "localhost";
+	var websocket_server_port_number = "3000";
+	var websocket_mount_point = "ws";
     function connect(connectionUrl) {
         var socket;
         try {
@@ -15,7 +18,7 @@ var Connection = (function() {
 
     return {
         initialize: function(connectionUrl) {
-            this.connectionUrl = connectionUrl ? connectionUrl : 'ws://localhost:3000/ws';
+            this.connectionUrl = connectionUrl ? connectionUrl : 'ws://'+websocket_server_ip_address+':'+websocket_server_port_number+'/'+websocket_mount_point;
             this.socket = connect(this.connectionUrl);
         },
 

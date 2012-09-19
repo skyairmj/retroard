@@ -18,7 +18,7 @@ Dir.glob('lib/tasks/*.rake').each { |r| import r }
 
 namespace :server do
   task :start do
-    system 'ruby', 'application.rb'
+    system 'thin', 'start', '-e production'
   end
 end
 
