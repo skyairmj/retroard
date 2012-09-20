@@ -6,11 +6,14 @@
     <meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
     <meta name="description"
           content="This is an online retrospective board, which enables distributed teams to organize retrospectives just like they are co-located."/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/global.css"/>
     <link rel="stylesheet" type="text/css" href="css/board.css"/>
 
     <script type="text/javascript" src="javascripts/libs/jquery-1.7.min.js"></script>
     <script type="text/javascript" src="javascripts/libs/jquery.json-2.3.min.js"></script>
+    <script type="text/javascript" src="javascripts/libs/bootstrap.min.js"></script>
     <script type="text/javascript" src="javascripts/utilities.js"></script>
     <script type="text/javascript" src="javascripts/webSocket.js"></script>
     <script type="text/javascript" src="javascripts/listener.js"></script>
@@ -40,65 +43,71 @@
 
 </head>
 <body>
+    <header>
+        <div class="headerWrap clearFloat">
+            <h2 class="brand">Team Retro</h2>
+            <span class="login-name"><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></span>
+            <span class="separator">|</span>
+            <a href="#">Create</a>
+            <a href="#">Export</a>
+            <span class="separator">|</span>
+            <a href="#">Group</a>
+            <a href="#">Vote</a>
+            <a href="#">Action</a>
+            <a href="#">Complete</a>
+            <span class="separator">|</span>
+            <a href="#" id="historyHeaderButton">
+                <span>
+                    History
+                </span>
+            </a>
+            <div id="historyDialog">
+                <ul>
+                    <li>
+                        <a href="#">Sprint1</a>
+                    </li>
+                    <li>
+                        <a href="#">Sprint2</a>
+                    </li>
+                    <li>
+                        <a href="#">Sprint3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
 <div class="wrap">
-<header>
-    <div class="headerWrap clearFloat">
-        <img id="logo" src="/images/logo.jpg"/>
-        <h2>Team Retro</h2>
-        <h3><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></h3>
-        <span class="separator">|</span>
-        <a href="#">Create</a>
-        <a href="#">Export</a>
-        <span class="separator">|</span>
-        <a href="#">Group</a>
-        <a href="#">Vote</a>
-        <a href="#">Action</a>
-        <a href="#">Complete</a>
-        <span class="separator">|</span>
-        <a href="#" id="historyHeaderButton">
-            <span>
-                History
-            </span>
-        </a>
-        <div id="historyDialog">
-            <ul>
-                <li>
-                    <a href="#">Sprint1</a>
-                </li>
-                <li>
-                    <a href="#">Sprint2</a>
-                </li>
-                <li>
-                    <a href="#">Sprint3</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</header>
-<article id="sections">
-<% @sections.each do |section| %>
-    <section class="section" id="<%= section[:id] %>">
-        <div class="sectionHeader">
-            <h3><%= section[:display] %></h3>
+    <article id="sections" class="row-fluid">
+        <% @sections.each do |section| %>
+            <section class="section span3" id="<%= section[:id] %>">
+                <div class="sectionHeader">
+                    <h3><%= section[:display] %></h3>
 
-            <div class="addStickyButton"></div>
+                    <div class="addStickyButton"></div>
+                </div>
+                <div class="sectionBody">
+                </div>
+            </section>
+        <% end %>
+        <div id="stickyDialog">
+            <textarea></textarea>
+            <div class="buttons">
+                <button type="image" value="OK" class="okButton">OK</button>
+                <button type="image" value="Cancel" class="cancelButton">Cancel</button>
+            </div>
         </div>
-        <div class="sectionBody">
-        </div>
-    </section>
-<% end %>
-<div id="stickyDialog">
-    <textarea></textarea>
-    <div class="buttons">
-        <button type="image" value="OK" class="okButton">OK</button>
-        <button type="image" value="Cancel" class="cancelButton">Cancel</button>
+    </article>
+</div>
+
+<div class="navbar navbar-fixed-bottom navbar-inverse" style="position: absolute;">
+  <div class="navbar-inner">
+    <div class="container" style="width: auto; padding: 0 20px; text-align:center; line-height:40px;">
+      <small>&copy; 2011 Team-Cares</small>
     </div>
+  </div>
 </div>
-</article>
-<footer>
-    &copy; 2011 Team-Cares
-</footer>
-</div>
+
+
 <div id="modal"></div>
 </body>
 </html>

@@ -1,13 +1,16 @@
+body {
+    background: url(../images/low_contrast_linen.png) repeat left top;
+}
+
 .wrap {
-    min-width: 1000px;
-    margin: 0 auto;
+    margin: 0 20px;
 }
 
 header {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
     background: -moz-linear-gradient(top, #333, #111);
-    box-shadow: 0 1px 2px #555;
+    border-bottom: 1px solid #000;
 }
 
 header .headerWrap {
@@ -89,22 +92,24 @@ header .separator {
     color: #545454;
 }
 
-#sections {
-    margin: 0 auto;
-    width: 94%;
-    text-align: center;
-    border: 5px solid gray;
-    border-radius: 10px;
+.brand {
+    background: url(../images/stickies_icon_32.png) no-repeat left center;
+    padding-left: 40px;
+    font-size: 20px;
+    margin: 0;
 }
 
-.section {
-    width: 24%;
-    height: 600px;
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
-    display: inline-block;
-    vertical-align: top;
+#sections {
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000;
+    background-color: #fff;
 }
+
+#sections .section {
+    border-right: 1px solid #333;
+    min-height: 600px;
+}
+
 
 .sectionHeader {
     padding-top: 2px;
@@ -151,16 +156,16 @@ header .separator {
 
 .sticky {
     display: inline-block;
-    width: 47%;
+    width: 43%;
     margin-top: 5px;
-    margin-left: 2px;
+    margin-left: 5px;
     height: 70px;
-    background-color: yellow;
+    background-color: #FEF791;
     vertical-align: top;
-    border-radius: 10px 10px 20px 10px;
-    box-shadow: 2px 2px 2px gray;
+    border-radius: 5px 5px 10px 5px;
+    box-shadow: 1px 1px 3px #ccc;
     position: relative;
-    padding: 2px;
+    padding: 5px;
 }
 
 .stickyCount {
