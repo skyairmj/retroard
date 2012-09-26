@@ -1,5 +1,5 @@
 (function(){
-	var Sticky = Backbone.Model.extend({
+	Sticky = Backbone.Model.extend({
 	    initialize: function(onRemove, uuid, section) {
 			this.section = section;
 	        this.content = '';

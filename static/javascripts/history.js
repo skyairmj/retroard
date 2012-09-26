@@ -1,5 +1,5 @@
 (function(){
-	var History = Backbone.Model.extend({
+	History = Backbone.Model.extend({
 	    initialize: function() {
 	        this.historyDialog = $('#historyDialog');
 	        this.historyHeaderButton = $('#historyHeaderButton');

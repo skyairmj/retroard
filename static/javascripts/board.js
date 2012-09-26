@@ -1,5 +1,5 @@
 (function(){
-	var Board = Backbone.Model.extend({
+	Board = Backbone.Model.extend({
 		initialize: function(sectionIds) {
 
 	        this.sections = [];
@@ -12,7 +12,7 @@
 
 	    initialize2: function(option) {
 	        this.history.initialize2();
-	        new StickyDialog();
+	        window.stickDialog = new StickyDialog();
 	        Connection.initialize(option['serverHost'], option['serverPort']);
 	        Listener.initialize(this);
 	    },

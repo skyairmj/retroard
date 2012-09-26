@@ -11,9 +11,17 @@
     <link rel="stylesheet" type="text/css" href="css/global.css"/>
     <link rel="stylesheet" type="text/css" href="css/board.css"/>
 
-    <script type="text/javascript" src="javascripts/libs/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="javascripts/libs/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="javascripts/libs/jquery.json-2.3.min.js"></script>
-    <script type="text/javascript" src="javascripts/libs/bootstrap.min.js"></script>
+	<script type="text/javascript" src="javascripts/libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascripts/libs/underscore-1.3.3-min.js"></script>
+	<script type="text/javascript" src="javascripts/libs/backbone-min.js"></script>
+	<script  type="text/javascript">
+		window.App={}
+        window.teamName = "<%= params[:team] %>"
+		window.option = {'serverHost': '<%= request.host %>', 'serverPort': '<%= request.port %>'}
+    </script>
+
     <script type="text/javascript" src="javascripts/utilities.js"></script>
     <script type="text/javascript" src="javascripts/webSocket.js"></script>
     <script type="text/javascript" src="javascripts/listener.js"></script>
@@ -22,25 +30,6 @@
     <script type="text/javascript" src="javascripts/section.js"></script>
     <script type="text/javascript" src="javascripts/history.js"></script>
     <script type="text/javascript" src="javascripts/board.js"></script>
-
-    <script  type="text/javascript">
-        window.teamName = "<%= params[:team] %>"
-        $(document).ready(function() {
-			var option = {'serverHost': '<%= request.host %>', 'serverPort': '<%= request.port %>'}
-            var board = new Board(['well', 'lessWell', 'puzzle', 'idea']);
-            board.initialize2(option);
-			$.getJSON('/'+ teamName + '/existing_cards', function(sections) {
-				for (var sectionName in sections) {
-					var currentSection = board.getSection(sectionName);
-				    for(var uuid in sections[sectionName]) {
-						var sticky = currentSection.addSticky(uuid);
-						sticky.update({content:sections[sectionName][uuid].content});
-					}
-				}
-			})
-        })
-    </script>
-
 </head>
 <body>
     <header>
@@ -110,4 +99,5 @@
 
 <div id="modal"></div>
 </body>
+<script type="text/javascript" src="javascripts/retroad.view.js"></script>
 </html>

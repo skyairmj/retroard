@@ -1,5 +1,5 @@
 (function(){
-	var StickyDialog = Backbone.Model.extend({
+	StickyDialog = Backbone.Model.extend({
 	    hideStickyDialog: function(stickyDialog) {
 	        stickyDialog.dom.hide();
 	        stickyDialog.modal.hide();
@@ -14,7 +14,7 @@
 	            }
 	        });
 	        stickyDialog.okButton.on('click', function() {
-	            hideStickyDialog(stickyDialog);
+	            stickyDialog.hideStickyDialog(stickyDialog);
 	            if (stickyDialog.currentSticky != null) {
 	                stickyDialog.currentSticky.update({
 	                    content: stickyDialog.dom.find('textarea').val()
@@ -31,7 +31,7 @@
             this.cancelButton = this.dom.find('.cancelButton');
             this.okButton = this.dom.find('.okButton');
             this.modal = $('#modal');
-            bindEvents(this);
+            this.bindEvents(this);
         },
 
         popUp : function(sticky) {

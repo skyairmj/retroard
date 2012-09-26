@@ -1,5 +1,5 @@
 (function(){
-	var Section = Backbone.Model.extend({
+	Section = Backbone.Model.extend({
 
 	    initialize: function(name) {
 	        var that = this;
@@ -9,7 +9,7 @@
 	        this.stickies = {};
 	        this.stickiesLength = 0;
 	        this.addStickyButton.on('click', function() {
-				StickyDialog.popUp(that.addSticky());
+				window.stickDialog.popUp(that.addSticky());
 	        });
 	        this.onStickyRemove = function() {
 	            delete that.stickies[this.uuid];
