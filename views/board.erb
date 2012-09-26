@@ -28,7 +28,7 @@
         $(document).ready(function() {
 			var option = {'serverHost': '<%= request.host %>', 'serverPort': '<%= request.port %>'}
             var board = new Board(['well', 'lessWell', 'puzzle', 'idea']);
-            board.initialize(option);
+            board.initialize2(option);
 			$.getJSON('/'+ teamName + '/existing_cards', function(sections) {
 				for (var sectionName in sections) {
 					var currentSection = board.getSection(sectionName);

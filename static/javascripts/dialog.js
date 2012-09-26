@@ -1,30 +1,30 @@
-StickyDialog = (function() {
-    function hideStickyDialog(stickyDialog) {
-        stickyDialog.dom.hide();
-        stickyDialog.modal.hide();
-        $('body').css('overflow', 'visible');
-    }
+(function(){
+	var StickyDialog = Backbone.Model.extend({
+	    hideStickyDialog: function(stickyDialog) {
+	        stickyDialog.dom.hide();
+	        stickyDialog.modal.hide();
+	        $('body').css('overflow', 'visible');
+	    },
 
-    function bindEvents(stickyDialog) {
-        stickyDialog.cancelButton.on('click', function() {
-            hideStickyDialog(stickyDialog);
-            if (stickyDialog.currentSticky != null) {
-                stickyDialog.currentSticky.remove();
-            }
-        });
-        stickyDialog.okButton.on('click', function() {
-            hideStickyDialog(stickyDialog);
-            if (stickyDialog.currentSticky != null) {
-                stickyDialog.currentSticky.update({
-                    content: stickyDialog.dom.find('textarea').val()
-                });
-				Connection.sendMessage(stickyDialog.currentSticky.dataToSent());
-                stickyDialog.dom.find('textarea').val('');
-            }
-        });
-    }
+	    bindEvents: function(stickyDialog) {
+	        stickyDialog.cancelButton.on('click', function() {
+	            hideStickyDialog(stickyDialog);
+	            if (stickyDialog.currentSticky != null) {
+	                stickyDialog.currentSticky.remove();
+	            }
+	        });
+	        stickyDialog.okButton.on('click', function() {
+	            hideStickyDialog(stickyDialog);
+	            if (stickyDialog.currentSticky != null) {
+	                stickyDialog.currentSticky.update({
+	                    content: stickyDialog.dom.find('textarea').val()
+	                });
+					Connection.sendMessage(stickyDialog.currentSticky.dataToSent());
+	                stickyDialog.dom.find('textarea').val('');
+	            }
+	        });
+	    },
 
-    return {
         initialize : function() {
             this.currentSticky = null;
             this.dom = $('#stickyDialog');
@@ -40,5 +40,5 @@ StickyDialog = (function() {
             this.modal.show();
             $('body').css('overflow', 'hidden');
         }
-    }
-})();
+	});
+}());

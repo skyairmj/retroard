@@ -1,28 +1,28 @@
-var Board = (function() {
-    function Board(sectionIds) {
+(function(){
+	var Board = Backbone.Model.extend({
+		initialize: function(sectionIds) {
 
-        this.sections = [];
-        for (var i in sectionIds) {
-            this.sections.push(new Section(sectionIds[i]));
-        }
+	        this.sections = [];
+	        for (var i in sectionIds) {
+	            this.sections.push(new Section(sectionIds[i]));
+	        }
 
-        this.history = new History();
-    }
+	        this.history = new History();
+	    },
 
-    Board.prototype.initialize = function(option) {
-        this.history.initialize();
-        StickyDialog.initialize();
-        Connection.initialize(option['serverHost'], option['serverPort']);
-        Listener.initialize(this);
-    }
+	    initialize2: function(option) {
+	        this.history.initialize2();
+	        new StickyDialog();
+	        Connection.initialize(option['serverHost'], option['serverPort']);
+	        Listener.initialize(this);
+	    },
 
-    Board.prototype.getSection = function(name) {
-        for (var index in this.sections) {
-            if(this.sections[index].name == name) {
-                return this.sections[index];
-            }
-        }
-    }
-
-    return Board;
-})();
+	    getSection: function(name) {
+	        for (var index in this.sections) {
+	            if(this.sections[index].name == name) {
+	                return this.sections[index];
+	            }
+	        }
+	    }
+	});
+}());
