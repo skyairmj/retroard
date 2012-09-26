@@ -102,42 +102,49 @@ header .separator {
 #sections {
     border-radius: 5px;
     box-shadow: 0 0 10px #000;
-    background:url(../images/brushed_alu.png) repeat left top;
+    background:url(../images/retina_dust.jpg) repeat left top;
 }
 
+
+
 #sections .section {
-    border-left: 1px solid #ccc;
+    border-left: 1px solid #CECEBF;
     min-height: 600px;
     padding: 10px;
 }
 
+#sections [class*="span"]:first-child{
+    border-left: none;
+}
+
+
 
 .sectionHeader {
-    padding-top: 2px;
+    text-align: center;
 }
 
 .sectionHeader h3 {
     display: inline-block;
-    line-height: 27px;
-    padding-right: 24px;
-    background-position: right top;
+    line-height: 34px;
+    padding-left: 36px;
+    background-position: left top;
     background-repeat: no-repeat;
 }
 
 #well .sectionHeader h3 {
-    background-image: url(/images/face_smile.png);
+    background-image: url(/images/face-well.png);
 }
 
 #lessWell .sectionHeader h3 {
-    background-image: url(/images/face_crying.png);
+    background-image: url(/images/face-less-well.png);
 }
 
 #puzzle .sectionHeader h3 {
-    background-image: url(/images/face_confused.png);
+    background-image: url(/images/face-puzzle.png);
 }
 
 #idea .sectionHeader h3 {
-    background-image: url(/images/face_angel.png);
+    background-image: url(/images/face-idea.png);
 }
 
 .addStickyButton {
