@@ -148,14 +148,19 @@ header .separator {
 }
 
 .addStickyButton {
-    height: 24px;
-    width: 24px;
+    height: 36px;
+    width: 36px;
     display: block;
     float: right;
-    background-image: url(/images/note_add.png);
-    background-size: cover;
+    background-image: url(/images/add-sticky.png);
+    background-position: 0 0;
     margin-right: 2px;
+    margin-top: 5px;
     cursor: pointer;
+}
+
+.addStickyButton:hover {
+    background-position: 0 -36px;
 }
 
 .sectionBody {
