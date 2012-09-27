@@ -2,6 +2,16 @@ body {
     background: url(../images/low_contrast_linen.png) repeat left top;
 }
 
+@font-face {
+    font-family: TwinMarker;
+    src: url('../images/TwinMarker.ttf');
+}
+
+@font-face {
+    font-family: Marydale;
+    src: url('../images/Marydale.ttf');
+}
+
 .wrap {
     margin: 0 20px;
 }
@@ -129,6 +139,7 @@ header .separator {
     padding-left: 36px;
     background-position: left top;
     background-repeat: no-repeat;
+    font-family: Marydale;
 }
 
 #well .sectionHeader h3 {
@@ -172,11 +183,11 @@ header .separator {
     width: 43%;
     margin-top: 5px;
     margin-left: 5px;
-    height: 70px;
-    background-color: #FEF791;
+    min-height: 80px;
+    /*background-color: #FEF791;*/
     vertical-align: top;
-    border-radius: 5px 5px 10px 5px;
-    box-shadow: 1px 1px 3px #ccc;
+    background: transparent url(../images/sticky-bottom.png) no-repeat right bottom;
+    box-shadow: -1px -1px 1px #cbcbcb;
     position: relative;
     padding: 5px;
 }
@@ -192,25 +203,24 @@ header .separator {
     padding: 10px;
     left: 50%;
     top: 50%;
-    margin-left: -200px;
+    margin-left: -220px;
     margin-top: -200px;
     z-index: 1;
-    background-color: #FFFF7A;
-    border-radius: 20px 20px 30px 20px;
-    box-shadow: 0px 0px 10px gray;
+    /*background-color: #FEF791;*/
+    /*border-radius: 20px 20px 30px 20px;*/
+    /*box-shadow: -1px -1px 1px #666;*/
     display: none;
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(#FFFF7A), to(#FFFF00));
-    background: -moz-gradient(linear, 0 0, 0 100%, from(#FFFF7A), to(#FFFF00));
+    background: transparent url(../images/sticky-bottom.png) no-repeat right bottom;
     z-index: 2;
 }
 
 #stickyDialog textarea {
-    min-height: 300px;
-    min-width: 400px;
+    min-height: 220px;
+    min-width: 420px;
     background: none;
     border: none;
-    line-height: 30px;
-    font-size: 20px;
+    line-height: 26px;
+    font-size: 18px;
 }
 
 #stickyDialog textarea:focus {
@@ -218,7 +228,7 @@ header .separator {
 }
 
 .buttons {
-    padding: 10px 10px 0 0;
+    padding: 5px 15px 5px 0;
     text-align: right;
 }
 
