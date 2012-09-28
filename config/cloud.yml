@@ -1,0 +1,9 @@
+:cloud_providers: ['AWS']
+
+:AWS:
+  :aws_access_key_id: "YOUR ACCESS KEY"
+  :aws_secret_access_key: "YOUR SECRET"
+  :params:
+    :region: 'eu-west-1'
+  :load_balanced: true
+  :project_tag: "YOUR APP NAME"
