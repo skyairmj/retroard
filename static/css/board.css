@@ -4,12 +4,12 @@ body {
 
 @font-face {
     font-family: TwinMarker;
-    src: url('../images/TwinMarker.ttf');
+    src: url('../fonts/TwinMarker.ttf');
 }
 
 @font-face {
     font-family: Marydale;
-    src: url('../images/Marydale.ttf');
+    src: url('../fonts/Marydale.ttf');
 }
 
 .wrap {
@@ -199,17 +199,10 @@ header .separator {
 }
 
 #stickyDialog {
-    position: absolute;
     padding: 10px;
-    left: 50%;
-    top: 50%;
-    margin-left: -220px;
-    margin-top: -200px;
-    z-index: 1;
     /*background-color: #FEF791;*/
     /*border-radius: 20px 20px 30px 20px;*/
     /*box-shadow: -1px -1px 1px #666;*/
-    display: none;
     background: transparent url(../images/sticky-bottom.png) no-repeat right bottom;
     z-index: 2;
 }
@@ -236,18 +229,6 @@ header .separator {
     height: 30px;
     width: 60px;
     margin-left: 10px;
-}
-
-#modal {
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: black;
-    opacity: 0.4;
-    z-index: 1;
 }
 
 footer {

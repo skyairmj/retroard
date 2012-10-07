@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/global.css"/>
     <link rel="stylesheet" type="text/css" href="css/board.css"/>
-
     <script type="text/javascript" src="javascripts/libs/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="javascripts/libs/jquery.json-2.3.min.js"></script>
 	<script type="text/javascript" src="javascripts/libs/bootstrap.min.js"></script>
@@ -71,33 +70,32 @@
             <section class="section span3" id="<%= section[:id] %>">
                 <div class="sectionHeader">
                     <h3><%= section[:display] %></h3>
-
-                    <div class="addStickyButton"></div>
+                    <a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>
                 </div>
                 <div class="sectionBody">
                 </div>
             </section>
         <% end %>
-        <div id="stickyDialog">
-            <textarea></textarea>
-            <div class="buttons">
-                <button type="image" value="Cancel" class="btn cancelButton">Cancel</button>
-                <button type="image" value="OK" class="btn okButton btn-success">OK</button>
-            </div>
-        </div>
     </article>
 </div>
 
 <div class="navbar navbar-fixed-bottom navbar-inverse" style="position: absolute;">
   <div class="navbar-inner">
     <div class="container" style="width: auto; padding: 0 20px; text-align:center; line-height:40px;">
-      <small>&copy; 2011 Team-Cares</small>
+      <small>&copy; 2012 Team-Cares</small>
     </div>
   </div>
 </div>
 
-
-<div id="modal"></div>
+<div class="modal hide fade in" id="modal" tabindex="-1" role="dialog" aria-hidden="true" style="width: 480px; background-color: transparent; border: 0px; border-radius:0px; box-shadow:none;">
+		<div id="stickyDialog">
+	        <textarea placeholder="hahaha"></textarea>
+	        <div class="buttons">
+	            <button type="image" value="Cancel" class="btn cancelButton">Cancel</button>
+	            <button type="image" value="OK" class="btn okButton btn-success">OK</button>
+	        </div>
+	    </div>
+</div>
 </body>
 <script type="text/javascript" src="javascripts/retroad.view.js"></script>
 </html>
