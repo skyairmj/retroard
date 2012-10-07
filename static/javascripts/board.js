@@ -12,7 +12,6 @@
 
 	    initialize2: function(option) {
 	        this.history.initialize2();
-	        window.stickDialog = new StickyDialog();
 	        Connection.initialize(option['serverHost'], option['serverPort']);
 	        Listener.initialize(this);
 	    },

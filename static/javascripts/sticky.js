@@ -9,7 +9,6 @@
 	        this.uuid = uuid;
 	        var template = '<div class="sticky" id="newSticky">'
 	            + '<div class="stickyText"></div>'
-	            + '<div class="stickyCount"></div>'
 	            + '</div>';
 	        this.dom = $(template);
 	    },
@@ -41,5 +40,9 @@
 	        this.onRemove();
 	    }
 
+	});
+	
+	StickyView = Backbone.View.extend({
+		template: _.template('<div class="sticky"><div class="stickyText"><%=content%></div></div>'),
 	});
 }());

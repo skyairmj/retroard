@@ -4,12 +4,12 @@ body {
 
 @font-face {
     font-family: TwinMarker;
-    src: url('../fonts/TwinMarker.ttf');
+    src: url('../fonts/TwinMarker.ttf') format('truetype');
 }
 
 @font-face {
     font-family: Marydale;
-    src: url('../fonts/Marydale.ttf');
+    src: url('../fonts/Marydale.ttf') format('truetype');
 }
 
 .wrap {

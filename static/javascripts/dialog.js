@@ -1,44 +1,29 @@
 (function(){
-	StickyDialog = Backbone.Model.extend({
-	    hideStickyDialog: function(stickyDialog) {
-	        stickyDialog.dom.hide();
-	        stickyDialog.modal.hide();
-	        $('body').css('overflow', 'visible');
+	StickyDialog = Backbone.View.extend({
+		el: '#modal',
+		
+		events: {
+			'click .cancelButton': 'hide',
+			'click .okButton': 'add'
+		},
+		
+	    hide: function() {
+			if (this.model != null && this.model.isNew()) {
+                this.model.remove();
+            }
+			$(this.el).find('textarea').val('');
 	    },
-
-	    bindEvents: function(stickyDialog) {
-	        stickyDialog.cancelButton.on('click', function() {
-	            hideStickyDialog(stickyDialog);
-	            if (stickyDialog.currentSticky != null) {
-	                stickyDialog.currentSticky.remove();
-	            }
-	        });
-	        stickyDialog.okButton.on('click', function() {
-	            stickyDialog.hideStickyDialog(stickyDialog);
-	            if (stickyDialog.currentSticky != null) {
-	                stickyDialog.currentSticky.update({
-	                    content: stickyDialog.dom.find('textarea').val()
-	                });
-					Connection.sendMessage(stickyDialog.currentSticky.dataToSent());
-	                stickyDialog.dom.find('textarea').val('');
-	            }
-	        });
-	    },
-
-        initialize : function() {
-            this.currentSticky = null;
-            this.dom = $('#stickyDialog');
-            this.cancelButton = this.dom.find('.cancelButton');
-            this.okButton = this.dom.find('.okButton');
-            this.modal = $('#modal');
-            this.bindEvents(this);
-        },
-
-        popUp : function(sticky) {
-            this.currentSticky = sticky;
-            this.dom.show();
-            this.modal.show();
-            $('body').css('overflow', 'hidden');
-        }
+	
+		add: function() {
+            if (this.model != null && $.trim($(this.el).find('textarea').val()) != '') {
+                this.model.update({
+                    content: $(this.el).find('textarea').val()
+                });
+				Connection.sendMessage(this.model.dataToSent());
+            } else {
+				this.model.remove();
+			}
+            $(this.el).find('textarea').val('');
+		}
 	});
 }());

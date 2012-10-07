@@ -9,7 +9,7 @@
 	        this.stickies = {};
 	        this.stickiesLength = 0;
 	        this.addStickyButton.on('click', function() {
-				window.stickDialog.popUp(that.addSticky());
+				new StickyDialog({model: that.addSticky()})
 	        });
 	        this.onStickyRemove = function() {
 	            delete that.stickies[this.uuid];
