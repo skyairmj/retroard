@@ -208,12 +208,14 @@ header .separator {
 }
 
 #stickyDialog textarea {
-    min-height: 220px;
-    min-width: 420px;
+    min-height: 120px;
+    min-width: 440px;
+    display: block;
+    margin: 5px auto;
     background: none;
     border: none;
-    line-height: 26px;
-    font-size: 18px;
+    line-height: 24px;
+    font-size: 16px;
 }
 
 #stickyDialog textarea:focus {
