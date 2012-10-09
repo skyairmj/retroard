@@ -1,12 +1,12 @@
 (function(){
-	Board = Backbone.Model.extend({
-		initialize: function(sectionIds) {
-
-	        this.sections = [];
-	        for (var i in sectionIds) {
-	            this.sections.push(new Section(sectionIds[i]));
-	        }
-
+	Board = Backbone.View.extend({
+		initialize: function(option) {
+			that = this
+	        that.sections = [];
+			$.each(option.sectionIds, function(index, value){
+				that.sections.push(new Section({name:value}));
+			});
+			
 	        this.history = new History();
 	    },
 
@@ -17,11 +17,14 @@
 	    },
 
 	    getSection: function(name) {
-	        for (var index in this.sections) {
-	            if(this.sections[index].name == name) {
-	                return this.sections[index];
-	            }
-	        }
+			results = $.grep(this.sections, function(item, index){
+				return item.name == name;
+			});
+			return results[0];
 	    }
+	});
+	
+	Retrospective = Backbone.Model.extend({
+		
 	});
 }());

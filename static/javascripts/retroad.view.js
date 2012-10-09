@@ -5,7 +5,7 @@
 	});
 	window.App = new AppView
 	*/
-	var board = new Board(['well', 'lessWell', 'puzzle', 'idea']);
+	var board = new Board({sectionIds: ['well', 'lessWell', 'puzzle', 'idea']});
     board.initialize2(option);
 	$.getJSON('/'+ teamName + '/existing_cards', function(sections) {
 		for (var sectionName in sections) {

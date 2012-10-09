@@ -1,11 +1,12 @@
 (function(){
-	Section = Backbone.Model.extend({
+	Section = Backbone.View.extend({
 
-	    initialize: function(name) {
+	    initialize: function(option) {
 	        var that = this;
-	        this.dom = $('#' + name);
+			this.el = '#'+option.name
+	        this.dom = $(this.el);
 	        this.addStickyButton = this.dom.find('.addStickyButton');
-	        this.name = name;
+	        this.name = option.name;
 	        this.stickies = {};
 	        this.stickiesLength = 0;
 	        this.addStickyButton.on('click', function() {
@@ -38,5 +39,9 @@
 	    getSticky: function(uuid) {
 	        return this.stickies[uuid];
 	    }
+	});
+	
+	Facet = Backbone.Model.extend({
+		
 	});
 }());
