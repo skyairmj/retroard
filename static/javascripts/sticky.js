@@ -7,16 +7,17 @@
 	        this.status = 'modifying';
 	        this.lastModified = '';
 	        this.uuid = uuid;
-	        var template = '<div class="sticky" id="newSticky">'
-	            + '<div class="stickyText"></div>'
+	        var template = '<div class="sticky sticky-single" id="newSticky">'
+	            + '<div class="stickyTop"></div><div class="stickyText"></div>'
 	            + '</div>';
 	        this.dom = $(template);
 			this.dom.draggable({
-	            revert: false, // when not dropped, the item will revert back to its initial position
+	            revert: "invalid", // when not dropped, the item will revert back to its initial position
 				containment: "#sections",
 	            cursor: "move"
 	        });
 			this.dom.droppable({
+				accept: ".sticky",
 	            drop: function( event, ui ) {
 	            }
 			});

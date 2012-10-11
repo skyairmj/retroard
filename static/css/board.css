@@ -180,17 +180,44 @@ header .separator {
 
 .sticky {
     display: inline-block;
-    width: 43%;
     margin-top: 5px;
     margin-left: 5px;
-    min-height: 80px;
     /*background-color: #FEF791;*/
     vertical-align: top;
-    background: transparent url(../images/sticky-bottom.png) no-repeat right bottom;
-    box-shadow: -1px -1px 1px #cbcbcb;
     position: relative;
-    padding: 5px;
     cursor: move;
+}
+
+.sticky-single {
+    width: 125px;
+}
+
+.sticky-multi {
+    width: 133px;
+}
+
+.sticky-single .stickyTop {
+    background: transparent url(../images/sticky-single-bg.png) no-repeat right top;
+    height: 5px;
+    overflow: hidden;
+}
+
+.sticky-multi .stickyTop {
+    background: transparent url(../images/sticky-multi-bg.png) no-repeat right top;
+    height: 12px;
+    overflow: hidden;
+}
+
+.sticky-single .stickyText {
+    padding: 0 5px 5px 5px;
+    background: transparent url(../images/sticky-single-bg.png) no-repeat right bottom;
+    min-height: 100px
+}
+
+.sticky-multi .stickyText {
+    padding: 0 5px 5px 15px;
+    background: transparent url(../images/sticky-multi-bg.png) no-repeat right bottom;
+    min-height: 100px
 }
 
 
