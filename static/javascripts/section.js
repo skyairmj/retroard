@@ -1,45 +1,45 @@
 (function(){
 	Section = Backbone.View.extend({
+		events: {
+			'click .addStickyButton': 'addSticky2'
+		},
 
-	    initialize: function(option) {
-	        var that = this;
-			this.el = '#'+option.name
-	        this.dom = $(this.el);
-	        this.addStickyButton = this.dom.find('.addStickyButton');
-	        this.name = option.name;
+	    initialize: function() {
+			this.sectionBody = $(this.el).find('.sectionBody')
 	        this.stickies = {};
-	        this.stickiesLength = 0;
-	        this.addStickyButton.on('click', function() {
-				new StickyDialog({model: that.addSticky()})
-	        });
-	        this.onStickyRemove = function() {
-	            delete that.stickies[this.uuid];
-	            that.stickiesLength--;
-	        }
 	    },
 
-	    addSticky: function(uuid) {
-	        var uuid = uuid ? uuid : Utilities.generateUUID();
-	        var newSticky = new Sticky(this.onStickyRemove, uuid, this.name);
+	    addSticky: function(uuid, content) {
+	        uuid = uuid || Utilities.generateUUID();
+			content = content || '';
+	        var newSticky = new Sticky(uuid, content, this.name);
 	        this.stickies[uuid] = newSticky;
-	        this.stickiesLength++;
-	        this.dom.find('.sectionBody').append(newSticky.dom);
+	        this.sectionBody.append(newSticky.dom);
 	        return newSticky;
 	    },
+	
+		addSticky2: function() {
+			new StickyDialog({model: this.addSticky()});
+		},
+		
+		updateSticky: function(data) {
+            var newSticky = this.getSticky(data.uuid);
+            if (!newSticky) {
+                newSticky = this.addSticky(data.uuid);
+            }
+            newSticky.update(data);
+            return newSticky;
+        },
 
-	    updateSticky: function(data) {
-	        var newSticky = this.getSticky(data.uuid);
-	        if (!newSticky) {
-	            newSticky = this.addSticky(data.uuid);
-	        }
-	        newSticky.update(data);
-	        return newSticky;
-	    },
-
-	    getSticky: function(uuid) {
-	        return this.stickies[uuid];
-	    }
+        getSticky: function(uuid) {
+            return this.stickies[uuid];
+        }
 	});
+	
+	WellSection = Section.extend({el: '#well', name: 'well'});
+	LessWellSection = Section.extend({el: '#lessWell', name: 'lessWell'});
+	PuzzleSection = Section.extend({el: '#puzzle', name: 'puzzle'});
+	IdeaSection = Section.extend({el: '#idea', name: 'idea'});	
 	
 	Facet = Backbone.Model.extend({
 		

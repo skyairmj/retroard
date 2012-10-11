@@ -5,16 +5,16 @@
 	});
 	window.App = new AppView
 	*/
-	var board = new Board({sectionIds: ['well', 'lessWell', 'puzzle', 'idea']});
-    board.initialize2(option);
+	var board = new Board();
 	$.getJSON('/'+ teamName + '/existing_cards', function(sections) {
+		
 		for (var sectionName in sections) {
 			var currentSection = board.getSection(sectionName);
 		    for(var uuid in sections[sectionName]) {
-				var sticky = currentSection.addSticky(uuid);
-				sticky.update({content:sections[sectionName][uuid].content});
+				currentSection.addSticky(uuid, sections[sectionName][uuid].content);
 			}
 		}
 	});
-	
+	Connection.initialize(option['serverHost'], option['serverPort']);
+    Listener.initialize(board);
 }());

@@ -1,16 +1,13 @@
 (function(){
 	Sticky = Backbone.Model.extend({
-	    initialize: function(onRemove, uuid, section) {
+		template: _.template('<div class="sticky sticky-single"><div class="stickyText"><%=content%></div></div>'),
+	    initialize: function(uuid, content, section) {
 			this.section = section;
 	        this.content = '';
-	        this.onRemove = onRemove;
 	        this.status = 'modifying';
 	        this.lastModified = '';
 	        this.uuid = uuid;
-	        var template = '<div class="sticky sticky-single" id="newSticky">'
-	            + '<div class="stickyTop"></div><div class="stickyText"></div>'
-	            + '</div>';
-	        this.dom = $(template);
+	        this.dom = $(this.template({content:content}));
 			this.dom.draggable({
 	            revert: "invalid", // when not dropped, the item will revert back to its initial position
 				containment: "#sections",
@@ -19,6 +16,7 @@
 			this.dom.droppable({
 				accept: ".sticky",
 	            drop: function( event, ui ) {
+					//new StickyGroupView({model:this.model}).render()
 	            }
 			});
 	    },
@@ -47,12 +45,24 @@
 
 	    remove: function() {
 	        this.dom.remove();
-	        this.onRemove();
 	    }
 
 	});
 	
 	StickyView = Backbone.View.extend({
 		template: _.template('<div class="sticky"><div class="stickyText"><%=content%></div></div>'),
+		initialize: function(option){
+			this.model = option.model;
+			this.onRemove = option.onRemove;
+		}
+	});
+	
+	StickyGroupView = Backbone.View.extend({
+		template: _.template('<div class="sticky sticky-multi"><div class="stickyText"><%=content%></div></div>'),
+		
+		render: function(){
+			this.$el.html(this.template(this.model.toJSON()));
+			
+		}
 	});
 }());
