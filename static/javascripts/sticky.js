@@ -12,12 +12,11 @@
 	            + '</div>';
 	        this.dom = $(template);
 			this.dom.draggable({
-	            revert: "invalid", // when not dropped, the item will revert back to its initial position
+	            revert: false, // when not dropped, the item will revert back to its initial position
 				containment: "#sections",
 	            cursor: "move"
 	        });
 			this.dom.droppable({
-				accept: "div.sticky",
 	            drop: function( event, ui ) {
 	            }
 			});
