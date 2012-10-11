@@ -190,6 +190,7 @@ header .separator {
     box-shadow: -1px -1px 1px #cbcbcb;
     position: relative;
     padding: 5px;
+    cursor: move;
 }
 
 .stickyCount {
