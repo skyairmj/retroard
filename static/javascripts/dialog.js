@@ -11,7 +11,7 @@
                 this.model.update({
                     content: $(this.el).find('textarea').val()
                 });
-				Connection.sendMessage(this.model.toJSON());
+				Connection.sendMessage(this.model.toSaveParam());
 				new StickyView({model: this.model})
             }
             $(this.el).find('textarea').val('');
