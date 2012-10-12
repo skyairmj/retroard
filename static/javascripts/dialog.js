@@ -5,16 +5,20 @@
 		events: {
 			'click .okButton': 'add'
 		},
+		
+		initialize: function(){
+			this.textarea = this.$('textarea');
+		},
 	
 		add: function() {
-            if (this.model != null && $.trim($(this.el).find('textarea').val()) != '') {
+            if (this.model != null && $.trim(this.textarea.val()) != '') {
                 this.model.update({
-                    content: $(this.el).find('textarea').val()
+                    content: this.textarea.val()
                 });
 				Connection.sendMessage(this.model.toSaveParam());
-				new StickyView({model: this.model})
+				new StickyView({model: this.model}).render();
             }
-            $(this.el).find('textarea').val('');
+            this.textarea.val('');
 		},
 		
 		reset: function(model) {

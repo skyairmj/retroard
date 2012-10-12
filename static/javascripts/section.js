@@ -5,7 +5,7 @@
 		},
 
 	    initialize: function() {
-			this.sectionBody = $(this.el).find('.sectionBody')
+			this.sectionBody = this.$('.sectionBody')
 	        this.stickies = {};
 	    },
 	
