@@ -8,15 +8,14 @@
 			this.sectionBody = $(this.el).find('.sectionBody')
 	        this.stickies = {};
 	    },
-
-	    addSticky: function(uuid, content) {
-	        uuid = uuid || Utilities.generateUUID();
+	
+		addSticky: function(uuid, content) {
+			uuid = uuid || Utilities.generateUUID();
 			content = content || '';
 	        var newSticky = new Sticky(uuid, content, this.name);
 	        this.stickies[uuid] = newSticky;
-	        this.sectionBody.append(newSticky.dom);
-	        return newSticky;
-	    },
+			return newSticky;
+		},
 	
 		addSticky2: function() {
 			StickyDialog.reset(this.addSticky());
@@ -41,7 +40,7 @@
 	PuzzleSection = Section.extend({el: '#puzzle', name: 'puzzle'});
 	IdeaSection = Section.extend({el: '#idea', name: 'idea'});	
 	
-	Facet = Backbone.Model.extend({
+	StickyCollection = Backbone.Collection.extend({
 		
 	});
 }());

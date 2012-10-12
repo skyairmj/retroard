@@ -11,7 +11,7 @@
 		for (var sectionName in sections) {
 			var currentSection = board.getSection(sectionName);
 		    for(var uuid in sections[sectionName]) {
-				currentSection.addSticky(uuid, sections[sectionName][uuid].content);
+				new StickyView({model: new Sticky(uuid, sections[sectionName][uuid].content, sectionName)});
 			}
 		}
 	});
