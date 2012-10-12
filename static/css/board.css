@@ -199,13 +199,21 @@ header .separator {
 .sticky-single .stickyTop {
     background: transparent url(../images/sticky-single-bg.png) no-repeat right top;
     height: 5px;
-    overflow: hidden;
 }
 
 .sticky-multi .stickyTop {
     background: transparent url(../images/sticky-multi-bg.png) no-repeat right top;
     height: 12px;
-    overflow: hidden;
+    position: relative;
+}
+
+.sticky-multi .stickyTop i {
+    width: 15px;
+    height: 48px;
+    position: absolute;
+    background: transparent url(../images/sticky-clip.png) no-repeat left top;
+    top: -6px;
+    left: 4px;
 }
 
 .sticky-single .stickyText {
