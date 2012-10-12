@@ -1,11 +1,13 @@
 (function(){
 	Sticky = Backbone.Model.extend({	    
-		initialize: function(uuid, content, section) {
+		initialize: function(section, content, uuid) {
 			this.section = section;
+			uuid = uuid || Utilities.generateUUID();
+			content = content || '';
 	        this.content = content;
+	        this.uuid = uuid;
 	        this.status = 'modifying';
 	        this.lastModified = '';
-	        this.uuid = uuid;
 	    },
 
 	    update: function(option) {
@@ -31,10 +33,10 @@
 	});
 	
 	StickyView = Backbone.View.extend({
-		template: _.template('<div class="sticky sticky-single"><div class="stickyText"><%=content%></div></div>'),
+		template: _.template('<div class="sticky sticky-single" id="<%=id%>"><div class="stickyText"><%=content%></div></div>'),
 	
 		render: function(){
-			this.$el.html($(this.template({content: this.model.content})));
+			this.$el.html($(this.template({id:this.model.uuid, content: this.model.content})));
 			this.$el.draggable({
 	            revert: "invalid",
 				containment: "#sections",
@@ -50,10 +52,10 @@
 	});
 	
 	StickyGroupView = Backbone.View.extend({
-		template: _.template('<div class="sticky sticky-multi"><div class="stickyText"><%=content%></div></div>'),
+		template: _.template('<div class="sticky sticky-multi" id="<%=id%>"><div class="stickyText"><%=content%></div></div>'),
 		
 		render: function(){
-			this.$el.html(this.template({content: this.model.content}));
+			this.$el.html(this.template({id:this.model.uuid, content: this.model.content}));
 			
 		}
 	});

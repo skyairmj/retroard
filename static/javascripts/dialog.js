@@ -3,26 +3,29 @@
 		el: '#stickyDialog',
 		
 		events: {
+			'click .cancelButton': 'cancel',
 			'click .okButton': 'add'
 		},
 		
 		initialize: function(){
 			this.textarea = this.$('textarea');
 		},
+		
+		cancel: function() {
+			this.textarea.val('');
+		},
 	
 		add: function() {
-            if (this.model != null && $.trim(this.textarea.val()) != '') {
-                this.model.update({
-                    content: this.textarea.val()
-                });
-				Connection.sendMessage(this.model.toSaveParam());
-				new StickyView({model: this.model}).render();
+            if ($.trim(this.textarea.val()) != '') {
+				newSticky = new Sticky(this.targetSection, this.textarea.val());
+				Connection.sendMessage(newSticky.toSaveParam());
+				new StickyView({model: newSticky}).render();
             }
             this.textarea.val('');
 		},
 		
-		reset: function(model) {
-			this.model = model;
+		target: function(targetSection) {
+			this.targetSection = targetSection;
 		}
 	}))();
 }());

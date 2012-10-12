@@ -1,38 +1,22 @@
 (function(){
 	Section = Backbone.View.extend({
 		events: {
-			'click .addStickyButton': 'addSticky2'
-		},
-
-	    initialize: function() {
-			this.sectionBody = this.$('.sectionBody')
-	        this.stickies = {};
-	    },
-	
-		addSticky: function(uuid, content) {
-			uuid = uuid || Utilities.generateUUID();
-			content = content || '';
-	        var newSticky = new Sticky(uuid, content, this.name);
-	        this.stickies[uuid] = newSticky;
-			return newSticky;
+			'click .addStickyButton': 'setStickyTarget'
 		},
 	
-		addSticky2: function() {
-			StickyDialog.reset(this.addSticky());
+		setStickyTarget: function() {
+			StickyDialog.target(this.name);
 		},
 		
-		updateSticky: function(data) {
-            var newSticky = this.getSticky(data.uuid);
-            if (!newSticky) {
-                newSticky = this.addSticky(data.uuid);
-            }
-            newSticky.update(data);
-            return newSticky;
-        },
-
-        getSticky: function(uuid) {
-            return this.stickies[uuid];
-        }
+		synchronizeSticky: function(data) {
+            if (this.$(data.uuid).length == 0) {
+				newSticky = new Sticky(this.name, data.content, data.uuid);
+				new StickyView({model: newSticky}).render();
+			} else {
+				//update the existing sticky
+			}
+			
+		}
 	});
 	
 	WellSection = Section.extend({el: '#well', name: 'well'});
