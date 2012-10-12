@@ -262,6 +262,10 @@ header .separator {
     margin-left: 10px;
 }
 
-footer {
+.footer {
     text-align: center;
+    width: auto;
+    padding: 0 20px;
+    line-height:60px;
+    color: #ccc;
 }
