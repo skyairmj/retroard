@@ -19,7 +19,7 @@
 	    },
 	
 		addSticky2: function() {
-			new StickyDialog({model: this.addSticky()});
+			StickyDialog.reset(this.addSticky());
 		},
 		
 		updateSticky: function(data) {

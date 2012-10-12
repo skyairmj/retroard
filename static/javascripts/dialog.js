@@ -1,6 +1,6 @@
 (function(){
-	StickyDialog = Backbone.View.extend({
-		el: '#modal',
+	StickyDialog = new (Backbone.View.extend({
+		el: '#stickyDialog',
 		
 		events: {
 			'click .cancelButton': 'hide',
@@ -24,6 +24,10 @@
 				this.model.remove();
 			}
             $(this.el).find('textarea').val('');
+		},
+		
+		reset: function(model) {
+			this.model = model;
 		}
-	});
+	}))();
 }());
