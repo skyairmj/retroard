@@ -9,6 +9,10 @@
 	        this.uuid = uuid;
 	        this.lastModified = '';
 	    },
+	
+		getContent: function() {
+			return this.content;
+		},
 		
 		toJSON: function() {
 			return {
@@ -23,33 +27,44 @@
 	
 	Stickies = Backbone.Collection.extend({
 		model: Sticky,
-		
 	});
 	
 	StickyGroup = Backbone.Model.extend({
-		initialize: function(section, content, uuid) {
-			this.section = section;
-			this.content = $.isArray(content)?content:[content||''];
-	        this.uuid = uuid || Utilities.generateUUID();
+		initialize: function(modelDropped, modelDroppee) {
+			this.section = modelDropped.section;
+			if(modelDropped instanceof StickyGroup) {
+				this.uuid = modelDropped.uuid;
+			} else if(modelDroppee instanceof StickyGroup) {
+				this.uuid = modelDroppee.uuid;
+			} else {
+				this.uuid = Utilities.generateUUID();
+			}
+			this.stickies = (modelDropped instanceof StickyGroup)? modelDropped.stickies:[modelDropped];			
+			$.merge(this.stickies, (modelDroppee instanceof StickyGroup)?modelDroppee.stickies:[modelDroppee]);
 	        this.lastModified = '';
 	    },
-	
-		append: function(content, uuid){
-			$.merge(this.content, content.split('------'));
-			return this;
+		
+		getContent: function() {
+			return $.map(this.stickies, function(value) {return value.getContent();}).join('<br>-----<br>');
 		}
 	});
 	
 	StickyView = Backbone.View.extend({
 		className: "sticky sticky-single",
 		template: _.template('<div class="stickyTop"><i></i></div><div class="stickyText"><%=content%></div>'),
+		events: { 
+			'dropped': 'handleDropped',
+			'accepted': 'handleAccepted'
+		},
 		
 		initialize: function() {
 			this.$el.attr('data-uuid', this.model.uuid);
-			this.$el.html(this.template({content: this.model.content}));
+			this.$el.data('model', this.model);
+			this.$el.html(this.template({content: this.model.getContent()}));
 			$('#'+this.model.section).find('.sectionBody').append(this.$el);
 		},
-		render: function(){
+		
+		render: function() {
 			var that = this;
 			this.$el.draggable({
 	            revert: "invalid",
@@ -59,29 +74,36 @@
 			this.$el.droppable({
 				accept: ".sticky",
 	            drop: function( event, ui ) {
-					var uuid = null;
-					if (!!ui.draggable.filter('.sticky-multi').length) {
-						uuid = ui.draggable.filter('.sticky-multi').first().data('uuid');
-					} else if (!!$(this).filter('.sticky-multi').length){
-						uuid = $(this).filter('.sticky-multi').first().data('uuid');
-					}
-					groupView = new StickyGroupView({model:new StickyGroup(that.model.section, that.model.content, uuid).append(ui.draggable.find('.stickyText').text())}).render();
+					var groupView = new StickyGroupView({model:new StickyGroup(that.model, ui.draggable.data('model'))}).render();
 					$(this).before(groupView.el);
-					$(this).remove();
-					ui.draggable.remove();
+					$(this).trigger('accepted');
+					ui.draggable.trigger('dropped');
 	            }
 			});
 			return this;
+		},
+		
+		handleDropped: function() {
+			this.remove();
+		},
+		
+		handleAccepted: function() {
+			this.remove();
 		}
 	});
 	
 	StickyGroupView = Backbone.View.extend({
 		className: "sticky sticky-multi",
 		template: _.template('<div class="stickyTop"><i></i></div><div class="stickyText"><%=content%></div>'),
+		events: { 
+			'dropped': 'handleDropped',
+			'accepted': 'handleAccepted'
+		},
 		
 		initialize: function() {
 			this.$el.attr('data-uuid', this.model.uuid);
-			this.$el.html(this.template({content: this.model.content.join('<br>------<br>')}));
+			this.$el.data('model', this.model);
+			this.$el.html(this.template({content: this.model.getContent()}));
 		},
 		
 		render: function(){
@@ -94,19 +116,21 @@
 			this.$el.droppable({
 				accept: ".sticky",
 	            drop: function( event, ui ) {
-					var uuid = null;
-					if (!!ui.draggable.filter('.sticky-multi').length) {
-						uuid = ui.draggable.filter('.sticky-multi').first().data('uuid');
-					} else if (!!$(this).filter('.sticky-multi').length){
-						uuid = $(this).filter('.sticky-multi').first().data('uuid');
-					}
-					groupView = new StickyGroupView({model:new StickyGroup(that.model.section, that.model.content, uuid).append(ui.draggable.find('.stickyText').text())}).render();
+					var groupView = new StickyGroupView({model:new StickyGroup(that.model, ui.draggable.data('model'))}).render();
 					$(this).before(groupView.el);
-					$(this).remove();
-					ui.draggable.remove();
+					$(this).trigger('accepted');
+					ui.draggable.trigger('dropped');
 	            }
 			});
 			return this;
+		},
+		
+		handleDropped: function() {
+			this.remove();
+		},
+
+		handleAccepted: function() {
+			this.remove();
 		}
 	});
 }());
