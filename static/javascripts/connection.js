@@ -29,6 +29,14 @@ var Connection = (function() {
                 this.socket.send(data);
         },
 
+		saveSticky: function(sticky) {
+			this.sendMessage($.toJSON({
+	            'resource': 'sticky',
+	            'method': 'save',
+	            'data': sticky.toJSON()
+	        }));
+		},
+
         onMessage: function(handler) {
             this.socket.onmessage = handler;
         },

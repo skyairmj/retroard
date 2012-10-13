@@ -16,10 +16,11 @@
 		},
 	
 		add: function() {
-            if ($.trim(this.textarea.val()) != '') {
-				newSticky = new Sticky(this.targetSection, this.textarea.val());
-				Connection.sendMessage(newSticky.toSaveParam());
-				new StickyView({model: newSticky}).render();
+			var content = $.trim(this.textarea.val());
+            if (!!content) {
+				newSticky = new Sticky(this.targetSection, content);
+				Connection.saveSticky(newSticky);
+//				new StickyView({model: newSticky}).render();
             }
             this.textarea.val('');
 		},

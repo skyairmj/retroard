@@ -2,26 +2,28 @@
 	Sticky = Backbone.Model.extend({	    
 		initialize: function(section, content, uuid) {
 			this.section = section;
+			this.team = window.teamName;
 			uuid = uuid || Utilities.generateUUID();
 			content = content || '';
 	        this.content = content;
 	        this.uuid = uuid;
 	        this.lastModified = '';
 	    },
-
-		toSaveParam: function() {
-			return $.toJSON({
-	            'resource': 'sticky',
-	            'method': 'save',
-	            'data': {
-					'section': this.section,
-	                'uuid': this.uuid,
-	                'lastModified': this.lastModified,
-	                'content': this.content,
-	                'teamName': window.teamName
-	            }
-	        });
+		
+		toJSON: function() {
+			return {
+				'section': this.section,
+                'uuid': this.uuid,
+                'lastModified': this.lastModified,
+                'content': this.content,
+                'teamName': this.team
+            };
 		}
+	});
+	
+	Stickies = Backbone.Collection.extend({
+		model: Sticky,
+		
 	});
 	
 	StickyGroup = Backbone.Model.extend({
