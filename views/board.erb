@@ -64,27 +64,27 @@
             </div>
         </div>
     </header>
-<div class="wrap">
-    <article id="sections" class="row-fluid">
-        <% @sections.each do |section| %>
-            <section class="section span3" id="<%= section[:id] %>">
-                <div class="sectionHeader">
-                    <h3><%= section[:display] %></h3>
-                    <a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>
-                </div>
-                <div class="sectionBody">
-                </div>
-            </section>
-        <% end %>
-    </article>
-</div>
 
+	<div class="wrap">
+	    <article id="sections" class="row-fluid">
+	        <% @sections.each do |section| %>
+	            <section class="section span3" id="<%= section[:id] %>">
+	                <div class="sectionHeader">
+	                    <h3><%= section[:display] %></h3>
+	                    <a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>
+	                </div>
+	                <div class="sectionBody">
+	                </div>
+	            </section>
+	        <% end %>
+	    </article>
+	</div>
 
-<div class="container footer">
-    <small>&copy; 2012 Team-Cares</small>
-</div>
+	<div class="container footer">
+	    <small>&copy; 2012 Team-Cares</small>
+	</div>
 
-<div class="modal hide fade in" id="modal" tabindex="-1" role="dialog" aria-hidden="true" style="width: 480px; background-color: transparent; border: 0px; border-radius:0px; box-shadow:none;">
+	<div class="modal hide fade in" id="modal" tabindex="-1" role="dialog" aria-hidden="true" style="width: 480px; background-color: transparent; border: 0px; border-radius:0px; box-shadow:none;">
 		<div id="stickyDialog">
 	        <textarea placeholder="max length = 140" maxlength="140"></textarea>
 	        <div class="buttons">
@@ -92,7 +92,7 @@
 	            <button type="image" value="OK" class="btn okButton btn-success" data-dismiss="modal" aria-hidden="true">OK</button>
 	        </div>
 	    </div>
-</div>
+	</div>
 </body>
 <script type="text/javascript" src="javascripts/dialog.js"></script>
 <script type="text/javascript" src="javascripts/retroad.view.js"></script>

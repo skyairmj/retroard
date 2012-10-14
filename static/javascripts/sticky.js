@@ -32,6 +32,7 @@
 	StickyGroup = Backbone.Model.extend({
 		initialize: function(modelDropped, modelDroppee) {
 			this.section = modelDropped.section;
+			this.team = window.teamName;
 			if(modelDropped instanceof StickyGroup) {
 				this.uuid = modelDropped.uuid;
 			} else if(modelDroppee instanceof StickyGroup) {
@@ -46,6 +47,17 @@
 		
 		getContent: function() {
 			return $.map(this.stickies, function(value) {return value.getContent();}).join('<br>-----<br>');
+		},
+		
+		toJSON: function() {
+			var stickyIds = $.map(this.stickies, function(value) {return value.uuid;});
+			return {
+				'section': this.section,
+				'uuid': this.uuid,
+				'teamName': this.team,
+				'lastModified': this.lastModified,
+				'stickies': stickyIds
+			}
 		}
 	});
 	
@@ -74,7 +86,8 @@
 			this.$el.droppable({
 				accept: ".sticky",
 	            drop: function( event, ui ) {
-					var groupView = new StickyGroupView({model:new StickyGroup(that.model, ui.draggable.data('model'))}).render();
+					var stickyGroup = new StickyGroup(that.model, ui.draggable.data('model'));
+					var groupView = new StickyGroupView({model:stickyGroup}).render();
 					$(this).before(groupView.el);
 					$(this).trigger('accepted');
 					ui.draggable.trigger('dropped');
@@ -116,7 +129,8 @@
 			this.$el.droppable({
 				accept: ".sticky",
 	            drop: function( event, ui ) {
-					var groupView = new StickyGroupView({model:new StickyGroup(that.model, ui.draggable.data('model'))}).render();
+					var stickyGroup = new StickyGroup(that.model, ui.draggable.data('model'));
+					var groupView = new StickyGroupView({model:stickyGroup}).render();
 					$(this).before(groupView.el);
 					$(this).trigger('accepted');
 					ui.draggable.trigger('dropped');

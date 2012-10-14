@@ -10,7 +10,6 @@ class Sticky < BaseModel
   property :modified_at, Time
   belongs_to :section
 
-
   def self.save data
     data_without_extra_info = data.clone
     data_without_extra_info.delete(:teamName)

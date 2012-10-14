@@ -29,14 +29,6 @@ var Connection = (function() {
                 this.socket.send(data);
         },
 
-		saveSticky: function(sticky) {
-			this.sendMessage($.toJSON({
-	            'resource': 'sticky',
-	            'method': 'save',
-	            'data': sticky.toJSON()
-	        }));
-		},
-
         onMessage: function(handler) {
             this.socket.onmessage = handler;
         },
@@ -46,6 +38,22 @@ var Connection = (function() {
                 this.socket.close();
                 this.socket = undefined;
             }
-        }
+        },
+
+		saveSticky: function(sticky) {
+			this.sendMessage($.toJSON({
+	            'resource': 'sticky',
+	            'method': 'save',
+	            'data': sticky.toJSON()
+	        }));
+		},
+		
+		saveStickyGroup: function(stickyGroup) {
+			this.sendMessage($.toJSON({
+				'resource': 'stickyGroup',
+				'method': 'save',
+				'data': stickyGroup.toJSON()
+			}));
+		}
     }
 })();
