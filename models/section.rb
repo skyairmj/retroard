@@ -1,6 +1,6 @@
-require File.expand_path('base_model', File.dirname(__FILE__))
-require File.expand_path('team', File.dirname(__FILE__))
-require File.expand_path('sticky', File.dirname(__FILE__))
+require 'base_model'
+require 'team'
+require 'sticky'
 
 class Section < BaseModel
   property :name, String

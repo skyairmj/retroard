@@ -3,8 +3,10 @@ require 'thin'
 require 'rack'
 require 'rack/websocket'
 require 'sinatra'
-require File.expand_path('helpers/json_helper', File.dirname(__FILE__))
-require File.expand_path('lib/db_operator', File.dirname(__FILE__))
+
+require File.expand_path('../boot', __FILE__)
+require 'json_helper'
+require 'db_operator'
 
 class WebSocketApp < Rack::WebSocket::Application
 
@@ -57,7 +59,7 @@ end
 class SinatraApp < Sinatra::Application
 
 	# load the Sinatra app.
-	require './app.rb'
+	require File.expand_path('../app', __FILE__)
 end
 
 # Set service point for the websockets. This way we can run both web sockets and sinatra on the same server and port number.
