@@ -118,9 +118,11 @@ header .separator {
 
 
 #sections .section {
-    border-left: 1px solid #CECEBF;
+    /*border-left: 1px solid #CECEBF;*/
     min-height: 600px;
     padding: 10px;
+    margin-left: 0;
+    width: 25%;
 }
 
 #sections [class*="span"]:first-child{
@@ -131,6 +133,9 @@ header .separator {
 
 .sectionHeader {
     text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+    border-bottom: 3px solid #666;
 }
 
 .sectionHeader h3 {
@@ -162,12 +167,12 @@ header .separator {
     height: 36px;
     width: 36px;
     display: block;
-    float: right;
     background-image: url(/images/add-sticky.png);
     background-position: 0 0;
-    margin-right: 2px;
-    margin-top: 5px;
     cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
 }
 
 .addStickyButton:hover {
@@ -176,6 +181,8 @@ header .separator {
 
 .sectionBody {
     text-align: left;
+    width: 280px;
+    margin: 0px auto;
 }
 
 .sticky {
@@ -187,6 +194,8 @@ header .separator {
     position: relative;
     cursor: move;
 }
+
+
 
 .sticky-single {
     width: 125px;
@@ -212,7 +221,7 @@ header .separator {
     height: 48px;
     position: absolute;
     background: transparent url(../images/sticky-clip.png) no-repeat left top;
-    top: -6px;
+    top: -5px;
     left: 4px;
 }
 
@@ -223,9 +232,15 @@ header .separator {
 }
 
 .sticky-multi .stickyText {
-    padding: 0 5px 5px 15px;
+    padding: 0 5px 5px 12px;
     background: transparent url(../images/sticky-multi-bg.png) no-repeat right bottom;
     min-height: 100px
+}
+
+.sticky-each {
+    display: block;
+    padding: 5px 5px 5px 12px;
+    background: transparent url(../images/sticky-bullet.png) no-repeat left 11px;
 }
 
 
