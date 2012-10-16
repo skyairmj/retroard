@@ -181,7 +181,7 @@ header .separator {
 
 .sectionBody {
     text-align: left;
-    width: 280px;
+    width: 284px;
     margin: 0px auto;
 }
 
@@ -195,14 +195,12 @@ header .separator {
     cursor: move;
 }
 
-
-
 .sticky-single {
-    width: 125px;
+    width: 130px;
 }
 
 .sticky-multi {
-    width: 133px;
+    width: 137px;
 }
 
 .sticky-single .stickyTop {
@@ -216,7 +214,7 @@ header .separator {
     position: relative;
 }
 
-.sticky-multi .stickyTop i {
+.sticky-multi .stickyTop s {
     width: 15px;
     height: 48px;
     position: absolute;
@@ -225,16 +223,46 @@ header .separator {
     left: 4px;
 }
 
+.sticky-multi .stickyTop .sticky-like {
+    width: 18px;
+    height: 20px;
+    position: absolute;
+    right: 3px;
+    top: 9px;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    border-bottom-left-radius: 4px;
+}
+
+.sticky-multi:hover .stickyTop .sticky-like {
+    display: block;
+}
+
+.sticky-multi .stickyTop .sticky-like:hover {
+    background-color: #008c00;
+}
+
+.sticky-multi .stickyTop .sticky-like:hover i {
+    background-image: url(../images/glyphicons-halflings-white.png);
+}
+
 .sticky-single .stickyText {
     padding: 0 5px 5px 5px;
     background: transparent url(../images/sticky-single-bg.png) no-repeat right bottom;
     min-height: 100px
 }
 
+
+
 .sticky-multi .stickyText {
     padding: 0 5px 5px 12px;
     background: transparent url(../images/sticky-multi-bg.png) no-repeat right bottom;
     min-height: 100px
+}
+
+.stickyText {
+    word-wrap: break-word;
 }
 
 .sticky-each {
