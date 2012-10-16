@@ -63,7 +63,7 @@
 	
 	StickyView = Backbone.View.extend({
 		className: "sticky sticky-single",
-		template: _.template('<div class="stickyTop"><i></i></div><div class="stickyText"><%=content%></div>'),
+		template: _.template('<div class="stickyTop"></div><div class="stickyText"><%=content%></div>'),
 		events: { 
 			'dropped': 'handleDropped',
 			'accepted': 'handleAccepted'
@@ -107,7 +107,7 @@
 	
 	StickyGroupView = Backbone.View.extend({
 		className: "sticky sticky-multi",
-		template: _.template('<div class="stickyTop"><i></i></div><div class="stickyText"><%=content%></div>'),
+		template: _.template('<div class="stickyTop"><s></s><div class="sticky-like"><i class="icon-thumbs-up"></i></div></div><div class="stickyText"><%=content%></div>'),
 		events: { 
 			'dropped': 'handleDropped',
 			'accepted': 'handleAccepted'
