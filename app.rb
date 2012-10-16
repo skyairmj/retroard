@@ -1,7 +1,3 @@
-require 'json'
-require 'team'
-require 'section'
-
 enable :inline_templates, :method_override, :sessions, :logging
 disable :run
 
@@ -18,27 +14,27 @@ end
 
 post '/signin' do
   unless params[:team].nil?
-    redirect "/#{params[:team]}", 303
+    redirect "/#{params[:team]}/retro/1", 303
   end
 end
 
 post '/signup' do
   unless params[:team].nil?
-    redirect "/#{params[:team]}", 303
+    redirect "/#{params[:team]}/retro/1", 303
   end
 end
 
-get '/:team' do
+get '/:team/retro/:retroId' do
   @sections = @@sections_info
   @team = Team.find_by_name(params[:team]) || new_team_with_sections(params[:team])
   erb :board
 end
 
-get '/:team/profile' do
+get '/:team' do
   "hello! #{params[:team]}"
 end
 
-get '/:team/existing_cards' do
+get '/:team/retro/:id/sticky/?' do
   @team = Team.find_by_name(params[:team]) || new_team_with_sections(params[:team])
   team_hash = {}
   @team.sections.each do |section|
@@ -65,4 +61,3 @@ def new_team_with_sections team_name
 
   team
 end
-

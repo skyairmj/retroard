@@ -6,7 +6,7 @@
 	window.App = new AppView
 	*/
 	var board = new Board();
-	$.getJSON('/'+ teamName + '/existing_cards', function(sections) {
+	$.getJSON('/'+ teamName + '/retro/'+retroId+'/sticky', function(sections) {
 		
 		for (var sectionName in sections) {
 			var currentSection = board.getSection(sectionName);

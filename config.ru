@@ -3,6 +3,7 @@ require 'thin'
 require 'rack'
 require 'rack/websocket'
 require 'sinatra'
+require 'json'
 
 require File.expand_path('../boot', __FILE__)
 require 'json_helper'
@@ -11,19 +12,8 @@ class WebSocketApp < Rack::WebSocket::Application
 
   include JSonHelper
   @@connections = Array.new
-  
-	def initialize(options = {})
-		super
-		@socket_mount_point = options[:socket_mount_point]
-	end
 
 	def on_open(env)
-		# Protect against connections to invalid mount points.
-		if env['REQUEST_PATH'] != @socket_mount_point
-			close_websocket
-			puts "Closed attempted websocket connection because it's requested a mount point other than #{@socket_mount_point}"
-		end
-
 		puts "Client Connected"
     @@connections << self
 	end
@@ -58,11 +48,11 @@ end
 
 class SinatraApp < Sinatra::Application
 	# load the Sinatra app.
-	require File.expand_path('../app', __FILE__)
+	require 'app'
 end
 
 # Set service point for the websockets. This way we can run both web sockets and sinatra on the same server and port number.
-map ('/ws') {run WebSocketApp.new(:socket_mount_point => '/ws')}
+map ('/ws') {run WebSocketApp.new}
 
 # This delegates everything other route not defined above to the Sinatra app.
 map ('/') {run SinatraApp}
