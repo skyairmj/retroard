@@ -4,9 +4,6 @@ require 'section'
 
 enable :inline_templates, :method_override, :sessions, :logging
 disable :run
-set :root, File.dirname(__FILE__)
-set :public_folder, Proc.new { File.join(root, "static") }
-set :views, Proc.new { File.join(root, "views") }
 
 @@sections_info = [
     {:id => "well", :display => "WELL"},

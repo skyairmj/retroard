@@ -6,7 +6,6 @@ require 'sinatra'
 
 require File.expand_path('../boot', __FILE__)
 require 'json_helper'
-require 'db_operator'
 
 class WebSocketApp < Rack::WebSocket::Application
 
@@ -16,7 +15,6 @@ class WebSocketApp < Rack::WebSocket::Application
 	def initialize(options = {})
 		super
 		@socket_mount_point = options[:socket_mount_point]
-		@dbOperator = DBOperator.new
 	end
 
 	def on_open(env)
@@ -38,7 +36,9 @@ class WebSocketApp < Rack::WebSocket::Application
 		puts "Received message: #{message}"
 		
 		msg = parse_json(message)
-    sticky = @dbOperator.handle(msg)
+		model = msg[:resource]
+    action = msg[:method]
+    sticky = eval "#{model.capitalize}.#{action} (#{msg[:data]})"
     msg[:data][:lastModified] = sticky.modified_at.to_s
     publish(encode_json(msg))
 	end
@@ -57,17 +57,12 @@ class WebSocketApp < Rack::WebSocket::Application
 end
 
 class SinatraApp < Sinatra::Application
-
 	# load the Sinatra app.
 	require File.expand_path('../app', __FILE__)
 end
 
 # Set service point for the websockets. This way we can run both web sockets and sinatra on the same server and port number.
-map '/ws' do
-	run WebSocketApp.new(:socket_mount_point => '/ws')
-end
+map ('/ws') {run WebSocketApp.new(:socket_mount_point => '/ws')}
 
 # This delegates everything other route not defined above to the Sinatra app.
-map '/' do
-	run SinatraApp
-end
+map ('/') {run SinatraApp}

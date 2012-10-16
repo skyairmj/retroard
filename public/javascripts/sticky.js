@@ -17,11 +17,11 @@
 		toJSON: function() {
 			return {
 				'section': this.section,
-                'uuid': this.uuid,
-                'lastModified': this.lastModified,
-                'content': this.content,
-                'teamName': this.team
-            };
+        'uuid': this.uuid,
+        'lastModified': this.lastModified,
+        'content': this.content,
+        'teamName': this.team
+      };
 		}
 	});
 	
@@ -79,19 +79,19 @@
 		render: function() {
 			var that = this;
 			this.$el.draggable({
-	            revert: "invalid",
+	      revert: "invalid",
 				containment: "#sections",
-	            cursor: "move"
-	        });
+	      cursor: "move"
+	    });
 			this.$el.droppable({
 				accept: ".sticky",
-	            drop: function( event, ui ) {
+	      drop: function( event, ui ) {
 					var stickyGroup = new StickyGroup(that.model, ui.draggable.data('model'));
 					var groupView = new StickyGroupView({model:stickyGroup}).render();
 					$(this).before(groupView.el);
 					$(this).trigger('accepted');
 					ui.draggable.trigger('dropped');
-	            }
+	     	}
 			});
 			return this;
 		},
@@ -122,19 +122,19 @@
 		render: function(){
 			var that = this;
 			this.$el.draggable({
-	            revert: "invalid",
+	      revert: "invalid",
 				containment: "#sections",
-	            cursor: "move"
-	        });
+	      cursor: "move"
+	    });
 			this.$el.droppable({
 				accept: ".sticky",
-	            drop: function( event, ui ) {
+	      drop: function( event, ui ) {
 					var stickyGroup = new StickyGroup(that.model, ui.draggable.data('model'));
 					var groupView = new StickyGroupView({model:stickyGroup}).render();
 					$(this).before(groupView.el);
 					$(this).trigger('accepted');
 					ui.draggable.trigger('dropped');
-	            }
+	      }
 			});
 			return this;
 		},
