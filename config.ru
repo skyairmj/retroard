@@ -46,13 +46,8 @@ class WebSocketApp < Rack::WebSocket::Application
   end
 end
 
-class SinatraApp < Sinatra::Application
-	# load the Sinatra app.
-	require 'app'
-end
-
 # Set service point for the websockets. This way we can run both web sockets and sinatra on the same server and port number.
 map ('/ws') {run WebSocketApp.new}
 
 # This delegates everything other route not defined above to the Sinatra app.
-map ('/') {run SinatraApp}
+map ('/') {run Retroard::Retrospectives}
