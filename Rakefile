@@ -1,7 +1,8 @@
 require 'rake'
 require 'rack'
 require 'rspec/core/rake_task'
-require 'systemu'
+#require File.dirname(__FILE__) + '/boot'
+Dir['tasks/mongodb.rake'].each { |file| import file }
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
@@ -13,16 +14,15 @@ RSpec::Core::RakeTask.new(:rcov) do |t|
   t.rcov_opts = ['--exclude', 'spec']
 end
 
-# Everything else
-Dir.glob('lib/tasks/*.rake').each { |r| import r }
-
 namespace :server do
+  desc 'start web server'
   task :start do
     system 'thin', 'start'
   end
 end
 
 namespace :redis do
+  desc 'start redis server'
   task :start do
     system 'redis-server'
   end

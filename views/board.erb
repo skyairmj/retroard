@@ -68,10 +68,10 @@
 
 	<div class="wrap">
 	    <article id="sections" class="row-fluid">
-	        <% @sections.each do |section| %>
-	            <section class="section span3" id="<%= section[:id] %>">
+	        <% @retrospective.categories.each do |category| %>
+	            <section class="section span3" id="<%= category.title.parameterize.underscore %>">
 	                <div class="sectionHeader">
-	                    <h3><%= section[:display] %></h3>
+	                    <h3><%= category.title %></h3>
 	                    <a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>
 	                </div>
 	                <div class="sectionBody">
