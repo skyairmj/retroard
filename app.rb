@@ -6,7 +6,6 @@ require 'active_support/core_ext/string'
 require File.dirname(__FILE__) + '/config/config'
 
 Sinatra::Base.set(:config, Config.environment_config)
-Config.setup
 
 base = File.dirname(__FILE__)
 Dir.glob(base + '/lib/*.rb'       ).each { |f| require f }

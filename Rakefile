@@ -2,7 +2,6 @@ require 'rake'
 require 'rack'
 require 'rspec/core/rake_task'
 #require File.dirname(__FILE__) + '/boot'
-Dir['tasks/mongodb.rake'].each { |file| import file }
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
@@ -21,10 +20,10 @@ namespace :server do
   end
 end
 
-namespace :redis do
-  desc 'start redis server'
+namespace :db do
+  desc 'start db server'
   task :start do
-    system 'redis-server'
+    sh 'mongod'
   end
 end
 
@@ -38,3 +37,5 @@ rescue LoadError
     abort "Jasmine is not available. In order to run jasmine, you must: (sudo) gem install jasmine"
   end
 end
+
+Dir['tasks/mongodb.rake'].each { |file| import file }

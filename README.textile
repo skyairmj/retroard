@@ -1,13 +1,16 @@
 h1. Team Retrospective
 
 h2. Prerequisites
-# $>brew install redis
-# $>brew install git
-(the other way to install redis is here: http://rediscookbook.org/install_with_installer.html)
 
-Also, you need to install rvm via 'bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)'
+# $>brew install mongodb
+# $>brew install git
+
+Additionally, rvm is recommended for your local development. Install rvm via 'bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)'
 
 h2. To run the application
+
+Clone the repository to your local working directory, @cd@ into the directory. Run the following commands in shell:
+
 # $>bundle install
-# $>rake redis:start
+# $>rake db:start
 # $>rake server:start

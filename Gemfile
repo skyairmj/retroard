@@ -8,18 +8,12 @@ gem 'thin'
 gem 'sinatra'
 gem 'websocket-rack'
 
+gem 'activesupport'
 gem 'json'
 gem 'yajl-ruby'
 
 gem 'bson_ext'
 gem 'mongo_mapper'
-
-gem 'hiredis' 
-gem 'em-synchrony'
-gem 'redis', :require => ['redis/connection/synchrony', 'redis']
-#gem 'resque'
-gem 'redis_orm'
-
 
 group :test do
   gem 'rspec'
