@@ -20,14 +20,10 @@
     StickyView = Backbone.View.extend({
         className: "sticky sticky-single",
         template: _.template('<div class="stickyTop"></div><div class="stickyText"><%=content%></div>'),
-        events: { 
-            'dropped': 'handleDropped',
-            'accepted': 'handleAccepted'
-        },
         
         initialize: function() {
             this.$el.attr('data-uuid', this.model.uuid);
-            this.$el.data('model', this.model);
+            this.$el.data('view', this);
             this.$el.html(this.template({content: this.model.content}));
         },
         
@@ -41,15 +37,19 @@
             this.$el.droppable({
                 accept: ".sticky",
                 drop: function( event, ui ) {
-                    that.model.append(ui.draggable.data('model'));
+                    that.accept(ui.draggable.data('view'));
                     Connection.updateSticky(that.model);
-                    var groupView = new StickyGroupView({model:that.model}).render();
-                    $(this).before(groupView.el);
-                    $(this).trigger('accepted');
-                    ui.draggable.trigger('dropped');
                 }
             });
             return this;
+        },
+        
+        accept: function(thatView) {
+            this.model.append(thatView.model);
+            var groupView = new StickyGroupView({model:this.model}).render();
+            this.$el.before(groupView.el);
+            this.remove();
+            thatView.remove();
         },
         
         handleDropped: function() {
@@ -74,7 +74,7 @@
         
         initialize: function() {
             this.$el.attr('data-uuid', this.model.uuid);
-            this.$el.data('model', this.model);
+            this.$el.data('view', this);
             this.$el.html(this.template());
             var that = this;
             that.$('div.stickyText').append(this.eachTemplate({content: this.model.content}))
@@ -93,15 +93,19 @@
             this.$el.droppable({
                 accept: ".sticky",
                 drop: function( event, ui ) {
-                    that.model.append(ui.draggable.data('model'));
+                    that.accept(ui.draggable.data('view'));
                     Connection.updateSticky(that.model);
-                    var groupView = new StickyGroupView({model:that.model}).render();
-                    $(this).before(groupView.el);
-                    $(this).trigger('accepted');
-                    ui.draggable.trigger('dropped');
                 }
             });
             return this;
+        },
+        
+        accept: function(thatView) {
+            this.model.append(thatView.model);
+            var groupView = new StickyGroupView({model:this.model}).render();
+            this.$el.before(groupView.el);
+            this.remove();
+            thatView.remove();
         },
         
         handleDropped: function() {

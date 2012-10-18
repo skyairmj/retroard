@@ -27,13 +27,13 @@
             this.$('.sectionBody').append(stickyView.$el);
         },
         
-        synchronize: function(data) {
-            if (this.$(data.uuid).length == 0) {
-                newSticky = new Sticky(this.title, data.content, data.uuid);
+        synchronize: function(uuid, data) {
+//            if (this.$(uuid).length == 0) {
+                newSticky = new Sticky(this.title, data.content, uuid);
                 this.add(new StickyView({model: newSticky}).render());
-            } else {
+  //          } else {
                 //update the existing sticky
-            }
+    //        }
             
         }
     });

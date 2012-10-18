@@ -28,10 +28,7 @@ module Retroard
 
     get '/:team/retro/:retroId' do
       content_type :json
-      json = Retrospective.find_by_serial_no(params[:retroId].to_i).to_json
-      # Retrospective.find_by_serial_no(params[:retroId].to_i).to_json
-      puts json
-      return json
+      Retrospective.find_by_serial_no(params[:retroId].to_i).to_json
     end
 
     get '/:team/profile' do

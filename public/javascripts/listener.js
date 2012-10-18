@@ -14,8 +14,7 @@ var Listener = (function() {
         initialize: function(board) {
             Connection.onMessage(function(message) {
 				var messageJSON = $.parseJSON(message.data);
-                console.log(messageJSON)
-                var uriRegex = /^\/retrospective\/(\d+)\/(\w+)\/notes\/([\w|-]+)$/
+                var uriRegex = /^\/retrospective\/(\d+)\/([\w|\s]+)\/notes\/([\w|-]+)$/
                 var match = uriRegex.exec(messageJSON.resourceUri);
                 var expectedRetroId = match[1]
                 if (expectedRetroId != window.retroId) {
@@ -25,7 +24,7 @@ var Listener = (function() {
                 var expectedCategoryTitle = match[2]
                 var expectedNoteId = match[3]
                 if (messageJSON.method == 'put') {
-                    board.getSection(expectedCategoryTitle).synchronize(messageJSON.data);
+                    board.getSection(expectedCategoryTitle).synchronize(expectedNoteId, messageJSON.data);
                 }
             });
         }
