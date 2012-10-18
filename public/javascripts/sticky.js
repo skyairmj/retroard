@@ -5,10 +5,6 @@
             this.content = content || '';
             this.uuid = uuid || UUID.v4();
         },
-    
-        getContent: function() {
-            return this.content;
-        },
         
         toJSON: function() {
             return {
@@ -36,10 +32,6 @@
             $.merge(this.stickies, (modelDroppee instanceof StickyGroup)?modelDroppee.stickies:[modelDroppee]);
         },
         
-        getContent: function() {
-            return $.map(this.stickies, function(value) {return value.getContent();}).join('<br>-----<br>');
-        },
-        
         toJSON: function() {
             var stickyIds = $.map(this.stickies, function(value) {return value.uuid;});
             return {
@@ -62,7 +54,7 @@
         initialize: function() {
             this.$el.attr('data-uuid', this.model.uuid);
             this.$el.data('model', this.model);
-            this.$el.html(this.template({content: this.model.getContent()}));
+            this.$el.html(this.template({content: this.model.content}));
             $('section[data-title="'+ this.model.category +'"]').find('.sectionBody').append(this.$el);
         },
         
@@ -97,8 +89,11 @@
     
     StickyGroupView = Backbone.View.extend({
         className: "sticky sticky-multi",
-        template: _.template('<div class="stickyTop"><s></s><div class="sticky-like"><i class="icon-thumbs-up"></i></div></div><div class="stickyText"><%=content%></div>'),
-        events: { 
+        
+        template: _.template('<div class="stickyTop"><s></s><div class="sticky-like"><i class="icon-thumbs-up"></i></div></div><div class="stickyText"></div>'),
+        eachTemplate: _.template('<span><%=content%></span>'),
+        
+        events: {
             'dropped': 'handleDropped',
             'accepted': 'handleAccepted'
         },
@@ -106,7 +101,11 @@
         initialize: function() {
             this.$el.attr('data-uuid', this.model.uuid);
             this.$el.data('model', this.model);
-            this.$el.html(this.template({content: this.model.getContent()}));
+            this.$el.html(this.template());
+            var that = this;
+            $.each(this.model.stickies, function(index, sticky){
+                that.$('div.stickyText').append(that.eachTemplate({content: sticky.content}))
+            });
         },
         
         render: function(){

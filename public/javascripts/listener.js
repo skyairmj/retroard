@@ -25,7 +25,7 @@ var Listener = (function() {
                     that.board.getSection(expectedCategoryTitle).synchronizeSticky(messageJSON.data);                    
                 }
                 else {
-                    console.warn('You Are Not Expected to Receive The Message!')
+                    console.warn('You Are Not Supposed to Receive The Message!')
                 }
             });
         }

@@ -267,7 +267,7 @@ header .separator {
     word-wrap: break-word;
 }
 
-.sticky-each {
+div.sticky-multi div.stickyText span {
     display: block;
     padding: 5px 5px 5px 12px;
     background: transparent url(../images/sticky-bullet.png) no-repeat left 11px;
