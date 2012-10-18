@@ -13,7 +13,16 @@
             board.add(category.title, section);
             
             $.each(category.notes, function(index2, note) {
-                section.add(new StickyView({model: new Sticky(category.title, note.content, note.uuid)}).render());
+                var sticky = new Sticky(category.title, note.content, note.uuid);
+                if (!!note.subordinates.length){
+                    $.each(note.subordinates, function(index3, subordinate) {
+                        sticky.append(new Sticky(category.title, subordinate.content, subordinate.uuid))
+                    });
+                    section.add(new StickyGroupView({model: sticky}).render());
+                }
+                else {
+                    section.add(new StickyView({model: sticky}).render());
+                }
             });
         });
  	});

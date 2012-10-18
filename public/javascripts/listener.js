@@ -15,15 +15,17 @@ var Listener = (function() {
             Connection.onMessage(function(message) {
 				var messageJSON = $.parseJSON(message.data);
                 console.log(messageJSON)
-                var uriRegex = /^\/retrospective\/(\d+)\/(\w+)\/notes$/
+                var uriRegex = /^\/retrospective\/(\d+)\/(\w+)\/notes\/([\w|-]+)$/
                 var match = uriRegex.exec(messageJSON.resourceUri);
                 var expectedRetroId = match[1]
-                var expectedCategoryTitle = match[2]
-                if(expectedRetroId == window.retroId){
-                    board.getSection(expectedCategoryTitle).synchronize(messageJSON.data);                    
-                }
-                else {
+                if (expectedRetroId != window.retroId) {
                     console.warn('You Are Not Supposed to Receive The Message!')
+                    return;
+                }
+                var expectedCategoryTitle = match[2]
+                var expectedNoteId = match[3]
+                if (messageJSON.method == 'put') {
+                    board.getSection(expectedCategoryTitle).synchronize(messageJSON.data);
                 }
             });
         }

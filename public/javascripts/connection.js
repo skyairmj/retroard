@@ -42,17 +42,22 @@ var Connection = (function() {
 
 		createSticky: function(sticky) {
 			this.sendMessage($.toJSON({
-	            'resourceUri': '/retrospective/'+window.retroId+'/'+sticky.category+'/notes',
-	            'method': 'post',
-	            'data': sticky.toJSON()
+	            'resourceUri': '/retrospective/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+	            'method': 'put',
+	            'data': {'content': sticky.content}
 	        }));
 		},
 
-		createStickyGroup: function(stickyGroup) {
+		updateSticky: function(sticky) {
 			this.sendMessage($.toJSON({
-				'resource': '/retrospective/'+window.retroId+'/'+stickyGroup.category+'/noteGroup/'+stickyGroup.uuid,
-				'method': 'save',
-				'data': stickyGroup.toJSON()
+				'resourceUri': '/retrospective/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+				'method': 'post',
+				'data': {
+                    'newSubordinate': {
+                        'uuid': sticky.newSubordinate.uuid,
+                        'category': sticky.newSubordinate.category 
+                    }
+                }
 			}));
 		}
     }

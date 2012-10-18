@@ -4,41 +4,15 @@
             this.category = category;
             this.content = content || '';
             this.uuid = uuid || UUID.v4();
+            this.stickies = [];
         },
         
-        toJSON: function() {
-            return {
-                'uuid': this.uuid,
-                'content': this.content
-            };
-        }
-    });
-    
-    Stickies = Backbone.Collection.extend({
-        model: Sticky,
-    });
-    
-    StickyGroup = Backbone.Model.extend({
-        initialize: function(modelDropped, modelDroppee) {
-            this.category = modelDropped.category;
-            if(modelDropped instanceof StickyGroup) {
-                this.uuid = modelDropped.uuid;
-            } else if(modelDroppee instanceof StickyGroup) {
-                this.uuid = modelDroppee.uuid;
-            } else {
-                this.uuid = UUID.v4();
-            }
-            this.stickies = (modelDropped instanceof StickyGroup)? modelDropped.stickies:[modelDropped];            
-            $.merge(this.stickies, (modelDroppee instanceof StickyGroup)?modelDroppee.stickies:[modelDroppee]);
-        },
-        
-        toJSON: function() {
-            var stickyIds = $.map(this.stickies, function(value) {return value.uuid;});
-            return {
-                'category': this.category,
-                'uuid': this.uuid,
-                'retrospectiveId': this.retroId,
-                'stickies': stickyIds
+        append: function(sticky){
+            this.newSubordinate = sticky;
+            $.merge(this.stickies, [sticky]);
+            if(!!sticky.stickies.length) {
+                $.merge(this.stickies, sticky.stickies);
+                sticky.stickies.length = 0;
             }
         }
     });
@@ -67,8 +41,9 @@
             this.$el.droppable({
                 accept: ".sticky",
                 drop: function( event, ui ) {
-                    var stickyGroup = new StickyGroup(that.model, ui.draggable.data('model'));
-                    var groupView = new StickyGroupView({model:stickyGroup}).render();
+                    that.model.append(ui.draggable.data('model'));
+                    Connection.updateSticky(that.model);
+                    var groupView = new StickyGroupView({model:that.model}).render();
                     $(this).before(groupView.el);
                     $(this).trigger('accepted');
                     ui.draggable.trigger('dropped');
@@ -102,6 +77,7 @@
             this.$el.data('model', this.model);
             this.$el.html(this.template());
             var that = this;
+            that.$('div.stickyText').append(this.eachTemplate({content: this.model.content}))
             $.each(this.model.stickies, function(index, sticky){
                 that.$('div.stickyText').append(that.eachTemplate({content: sticky.content}))
             });
@@ -117,8 +93,9 @@
             this.$el.droppable({
                 accept: ".sticky",
                 drop: function( event, ui ) {
-                    var stickyGroup = new StickyGroup(that.model, ui.draggable.data('model'));
-                    var groupView = new StickyGroupView({model:stickyGroup}).render();
+                    that.model.append(ui.draggable.data('model'));
+                    Connection.updateSticky(that.model);
+                    var groupView = new StickyGroupView({model:that.model}).render();
                     $(this).before(groupView.el);
                     $(this).trigger('accepted');
                     ui.draggable.trigger('dropped');

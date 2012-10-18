@@ -7,5 +7,6 @@ module Retroard
     
     timestamps!
     
+    many :subordinates, :class_name => 'Retroard::Note'
   end
 end
