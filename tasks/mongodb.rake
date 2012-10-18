@@ -1,10 +1,4 @@
-require File.dirname(__FILE__) + '/../app'
-
-namespace :db do
-  task :environment do
-    Config.setup
-  end
-  
+namespace :db do  
   desc 'drop all database'
   task :drop => :environment do
     MongoMapper.database.collections.select {|c| c.name !~ /system/ }.each(&:drop)

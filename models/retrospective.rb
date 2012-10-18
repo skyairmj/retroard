@@ -3,7 +3,8 @@ module Retroard
     include MongoMapper::Document
     
     # == Attributes
-    key :uuid, :rquired=>true
+    key :title
+    key :serial_no, Integer, :rquired=>true
     timestamps!
     
     # == Indices

@@ -18,8 +18,8 @@
 		add: function() {
 			var content = $.trim(this.textarea.val());
             if (!!content) {
-				newSticky = new Sticky(this.targetSection, content);
-				Connection.saveSticky(newSticky);
+				newSticky = new Sticky(this.targetSection.title, content);
+				Connection.createSticky(newSticky);
 //				new StickyView({model: newSticky}).render();
             }
             this.textarea.val('');

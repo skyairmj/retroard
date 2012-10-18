@@ -1,4 +1,4 @@
-retro = Retroard::Retrospective.new
+retro = Retroard::Retrospective.new({:serial_no=>1})
 well = Retroard::Category.new({:title => 'Well'})
 less_well = Retroard::Category.new({:title => 'Less Well'})
 idea = Retroard::Category.new({:title => 'Idea'})

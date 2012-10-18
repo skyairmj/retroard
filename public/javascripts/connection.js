@@ -18,7 +18,7 @@ var Connection = (function() {
 
     return {
         initialize: function(serverHost, serverPort) {
-			serverHost = serverHost || websocket_server_address;
+		    serverHost = serverHost || websocket_server_address;
 			serverPort = serverPort || websocket_server_port_number;
             this.connectionUrl = 'ws://'+serverHost+':'+serverPort+'/'+websocket_mount_point;
             this.socket = connect(this.connectionUrl);
@@ -40,17 +40,17 @@ var Connection = (function() {
             }
         },
 
-		saveSticky: function(sticky) {
+		createSticky: function(sticky) {
 			this.sendMessage($.toJSON({
-	            'resource': 'sticky',
-	            'method': 'save',
+	            'resourceUri': '/retrospective/'+window.retroId+'/'+sticky.category+'/notes',
+	            'method': 'post',
 	            'data': sticky.toJSON()
 	        }));
 		},
-		
-		saveStickyGroup: function(stickyGroup) {
+
+		createStickyGroup: function(stickyGroup) {
 			this.sendMessage($.toJSON({
-				'resource': 'stickyGroup',
+				'resource': '/retrospective/'+window.retroId+'/'+stickyGroup.category+'/noteGroup/'+stickyGroup.uuid,
 				'method': 'save',
 				'data': stickyGroup.toJSON()
 			}));

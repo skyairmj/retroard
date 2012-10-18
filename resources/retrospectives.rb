@@ -22,8 +22,7 @@ module Retroard
     end
 
     get '/:team/retro/:retroId' do
-#      @retrospective = Retrospective.find_one({id: params[:retroId]})
-      @retrospective = Retrospective.find_one()
+      @retrospective = Retrospective.find_by_serial_no params[:retroId].to_i
       erb :board
     end
 

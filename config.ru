@@ -2,11 +2,8 @@ require 'rubygems'
 require 'thin'
 require 'rack'
 require 'rack/websocket'
-require 'sinatra'
 require 'json'
-
-require File.expand_path('../boot', __FILE__)
-require 'json_helper'
+require './boot'
 
 class WebSocketApp < Rack::WebSocket::Application
 
@@ -14,22 +11,22 @@ class WebSocketApp < Rack::WebSocket::Application
   @@connections = Array.new
 
 	def on_open(env)
-		puts "Client Connected"
+		puts "Client #{self} Connected"
     @@connections << self
 	end
 
 	def on_close(env)
-		puts "Client Disconnected"
+	  @@connections.delete(self)
+		puts "Client #{self} Disconnected"
 	end
 
 	def on_message(env, message)
 		puts "Received message: #{message}"
 		
 		msg = parse_json(message)
-		model = msg[:resource]
-    action = msg[:method]
-    sticky = eval "#{model.capitalize}.#{action} (#{msg[:data]})"
-    msg[:data][:lastModified] = sticky.modified_at.to_s
+		resource_uri = msg[:resourceUri]
+    method = msg[:method]
+    Retroard::ResourceDispatcher.dispatch resource_uri, method, msg[:data]
     publish(encode_json(msg))
 	end
 
@@ -42,6 +39,27 @@ class WebSocketApp < Rack::WebSocket::Application
   def publish message
     @@connections.each do |connection|
       connection.send_data(message)
+    end
+  end
+end
+
+module Retroard
+  class ResourceDispatcher
+    def self.dispatch resource_uri, method, request_data
+      case resource_uri
+      when /notes$/
+        case method
+        when 'post'
+          named_regex = /^\/retro\/<retroId>\/<category>\/notes$/
+          result = named_regex.match(resource_uri)
+          retroId = result[:retroId].to_i
+          category_title = result[:category]
+          retrospective = Retrospecitve.find_by_id retroId
+          category = retrospective.categories.select{|c|c.title==category_title}.first
+          category.notes << Note.new({:uuid=>request_data[:uuid], :content=>request_data[:content]})
+          retrospective.save
+        end
+      end
     end
   end
 end

@@ -1,117 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Team Retrospective</title>
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
-    <meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
-    <meta name="description"
-          content="This is an online retrospective board, which enables distributed teams to organize retrospectives just like they are co-located."/>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/global.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/board.css"/>
-    <script type="text/javascript" src="/javascripts/libs/jquery-1.8.2.js"></script>
-    <script type="text/javascript" src="/javascripts/libs/jquery-ui-1.9.0.custom.js"></script>
-    <script type="text/javascript" src="/javascripts/libs/jquery.json-2.3.min.js"></script>
-	  <script type="text/javascript" src="/javascripts/libs/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/javascripts/libs/underscore-1.3.3-min.js"></script>
-	  <script type="text/javascript" src="/javascripts/libs/backbone-min.js"></script>
-	  <script  type="text/javascript">
-			window.App={}
-      window.teamName = "<%= params[:team] %>"
-			window.retroId = "<%= params[:retroId] %>"
-			window.option = {'serverHost': '<%= request.host %>', 'serverPort': '<%= request.port %>'}
-    </script>
+	<title>Team Retrospective</title>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+	<meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
+	<meta name="description"
+		  content="This is an online retrospective board, which enables distributed teams to organize retrospectives just like they are co-located."/>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/global.css"/>
+	<link rel="stylesheet" type="text/css" href="/css/board.css"/>
+	<script type="text/javascript" src="/javascripts/libs/jquery-1.8.2.js"></script>
+	<script type="text/javascript" src="/javascripts/libs/jquery-ui-1.9.0.custom.js"></script>
+	<script type="text/javascript" src="/javascripts/libs/jquery.json-2.3.min.js"></script>
+	<script type="text/javascript" src="/javascripts/libs/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/javascripts/libs/underscore-1.3.3-min.js"></script>
+	<script type="text/javascript" src="/javascripts/libs/backbone-min.js"></script>
+    <script type="text/javascript" src="/javascripts/libs/uuid.js"></script>
+	<script  type="text/javascript">
+		window.App={}
+	    window.teamName = "<%= params[:team] %>"
+		window.retroId = "<%= params[:retroId] %>"
+		window.option = {'serverHost': '<%= request.host %>', 'serverPort': '<%= request.port %>'}
+        window.UUID = uuid.noConflict();
+	</script>
 
-    <script type="text/javascript" src="/javascripts/utilities.js"></script>
-    <script type="text/javascript" src="/javascripts/connection.js"></script>
-    <script type="text/javascript" src="/javascripts/listener.js"></script>
-    <script type="text/javascript" src="/javascripts/sticky.js"></script>
-    <script type="text/javascript" src="/javascripts/section.js"></script>
-    <script type="text/javascript" src="/javascripts/history.js"></script>
-    <script type="text/javascript" src="/javascripts/board.js"></script>
+	<script type="text/javascript" src="/javascripts/connection.js"></script>
+	<script type="text/javascript" src="/javascripts/listener.js"></script>
+	<script type="text/javascript" src="/javascripts/sticky.js"></script>
+	<script type="text/javascript" src="/javascripts/section.js"></script>
+	<script type="text/javascript" src="/javascripts/history.js"></script>
+	<script type="text/javascript" src="/javascripts/board.js"></script>
 </head>
 <body>
-    <header>
-        <div class="headerWrap clearFloat">
-            <h2 class="brand">Team Retro</h2>
-            <span class="login-name"><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></span>
-            <span class="separator">|</span>
-            <a href="#">Create</a>
-            <a href="#">Export</a>
-            <span class="separator">|</span>
-            <a href="#">Group</a>
-            <a href="#">Vote</a>
-            <a href="#">Action</a>
-            <a href="#">Complete</a>
-            <span class="separator">|</span>
-            <a href="#" id="historyHeaderButton">
-                <span>
-                    History
-                </span>
-            </a>
-            <div id="historyDialog">
-                <ul>
-                    <li>
-                        <a href="#">Sprint1</a>
-                    </li>
-                    <li>
-                        <a href="#">Sprint2</a>
-                    </li>
-                    <li>
-                        <a href="#">Sprint3</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </header>
+	<header>
+		<div class="headerWrap clearFloat">
+			<h2 class="brand">Team Retro</h2>
+			<span class="login-name"><a href="/<%=params[:team]%>/profile"><%=params[:team]%></a></span>
+			<span class="separator">|</span>
+			<a href="#">Create</a>
+			<a href="#">Export</a>
+			<span class="separator">|</span>
+			<a href="#">Group</a>
+			<a href="#">Vote</a>
+			<a href="#">Action</a>
+			<a href="#">Complete</a>
+			<span class="separator">|</span>
+			<a href="#" id="historyHeaderButton">
+				<span>
+					History
+				</span>
+			</a>
+			<div id="historyDialog">
+				<ul>
+					<li>
+						<a href="#">Sprint1</a>
+					</li>
+					<li>
+						<a href="#">Sprint2</a>
+					</li>
+					<li>
+						<a href="#">Sprint3</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</header>
 
 	<div class="wrap">
-	    <article id="sections" class="row-fluid">
-	        <% @retrospective.categories.each do |category| %>
-	            <section class="section span3" id="<%= category.title.parameterize.underscore %>">
-	                <div class="sectionHeader">
-	                    <h3><%= category.title %></h3>
-	                    <a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>
-	                </div>
-	                <div class="sectionBody">
-                        <div class="sticky sticky-multi ui-draggable ui-droppable" data-uuid="">
-                            <div class="stickyTop"><s></s><div class="sticky-like"><i class="icon-thumbs-up"></i></div></div>
-                            <div class="stickyText">
-                                <span class="sticky-each">hjgjhgjh</span>
-                                <span class="sticky-each">asdasd</span>
-                                <span class="sticky-each">asdasdkljklsdfjsdjl</span>
-                                <span class="sticky-each">a
-                                    sd
-                                    asdsdfsssssssssssssssdfsdfsdfsdf
-                                    as
-                                    d
-                                    asd
-                                    aasdsfsdfsdfs</span>
-                                <span class="sticky-each">asdasdad</span>
-                                <span class="sticky-each">asdadas</span>
-                                <span class="sticky-each">asdasdasdada</span>
-                                <span class="sticky-each">asdasd</span>
-                            </div>
-                        </div>
-	                </div>
-	            </section>
-	        <% end %>
-	    </article>
+		<article id="sections" class="row-fluid">
+			<% @retrospective.categories.each do |category| %>
+				<section class="section span3" data-title='<%=category.title%>'>
+					<div class="sectionHeader">
+						<h3><%= category.title %></h3>
+						<a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>
+					</div>
+					<div class="sectionBody">
+						<div class="sticky sticky-multi ui-draggable ui-droppable" data-uuid="">
+							<div class="stickyTop"><s></s><div class="sticky-like"><i class="icon-thumbs-up"></i></div></div>
+							<div class="stickyText">
+								<span class="sticky-each">hjgjhgjh</span>
+								<span class="sticky-each">asdasd</span>
+								<span class="sticky-each">asdasdkljklsdfjsdjl</span>
+								<span class="sticky-each">a
+									sd
+									asdsdfsssssssssssssssdfsdfsdfsdf
+									as
+									d
+									asd
+									aasdsfsdfsdfs</span>
+								<span class="sticky-each">asdasdad</span>
+								<span class="sticky-each">asdadas</span>
+								<span class="sticky-each">asdasdasdada</span>
+								<span class="sticky-each">asdasd</span>
+							</div>
+						</div>
+					</div>
+				</section>
+			<% end %>
+		</article>
 	</div>
 
 	<div class="container footer">
-	    <small>&copy; 2012 Team-Cares</small>
+		<small>&copy; 2012 Team-Cares</small>
 	</div>
 
 	<div class="modal hide fade in" id="modal" tabindex="-1" role="dialog" aria-hidden="true" style="width: 480px; background-color: transparent; border: 0px; border-radius:0px; box-shadow:none;">
 		<div id="stickyDialog">
-	        <textarea placeholder="max length = 140" maxlength="140"></textarea>
-	        <div class="buttons">
-	            <button type="image" value="Cancel" class="btn cancelButton" data-dismiss="modal" aria-hidden="true">Cancel</button>
-	            <button type="image" value="OK" class="btn okButton btn-success" data-dismiss="modal" aria-hidden="true">OK</button>
-	        </div>
-	    </div>
+			<textarea placeholder="max length = 140" maxlength="140"></textarea>
+			<div class="buttons">
+				<button type="image" value="Cancel" class="btn cancelButton" data-dismiss="modal" aria-hidden="true">Cancel</button>
+				<button type="image" value="OK" class="btn okButton btn-success" data-dismiss="modal" aria-hidden="true">OK</button>
+			</div>
+		</div>
 	</div>
 </body>
 <script type="text/javascript" src="/javascripts/dialog.js"></script>

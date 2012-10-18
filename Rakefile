@@ -1,17 +1,4 @@
 require 'rake'
-require 'rack'
-require 'rspec/core/rake_task'
-#require File.dirname(__FILE__) + '/boot'
-
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
-end
-
-RSpec::Core::RakeTask.new(:rcov) do |t|
-  t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
-  t.rcov = true
-  t.rcov_opts = ['--exclude', 'spec']
-end
 
 namespace :server do
   desc 'start web server'
@@ -27,6 +14,19 @@ namespace :db do
   end
 end
 
+require 'rspec/core/rake_task'
+require './boot'
+
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
+end
+
+RSpec::Core::RakeTask.new(:rcov) do |t|
+  t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
+  t.rcov = true
+  t.rcov_opts = ['--exclude', 'spec']
+end
+  
 task :default => :spec
 
 begin
