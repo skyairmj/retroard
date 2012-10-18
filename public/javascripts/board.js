@@ -11,8 +11,8 @@
             this.history.initialize2();
         },
 
-        getSection: function(name) {
-            return this.sections[name];
+        getSection: function(title) {
+            return this.sections[title];
         }
     });
     

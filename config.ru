@@ -29,7 +29,7 @@ class WebSocketApp < Rack::WebSocket::Application
 		resource_uri = msg[:resourceUri]
     method = msg[:method]
     Retroard::ResourceDispatcher.dispatch resource_uri, method, msg[:data]
-    publish(encode_json(msg))
+    publish(message)
 	end
 
 	def on_error(env, error)

@@ -16,7 +16,17 @@ var Listener = (function() {
             this.board = board;
             Connection.onMessage(function(message) {
 				var messageJSON = $.parseJSON(message.data);
-                that.board.getSection(messageJSON.data.category).synchronizeSticky(messageJSON.data);
+                console.log(messageJSON)
+                var uriRegex = /^\/retrospective\/(\d+)\/(\w+)\/notes$/
+                var match = uriRegex.exec(messageJSON.resourceUri);
+                var expectedRetroId = match[1]
+                var expectedCategoryTitle = match[2]
+                if(expectedRetroId == window.retroId){
+                    that.board.getSection(expectedCategoryTitle).synchronizeSticky(messageJSON.data);                    
+                }
+                else {
+                    console.warn('You Are Not Expected to Receive The Message!')
+                }
             });
         }
     }
