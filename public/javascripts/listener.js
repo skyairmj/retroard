@@ -12,8 +12,6 @@ var Listener = (function() {
 
     return {
         initialize: function(board) {
-            var that = this;
-            this.board = board;
             Connection.onMessage(function(message) {
 				var messageJSON = $.parseJSON(message.data);
                 console.log(messageJSON)
@@ -22,7 +20,7 @@ var Listener = (function() {
                 var expectedRetroId = match[1]
                 var expectedCategoryTitle = match[2]
                 if(expectedRetroId == window.retroId){
-                    that.board.getSection(expectedCategoryTitle).synchronizeSticky(messageJSON.data);                    
+                    board.getSection(expectedCategoryTitle).synchronize(messageJSON.data);                    
                 }
                 else {
                     console.warn('You Are Not Supposed to Receive The Message!')

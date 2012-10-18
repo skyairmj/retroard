@@ -11,22 +11,30 @@ module Retroard
 
     post '/signin' do
       unless params[:team].nil?
-        redirect "/#{params[:team]}/retro/1", 303
+        redirect "/#{params[:team]}", 303
       end
     end
 
     post '/signup' do
       unless params[:team].nil?
-        redirect "/#{params[:team]}/retro/1", 303
+        redirect "/#{params[:team]}", 303
       end
     end
-
-    get '/:team/retro/:retroId' do
-      @retrospective = Retrospective.find_by_serial_no params[:retroId].to_i
+    
+    get '/:team' do
+      @retrospective = Retrospective.last
       erb :board
     end
 
-    get '/:team' do
+    get '/:team/retro/:retroId' do
+      content_type :json
+      json = Retrospective.find_by_serial_no(params[:retroId].to_i).to_json
+      # Retrospective.find_by_serial_no(params[:retroId].to_i).to_json
+      puts json
+      return json
+    end
+
+    get '/:team/profile' do
       "hello! #{params[:team]}"
     end
     

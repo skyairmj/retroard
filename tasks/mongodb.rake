@@ -1,4 +1,9 @@
-namespace :db do  
+namespace :db do
+  desc 'start db server'
+  task :start do
+    sh 'mongod'
+  end
+    
   desc 'drop all database'
   task :drop => :environment do
     MongoMapper.database.collections.select {|c| c.name !~ /system/ }.each(&:drop)

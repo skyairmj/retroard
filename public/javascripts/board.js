@@ -1,14 +1,16 @@
 (function(){
     Board = Backbone.View.extend({
-        initialize: function(option) {
+        el: 'article#sections',
+        
+        initialize: function() {
             this.sections = {}
-            this.sections['Well'] = new WellSection();
-            this.sections['Less Well'] = new LessWellSection();
-            this.sections['Puzzle'] = new PuzzleSection();
-            this.sections['Idea'] = new IdeaSection();
-            
             this.history = new History();
             this.history.initialize2();
+        },
+        
+        add: function(title, section) {
+            this.sections[title] = section;
+            this.$el.append(section.$el)
         },
 
         getSection: function(title) {

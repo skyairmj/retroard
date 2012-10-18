@@ -55,7 +55,6 @@
             this.$el.attr('data-uuid', this.model.uuid);
             this.$el.data('model', this.model);
             this.$el.html(this.template({content: this.model.content}));
-            $('section[data-title="'+ this.model.category +'"]').find('.sectionBody').append(this.$el);
         },
         
         render: function() {

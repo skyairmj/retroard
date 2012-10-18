@@ -1,30 +1,40 @@
 (function(){
     Section = Backbone.View.extend({
+        tagName: 'section',
+        className: 'section span3',
+        template: _.template('<div class="sectionHeader">'+
+						'<h3><%=title%></h3>'+
+						'<a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>'+
+					'</div>'+
+					'<div class="sectionBody">'+
+                    '</div>'),
+                
         events: {
             'click .addStickyButton': 'setStickyTarget'
         },
         
-        initialize: function() {
-            this.title = this.$el.attr('data-title')
+        initialize: function(option) {
+            this.title = option.title;
+            this.$el.attr('data-title', this.title);
+            this.$el.html(this.template({title: this.title}));
         },
     
         setStickyTarget: function() {
             StickyDialog.target(this);
         },
         
-        synchronizeSticky: function(data) {
+        add: function(stickyView){
+            this.$('.sectionBody').append(stickyView.$el);
+        },
+        
+        synchronize: function(data) {
             if (this.$(data.uuid).length == 0) {
                 newSticky = new Sticky(this.title, data.content, data.uuid);
-                new StickyView({model: newSticky}).render();
+                this.add(new StickyView({model: newSticky}).render());
             } else {
                 //update the existing sticky
             }
             
         }
     });
-    
-    WellSection = Section.extend({el: 'section[data-title="Well"]'});
-    LessWellSection = Section.extend({el: 'section[data-title="Less Well"]'});
-    PuzzleSection = Section.extend({el: 'section[data-title="Puzzle"]'});
-    IdeaSection = Section.extend({el: 'section[data-title="Idea"]'}); 
 }());

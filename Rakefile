@@ -1,4 +1,5 @@
 require 'rake'
+require './boot'
 
 namespace :server do
   desc 'start web server'
@@ -7,18 +8,11 @@ namespace :server do
   end
 end
 
-namespace :db do
-  desc 'start db server'
-  task :start do
-    sh 'mongod'
-  end
+task :environment do
+  Config.setup
 end
 
 require 'rspec/core/rake_task'
-
-task :environment do 
-  Config.setup
-end
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.
@@ -29,8 +23,8 @@ RSpec::Core::RakeTask.new(:rcov) do |t|
   t.rcov = true
   t.rcov_opts = ['--exclude', 'spec']
 end
-  
-task :default => :spec
+
+#task :default => :spec
 
 begin
   require 'jasmine'

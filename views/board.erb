@@ -20,7 +20,7 @@
 	<script  type="text/javascript">
 		window.App={}
 	    window.teamName = "<%= params[:team] %>"
-		window.retroId = "<%= params[:retroId] %>"
+		window.retroId = "<%= @retrospective.serial_no %>"
 		window.option = {'serverHost': '<%= request.host %>', 'serverPort': '<%= request.port %>'}
         window.UUID = uuid.noConflict();
 	</script>
@@ -69,35 +69,6 @@
 
 	<div class="wrap">
 		<article id="sections" class="row-fluid">
-			<% @retrospective.categories.each do |category| %>
-				<section class="section span3" data-title='<%=category.title%>'>
-					<div class="sectionHeader">
-						<h3><%= category.title %></h3>
-						<a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>
-					</div>
-					<div class="sectionBody">
-						<div class="sticky sticky-multi">
-							<div class="stickyTop"><s></s><div class="sticky-like"><i class="icon-thumbs-up"></i></div></div>
-							<div class="stickyText">
-								<span>hjgjhgjh</span>
-								<span>asdasd</span>
-								<span>asdasdkljklsdfjsdjl</span>
-								<span>a
-									sd
-									asdsdfsssssssssssssssdfsdfsdfsdf
-									as
-									d
-									asd
-									aasdsfsdfsdfs</span>
-								<span>asdasdad</span>
-								<span>asdadas</span>
-								<span>asdasdasdada</span>
-								<span>asdasd</span>
-							</div>
-						</div>
-					</div>
-				</section>
-			<% end %>
 		</article>
 	</div>
 

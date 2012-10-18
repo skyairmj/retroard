@@ -6,15 +6,17 @@
 	window.App = new AppView
 	*/
 	var board = new Board();
-	// $.getJSON('/'+ teamName + '/retro/'+retroId+'/sticky', function(sections) {
-	// 		
-	// 		for (var sectionName in sections) {
-	// 			var currentSection = board.getSection(sectionName);
-	// 		    for(var uuid in sections[sectionName]) {
-	// 				new StickyView({model: new Sticky(sectionName, sections[sectionName][uuid].content, uuid)}).render();
-	// 			}
-	// 		}
-	// 	});
+	$.getJSON('/'+ teamName + '/retro/'+retroId, function(retrospective) {
+	 	
+        $.each(retrospective.categories, function(index, category){
+            var section = new Section({title: category.title}).render();
+            board.add(category.title, section);
+            
+            $.each(category.notes, function(index2, note) {
+                section.add(new StickyView({model: new Sticky(category.title, note.content, note.uuid)}).render());
+            });
+        });
+ 	});
 	Connection.initialize(option['serverHost'], option['serverPort']);
-  Listener.initialize(board);
+    Listener.initialize(board);
 }());
