@@ -23,8 +23,13 @@ var Listener = (function() {
                 }
                 var expectedCategoryTitle = match[2]
                 var expectedNoteId = match[3]
-                if (messageJSON.method == 'put') {
+                switch(messageJSON.method){
+                    case 'put':
                     board.getSection(expectedCategoryTitle).synchronize(expectedNoteId, messageJSON.data);
+                    break;
+                    case 'post':
+                    board.synchronize(expectedNoteId, messageJSON.data);
+                    break;
                 }
             });
         }

@@ -15,6 +15,12 @@
 
         getSection: function(title) {
             return this.sections[title];
+        },
+        
+        synchronize: function(baseStickyUUID, data) {
+           var dropped = this.$('div[data-uuid="'+baseStickyUUID+'"]').data('view');
+           var droppee = this.$('div[data-uuid="'+data.newSubordinate.uuid+'"]').data('view')
+           dropped.accept(droppee);
         }
     });
     
