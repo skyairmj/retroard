@@ -15,7 +15,10 @@ namespace :db do
 end
 
 require 'rspec/core/rake_task'
-require './boot'
+
+task :environment do 
+  Config.setup
+end
 
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.pattern = "spec/ruby/**/*_spec.rb" # don't need this, it's default.

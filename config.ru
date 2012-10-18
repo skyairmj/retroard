@@ -5,6 +5,8 @@ require 'rack/websocket'
 require 'json'
 require './boot'
 
+Config.setup
+
 class WebSocketApp < Rack::WebSocket::Application
 
   include JSonHelper
@@ -50,11 +52,11 @@ module Retroard
       when /notes$/
         case method
         when 'post'
-          named_regex = /^\/retro\/<retroId>\/<category>\/notes$/
+          named_regex = /^\/retrospective\/(?<retroId>\d+)\/(?<category>\w+)\/notes$/
           result = named_regex.match(resource_uri)
           retroId = result[:retroId].to_i
           category_title = result[:category]
-          retrospective = Retrospecitve.find_by_id retroId
+          retrospective = Retrospective.find_by_serial_no retroId
           category = retrospective.categories.select{|c|c.title==category_title}.first
           category.notes << Note.new({:uuid=>request_data[:uuid], :content=>request_data[:content]})
           retrospective.save
