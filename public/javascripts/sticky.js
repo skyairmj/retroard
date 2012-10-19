@@ -64,7 +64,7 @@
     StickyGroupView = Backbone.View.extend({
         className: "sticky sticky-multi",
         
-        template: _.template('<div class="stickyTop"><s></s><div class="sticky-like"><i class="icon-thumbs-up"></i></div></div><div class="stickyText"></div>'),
+        template: _.template('<div class="stickyTop"><s></s><div class="sticky-like"><i class="icon-thumbs-up"></i><span class="like-count">5</span></div></div><div class="stickyText"></div>'),
         eachTemplate: _.template('<span><%=content%></span>'),
         
         events: {

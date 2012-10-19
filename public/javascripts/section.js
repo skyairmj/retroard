@@ -16,6 +16,7 @@
         initialize: function(option) {
             this.title = option.title;
             this.$el.attr('data-title', this.title);
+            this.$el.attr('id', this.title);
             this.$el.html(this.template({title: this.title}));
         },
     

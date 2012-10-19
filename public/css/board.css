@@ -147,19 +147,19 @@ header .separator {
     font-family: Marydale;
 }
 
-#well .sectionHeader h3 {
+#Well .sectionHeader h3 {
     background-image: url(/images/face-well.png);
 }
 
-#lessWell .sectionHeader h3 {
+#LessWell .sectionHeader h3 {
     background-image: url(/images/face-less-well.png);
 }
 
-#puzzle .sectionHeader h3 {
+#Puzzle .sectionHeader h3 {
     background-image: url(/images/face-puzzle.png);
 }
 
-#idea .sectionHeader h3 {
+#Idea .sectionHeader h3 {
     background-image: url(/images/face-idea.png);
 }
 
@@ -224,17 +224,17 @@ header .separator {
 }
 
 .sticky-multi .stickyTop .sticky-like {
-    width: 24px;
-    height: 21px;
-    padding-top: 3px;
+    width: 125px;
+    height: 27px;
+    padding-top: 0px;
+    line-height: 27px;
     position: absolute;
     right: 3px;
     top: 9px;
     text-align: center;
     cursor: pointer;
     display: none;
-    background-color: rgba(255, 255, 255, .6);
-    border-bottom-left-radius: 4px;
+    background-color: rgba(255, 255, 255, .8);
 }
 
 .sticky-multi:hover .stickyTop .sticky-like {
@@ -243,7 +243,15 @@ header .separator {
 
 .sticky-multi .stickyTop .sticky-like:hover {
     background-color: rgba(0, 140, 0, .8);
+    color: #fff;
 }
+
+.sticky-multi .stickyTop .sticky-like .like-count {
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 
 .sticky-multi .stickyTop .sticky-like:hover i {
     background-image: url(../images/glyphicons-halflings-white.png);
