@@ -13,7 +13,7 @@
             board.add(category.title, section);
             
             $.each(category.notes, function(index2, note) {
-                var sticky = new Sticky(category.title, note.content, note.uuid);
+                var sticky = new Sticky(category.title, note.content, note.uuid, note.vote);
                 if (!!note.subordinates.length){
                     $.each(note.subordinates, function(index3, subordinate) {
                         sticky.append(new Sticky(category.title, subordinate.content, subordinate.uuid))

@@ -18,9 +18,14 @@
         },
         
         synchronize: function(baseStickyUUID, data) {
-           var dropped = this.$('div[data-uuid="'+baseStickyUUID+'"]').data('view');
-           var droppee = this.$('div[data-uuid="'+data.newSubordinate.uuid+'"]').data('view')
-           dropped.accept(droppee);
+            if (!!data.newSubordinate) {
+                var dropped = this.$('div[data-uuid="'+baseStickyUUID+'"]').data('view');
+                var droppee = this.$('div[data-uuid="'+data.newSubordinate.uuid+'"]').data('view')
+                dropped.accept(droppee);
+            }
+            if (!!data.vote) {
+                this.$('div[data-uuid="'+baseStickyUUID+'"]').data('view').model.vote()
+            }
         }
     });
     

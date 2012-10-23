@@ -55,8 +55,18 @@ var Connection = (function() {
 				'data': {
                     'newSubordinate': {
                         'uuid': sticky.newSubordinate.uuid,
-                        'category': sticky.newSubordinate.category 
+                        'category': sticky.newSubordinate.category
                     }
+                }
+			}));
+		},
+        
+		updateSticky2: function(sticky) {
+			this.sendMessage($.toJSON({
+				'resourceUri': '/retrospective/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+				'method': 'post',
+				'data': {
+                    'vote': sticky.voteCount
                 }
 			}));
 		}

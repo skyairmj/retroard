@@ -20,7 +20,7 @@
             if (!!content) {
 				newSticky = new Sticky(this.targetSection.title, content);
 				Connection.createSticky(newSticky);
-//				new StickyView({model: newSticky}).render();
+                this.targetSection.add(new StickyView({model: newSticky}).render());
             }
             this.textarea.val('');
 		},
