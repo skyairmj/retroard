@@ -5,7 +5,7 @@
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
 	<meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
 	<meta name="description"
-		  content="This is an online retrospective board, which enables distributed teams to organize retrospectives just like they are co-located."/>
+		  content="This is an online retrospective board, which enables distributed teams to retrospective just like being co-located."/>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/global.css"/>
@@ -19,8 +19,7 @@
     <script type="text/javascript" src="/javascripts/libs/uuid.js"></script>
 	<script  type="text/javascript">
 		window.App={}
-	    window.teamName = "<%= params[:team] %>"
-		window.retroId = "<%= @retrospective.serial_no %>"
+		window.retroId = "<%= params[:retrospectiveId] %>"
 		window.option = {'serverHost': '<%= request.host %>', 'serverPort': '<%= request.port %>'}
         window.UUID = uuid.noConflict();
 	</script>

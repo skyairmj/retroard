@@ -6,9 +6,9 @@ module Retroard
     set :root, File.expand_path('..', File.dirname(__FILE__))
 
     get '/' do
-        erb :index
+        erb :index2
     end
-
+=begin
     post '/signin' do
       unless params[:team].nil?
         redirect "/#{params[:team]}", 303
@@ -20,15 +20,18 @@ module Retroard
         redirect "/#{params[:team]}", 303
       end
     end
-    
-    get '/:team' do
-      @retrospective = Retrospective.last
-      erb :board
+=end
+    post '/join' do
+      redirect "/retrospective/#{params[:retrospectiveId]}", 303 unless params[:retrospectiveId].nil?
     end
-
-    get '/:team/retro/:retroId' do
-      content_type :json
-      Retrospective.find_by_serial_no(params[:retroId].to_i).to_json
+    
+    get '/retrospective/:retrospectiveId' do
+      if request.xhr?
+        content_type :json
+        Retrospective.find_by_serial_no(params[:retrospectiveId].to_i).to_json
+      else
+        erb :board
+      end
     end
 
     get '/:team/profile' do

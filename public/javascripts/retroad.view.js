@@ -6,7 +6,7 @@
 	window.App = new AppView
 	*/
 	var board = new Board();
-	$.getJSON('/'+ teamName + '/retro/'+retroId, function(retrospective) {
+	$.getJSON('/retrospective/'+retroId, function(retrospective) {
 	 	
         $.each(retrospective.categories, function(index, category){
             var section = new Section({title: category.title}).render();
