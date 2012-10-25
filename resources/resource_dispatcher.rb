@@ -2,10 +2,10 @@ module Retroard
   class ResourceDispatcher
     def self.dispatch resource_uri, method, request_data
       case resource_uri
-      when /^\/retrospective\/\d+\/[\w|\s]+\/notes\/[\w|-]+$/
-        named_regex = /^\/retrospective\/(?<retro_serial_no>\d+)\/(?<category_title>[\w|\s]+)\/notes\/(?<note_uuid>[\w|-]+)$/
+      when /^\/retrospectives\/\w+\/[\w|\s]+\/notes\/[\w|-]+$/
+        named_regex = /^\/retrospectives\/(?<retro_serial_no>\w+)\/(?<category_title>[\w|\s]+)\/notes\/(?<note_uuid>[\w|-]+)$/
         result = named_regex.match(resource_uri)
-        retro_serial_no = result[:retro_serial_no].to_i
+        retro_serial_no = result[:retro_serial_no]
         category_title = result[:category_title]
         note_uuid = result[:note_uuid]
         retrospective = Retrospective.find_by_serial_no retro_serial_no

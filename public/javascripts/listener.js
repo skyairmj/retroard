@@ -14,7 +14,7 @@ var Listener = (function() {
         initialize: function(board) {
             Connection.onMessage(function(message) {
 				var messageJSON = $.parseJSON(message.data);
-                var uriRegex = /^\/retrospective\/(\d+)\/([\w|\s]+)\/notes\/([\w|-]+)$/
+                var uriRegex = /^\/retrospectives\/(\d+)\/([\w|\s]+)\/notes\/([\w|-]+)$/
                 var match = uriRegex.exec(messageJSON.resourceUri);
                 var expectedRetroId = match[1]
                 if (expectedRetroId != window.retroId) {

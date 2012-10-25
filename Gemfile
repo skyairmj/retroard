@@ -7,6 +7,7 @@ gem 'rack'
 gem 'thin'
 gem 'sinatra'
 gem 'websocket-rack'
+gem 'uuid'
 
 gem 'activesupport'
 gem 'json'

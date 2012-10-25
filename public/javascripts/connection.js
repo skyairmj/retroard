@@ -42,7 +42,7 @@ var Connection = (function() {
 
 		createSticky: function(sticky) {
 			this.sendMessage($.toJSON({
-	            'resourceUri': '/retrospective/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+	            'resourceUri': '/retrospectives/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
 	            'method': 'put',
 	            'data': {'content': sticky.content}
 	        }));
@@ -50,7 +50,7 @@ var Connection = (function() {
 
 		updateSticky: function(sticky) {
 			this.sendMessage($.toJSON({
-				'resourceUri': '/retrospective/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+				'resourceUri': '/retrospectives/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
 				'method': 'post',
 				'data': {
                     'newSubordinate': {
@@ -63,7 +63,7 @@ var Connection = (function() {
         
 		updateSticky2: function(sticky) {
 			this.sendMessage($.toJSON({
-				'resourceUri': '/retrospective/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+				'resourceUri': '/retrospectives/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
 				'method': 'post',
 				'data': {
                     'vote': sticky.voteCount

@@ -20,32 +20,11 @@
         	<hr>
         </header>
 		<div class="container">
-			
-    		<h1>Join the Retrospective</h1>
-    		<section class="form">
-    			<form action="/join" method="post">
-    				<h2>To join an online retrospective, enter the retrospective ID provided by the organizer.</h2>
-    				<ul>
-    					<li>
-    						<label for="retrospectiveId">Retrospective ID</label>
-    						<input type="text" name="retrospectiveId" id="retrospectiveId" class="required eventId" title="Please enter a valid Retrospective ID">
-    					</li>
-    					<li class="button">
-    						<input type="submit" value="Continue">
-    					</li>
-    				</ul>
-    				<div class="clearBoth"></div>
-    			</form>
-    		</section>
-    		<section>
-                <h2>Create an online retrospective for the team right now!</h2>
-                <form action="/retrospectives" method="post">
-                    <input type="hidden" name="_method" value="put" />
-        			<ul>
-        				<li><input type="submit" value="Create a new retrospective"></input></li>
-        			</ul>
-                </form>
-    		</section>
+    		<h2>Your Retrospective ID is <%=@retrospectiveId%></h2>
+            <%
+            retro_url = "http://#{request.host}:#{request.port}/retrospectives/#{@retrospectiveId}"
+            %>
+            <h3>You can also follow the url (<a href="<%=retro_url%>" rel="this"><%=retro_url%></a>) to get to your Retrospective, Enjoy it!</h3> 
     		<div class="clearBoth"></div>
 		</div>
 		<footer>
