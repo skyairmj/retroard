@@ -236,6 +236,10 @@ header .separator {
     background-color: rgba(255, 255, 255, .8);
 }
 
+.sticky-single .stickyTop .sticky-like {
+    top: 2px;
+}
+
 .sticky:hover .stickyTop .sticky-like {
     display: block;
 }
