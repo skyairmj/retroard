@@ -223,11 +223,10 @@ header .separator {
     left: 4px;
 }
 
-.sticky-multi .stickyTop .sticky-like {
+.sticky .stickyTop .sticky-like {
     width: 125px;
-    height: 27px;
-    padding-top: 0px;
-    line-height: 27px;
+    height: 30px;
+    padding-top: 6px;
     position: absolute;
     right: 3px;
     top: 9px;
@@ -237,25 +236,40 @@ header .separator {
     background-color: rgba(255, 255, 255, .8);
 }
 
-.sticky-multi:hover .stickyTop .sticky-like {
+.sticky:hover .stickyTop .sticky-like {
     display: block;
 }
 
-.sticky-multi .stickyTop .sticky-like:hover {
-    background-color: rgba(0, 140, 0, .8);
-    color: #fff;
+.sticky .stickyTop .sticky-like:hover {
+    background-color: rgba(166, 2255, 77, .8);
 }
 
-.sticky-multi .stickyTop .sticky-like .like-count {
-    padding-left: 10px;
-    font-size: 18px;
+.sticky .stickyTop .sticky-like:hover .sticky-vote {
+    background-position: left -24px;
+    
+}
+
+.sticky .stickyTop .like-count {
+    font-size: 11px;
     font-weight: bold;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    position: absolute;
+    color: #006600;
+    top: -3px;
+    right: -3px;
+    background: url(../images/sticky-count.png) no-repeat left top;
 }
 
-
-.sticky-multi .stickyTop .sticky-like:hover i {
-    background-image: url(../images/glyphicons-halflings-white.png);
+.sticky .stickyTop .sticky-like .sticky-vote {
+    background: url(../images/sticky-vote.png) no-repeat left top;
+    width: 21px;
+    height: 24px;
+    display: inline-block;
 }
+
 
 .sticky-single .stickyText {
     padding: 0 5px 5px 5px;
