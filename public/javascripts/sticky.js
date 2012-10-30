@@ -43,7 +43,10 @@
             this.$el.draggable({
                 revert: "invalid",
                 containment: "#sections",
-                cursor: "move"
+                cursor: "move",
+                drag: function(event, ui) {
+                    ui.helper.css('z-index', 100)
+                }
             });
             this.$el.droppable({
                 accept: ".sticky",
@@ -100,7 +103,10 @@
             this.$el.draggable({
                 revert: "invalid",
                 containment: "#sections",
-                cursor: "move"
+                cursor: "move",
+                drag: function(event, ui) {
+                    ui.helper.css('z-index', 100)
+                }
             });
             this.$el.droppable({
                 accept: ".sticky",
