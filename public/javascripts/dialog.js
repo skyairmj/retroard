@@ -4,7 +4,8 @@
 		
 		events: {
 			'click .cancelButton': 'cancel',
-			'click .okButton': 'add'
+			'click .okButton': 'add',
+            'keypress textarea': 'type'
 		},
 		
 		initialize: function(){
@@ -24,6 +25,16 @@
             }
             this.textarea.val('');
 		},
+        
+        type: function (event) {
+            this.$('.count').text(139 - event.srcElement.textLength);
+            if (parseInt(this.$('.count').text()) < 0) {
+                this.$('.okButton').attr('disabled', 'disabled');
+            } else {
+                this.$('.okButton').removeAttr('disabled');
+            }
+            
+        },
 		
 		target: function(targetSection) {
 			this.targetSection = targetSection;
