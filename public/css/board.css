@@ -12,24 +12,22 @@ body {
     src: url('../fonts/Marydale.ttf') format('truetype');
 }
 
-.wrap {
+.content {
     margin: 0 20px;
 }
 
 header {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background: -webkit-gradient(linear, left top, left bottom, from(#333), to(#111));
     background: -moz-linear-gradient(top, #333, #111);
-    border-bottom: 1px solid #000;
 }
 
-header .headerWrap {
-    text-align: right;
+header .page-header {
     margin: 0 auto;
     width: 94%;
-    height: 40px;
-    line-height: 40px;
-    position: relative;
+    border-bottom: 0px;
+    padding-bottom: 2px;
+    padding-top: 5px;
 }
 
 header #logo {
@@ -40,9 +38,15 @@ header #logo {
     margin-top: 5px;
 }
 
-header h2 {
+header h1 {
     float: left;
     color: white;
+    font-size: 24px;
+    font-family: Marydale;
+}
+
+header small {
+    font-size: 18px;
 }
 
 header a {
@@ -104,9 +108,19 @@ header .separator {
 
 .brand {
     background: url(../images/stickies_icon_32.png) no-repeat left center;
-    padding-left: 40px;
-    font-size: 20px;
+    padding-left: 30px;
     margin: 0;
+}
+
+.title {
+    border-radius: 5px 5px 0px 0px;
+    height: 26px;
+    line-height: 24px;
+    font-size: 16px;
+    background-color: grey;
+    margin-left: 10px;
+    width: 30%;
+    text-align: center;
 }
 
 #sections {
@@ -114,8 +128,6 @@ header .separator {
     box-shadow: 0 0 10px #000;
     background:url(../images/retina_dust.jpg) repeat left top;
 }
-
-
 
 #sections .section {
     /*border-left: 1px solid #CECEBF;*/
@@ -129,16 +141,14 @@ header .separator {
     border-left: none;
 }
 
-
-
-.sectionHeader {
+.section-header {
     text-align: center;
     margin-bottom: 10px;
     position: relative;
     border-bottom: 3px solid #666;
 }
 
-.sectionHeader h3 {
+.section-header h3 {
     display: inline-block;
     line-height: 34px;
     padding-left: 36px;
@@ -147,23 +157,23 @@ header .separator {
     font-family: Marydale;
 }
 
-#Well .sectionHeader h3 {
+#Well .section-header h3 {
     background-image: url(/images/face-well.png);
 }
 
-#LessWell .sectionHeader h3 {
+#LessWell .section-header h3 {
     background-image: url(/images/face-less-well.png);
 }
 
-#Puzzle .sectionHeader h3 {
+#Puzzle .section-header h3 {
     background-image: url(/images/face-puzzle.png);
 }
 
-#Idea .sectionHeader h3 {
+#Idea .section-header h3 {
     background-image: url(/images/face-idea.png);
 }
 
-.addStickyButton {
+.add-sticky {
     height: 36px;
     width: 36px;
     display: block;
@@ -175,11 +185,11 @@ header .separator {
     right: 15px;
 }
 
-.addStickyButton:hover {
+.add-sticky:hover {
     background-position: 0 -36px;
 }
 
-.sectionBody {
+.section-body {
     text-align: left;
     width: 284px;
     margin: 0px auto;
@@ -203,18 +213,18 @@ header .separator {
     width: 137px;
 }
 
-.sticky-single .stickyTop {
+.sticky-single .sticky-header {
     background: transparent url(../images/sticky-single-bg.png) no-repeat right top;
     height: 5px;
 }
 
-.sticky-multi .stickyTop {
+.sticky-multi .sticky-header {
     background: transparent url(../images/sticky-multi-bg.png) no-repeat right top;
     height: 12px;
     position: relative;
 }
 
-.sticky-multi .stickyTop s {
+.sticky-multi .sticky-header s {
     width: 15px;
     height: 48px;
     position: absolute;
@@ -223,7 +233,7 @@ header .separator {
     left: 4px;
 }
 
-.sticky .stickyTop .sticky-like {
+.sticky .sticky-header .sticky-like {
     width: 125px;
     height: 30px;
     padding-top: 6px;
@@ -236,24 +246,24 @@ header .separator {
     background-color: rgba(255, 255, 255, .8);
 }
 
-.sticky-single .stickyTop .sticky-like {
+.sticky-single .sticky-header .sticky-like {
     top: 2px;
 }
 
-.sticky:hover .stickyTop .sticky-like {
+.sticky:hover .sticky-header .sticky-like {
     display: block;
 }
 
-.sticky .stickyTop .sticky-like:hover {
+.sticky .sticky-header .sticky-like:hover {
     background-color: rgba(166, 2255, 77, .8);
 }
 
-.sticky .stickyTop .sticky-like:hover .sticky-vote {
+.sticky .sticky-header .sticky-like:hover .sticky-vote {
     background-position: left -24px;
     
 }
 
-.sticky .stickyTop .like-count {
+.sticky .sticky-header .like-count {
     font-size: 11px;
     font-weight: bold;
     text-align: center;
@@ -267,7 +277,7 @@ header .separator {
     background: url(../images/sticky-count.png) no-repeat left top;
 }
 
-.sticky .stickyTop .sticky-like .sticky-vote {
+.sticky .sticky-header .sticky-like .sticky-vote {
     background: url(../images/sticky-vote.png) no-repeat left top;
     width: 21px;
     height: 24px;
@@ -275,7 +285,7 @@ header .separator {
 }
 
 
-.sticky-single .stickyText {
+.sticky-single .sticky-body {
     padding: 0 5px 5px 5px;
     background: transparent url(../images/sticky-single-bg.png) no-repeat right bottom;
     min-height: 100px
@@ -283,17 +293,17 @@ header .separator {
 
 
 
-.sticky-multi .stickyText {
+.sticky-multi .sticky-body {
     padding: 0 5px 5px 12px;
     background: transparent url(../images/sticky-multi-bg.png) no-repeat right bottom;
     min-height: 100px
 }
 
-.stickyText {
+.sticky-body {
     word-wrap: break-word;
 }
 
-div.sticky-multi div.stickyText span {
+div.sticky-multi div.sticky-body span {
     display: block;
     padding: 5px 5px 5px 12px;
     background: transparent url(../images/sticky-bullet.png) no-repeat left 11px;
@@ -339,6 +349,10 @@ div.sticky-multi div.stickyText span {
     height: 30px;
     width: 60px;
     margin-left: 10px;
+}
+
+.message-container {
+    margin: 0 20px 0 20px;
 }
 
 .footer {

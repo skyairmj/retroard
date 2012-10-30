@@ -25,7 +25,7 @@
     
     StickyView = Backbone.View.extend({
         className: "sticky sticky-single",
-        template: _.template('<div class="stickyTop"><div class="sticky-like"><div class="sticky-vote"></div></div><span class="like-count"><%=voteCount%></span></div><div class="stickyText"><%=content%></div>'),
+        template: _.template('<div class="sticky-header"><div class="sticky-like"><div class="sticky-vote"></div></div><span class="like-count"><%=voteCount%></span></div><div class="sticky-body"><%=content%></div>'),
         
         events: {
             'click .sticky-like': 'vote'
@@ -79,7 +79,7 @@
     StickyGroupView = Backbone.View.extend({
         className: "sticky sticky-multi",
         
-        template: _.template('<div class="stickyTop"><s></s><div class="sticky-like"><div class="sticky-vote"></div></div><span class="like-count"><%=voteCount%></span></div><div class="stickyText"></div>'),
+        template: _.template('<div class="sticky-header"><s></s><div class="sticky-like"><div class="sticky-vote"></div></div><span class="like-count"><%=voteCount%></span></div><div class="sticky-body"></div>'),
         eachTemplate: _.template('<span><%=content%></span>'),
         
         events: {
@@ -90,10 +90,10 @@
             this.$el.attr('data-uuid', this.model.uuid);
             this.$el.data('view', this);
             this.$el.html(this.template({voteCount: this.model.voteCount}));
-            this.$('div.stickyText').append(this.eachTemplate({content: this.model.content}))
+            this.$('div.sticky-body').append(this.eachTemplate({content: this.model.content}))
             var that = this;
             $.each(this.model.stickies, function(index, sticky){
-                that.$('div.stickyText').append(that.eachTemplate({content: sticky.content}))
+                that.$('div.sticky-body').append(that.eachTemplate({content: sticky.content}))
             });
             this.model.on('change:voteCount', this.raiseVotes, this);
         },

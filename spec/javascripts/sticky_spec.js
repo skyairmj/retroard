@@ -44,7 +44,7 @@ describe('sticky', function() {
                 content: 'some content'
             });
 
-            expect(sticky.dom.find('.stickyText')).toHaveText('some content');
+            expect(sticky.dom.find('.sticky-body')).toHaveText('some content');
         });
     });
 

@@ -2,15 +2,15 @@
     Section = Backbone.View.extend({
         tagName: 'section',
         className: 'section span3',
-        template: _.template('<div class="sectionHeader">'+
+        template: _.template('<div class="section-header">'+
 						'<h3><%=title%></h3>'+
-						'<a href="#modal" data-toggle="modal" role="button" class="addStickyButton"></a>'+
+						'<a href="#modal" data-toggle="modal" role="button" class="add-sticky"></a>'+
 					'</div>'+
-					'<div class="sectionBody">'+
+					'<div class="section-body">'+
                     '</div>'),
                 
         events: {
-            'click .addStickyButton': 'setStickyTarget'
+            'click .add-sticky': 'setStickyTarget'
         },
         
         initialize: function(option) {
@@ -25,7 +25,7 @@
         },
         
         add: function(stickyView){
-            this.$('.sectionBody').append(stickyView.$el);
+            this.$('.section-body').append(stickyView.$el);
         },
         
         synchronize: function(uuid, data) {

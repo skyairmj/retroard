@@ -55,7 +55,7 @@ describe('section', function() {
         it('should add a new sticky dom', function() {
             section.addSticky();
 
-            expect(section.dom.find('.sectionBody')).toContain('.sticky');
+            expect(section.dom.find('.section-body')).toContain('.sticky');
         });
 
         it('should bind the sticky onRemove function with onStickyRemove', function() {
@@ -126,7 +126,7 @@ describe('section', function() {
         it('should remove the sticky dom', function() {
             StickyDialog.cancelButton.click();
 
-            expect(section.dom.find('.sectionBody')).toBeEmpty();
+            expect(section.dom.find('.section-body')).toBeEmpty();
         });
 
         it('should remove the sticky holder', function() {

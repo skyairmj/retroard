@@ -6,6 +6,7 @@
 	<meta name="keywords" content="agile,retro,retrospective,board,team,building,tool"/>
 	<meta name="description"
 		  content="This is an online retrospective board, which enables distributed teams to retrospective just like being co-located."/>
+          <!--base href="http://" target="#"-->
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css"/>
 	<link rel="stylesheet" type="text/css" href="/css/global.css"/>
@@ -33,28 +34,34 @@
 </head>
 <body>
 	<header>
-		<div class="headerWrap clearFloat">
-			<h2 class="brand">Team Retrospective</h2>
+		<div class="page-header">
+			<h1 class="brand">&nbsp;Retrospective&nbsp;<small>Build and Improve Team Continuously</small></h1>
 		</div>
+        <div class="clearFloat"></div>
 	</header>
 
-	<div class="wrap">
+	<div class="content">
+        <nav class="title">
+            xxx
+        </nav>
 		<article id="sections" class="row-fluid">
 		</article>
 	</div>
     
-    <div class="message-box navbar-fixed-bottom" style="background-color: white; font-size: 14px; color: brown; width: 30%">
-        People from xxx.xxx.xxx.xxx has created a new sticky. 
+    <div id="messageContainer" class="message-container navbar-fixed-bottom">
+        <div class="message alert alert-info">A new sticky has been post by xxx.</div>
     </div>
-
-	<div class="container footer">
-		<small>&copy; 2012 Team-Cares</small>
-	</div>
+    
+    <footer>
+    	<div class="footer">
+    		<small>&copy; 2012 Team-Cares</small>
+    	</div>
+    </footer>
 
 	<div class="modal hide fade in" id="modal" tabindex="-1" role="dialog" aria-hidden="true" style="width: 480px; background-color: transparent; border: 0px; border-radius:0px; box-shadow:none;">
 		<div id="stickyDialog">
 			<textarea></textarea>
-            <div>You can input <span class="count"></span> letters.</div>
+            <div>You can input <span class="input-count">140</span> letters.</div>
 			<div class="buttons">
                 <button type="image" value="Cancel" class="btn cancelButton" data-dismiss="modal" aria-hidden="true">Cancel</button>
 				<button type="image" value="OK" class="btn okButton btn-success" data-dismiss="modal" aria-hidden="true">OK</button>
