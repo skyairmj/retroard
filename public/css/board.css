@@ -12,6 +12,11 @@ body {
     src: url('../fonts/Marydale.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: Andale_Mono;
+    src: url('../fonts/Andale_Mono.ttf') format('truetype');
+}
+
 .content {
     margin: 0 20px;
 }
@@ -191,14 +196,14 @@ header .separator {
 
 .section-body {
     text-align: left;
-    width: 284px;
+    width: 300px;
     margin: 0px auto;
 }
 
 .sticky {
     display: inline-block;
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 12px;
     /*background-color: #FEF791;*/
     vertical-align: top;
     position: relative;
@@ -216,6 +221,7 @@ header .separator {
 .sticky-single .sticky-header {
     background: transparent url(../images/sticky-single-bg.png) no-repeat right top;
     height: 5px;
+    position: relative;
 }
 
 .sticky-multi .sticky-header {
@@ -233,60 +239,37 @@ header .separator {
     left: 4px;
 }
 
-.sticky .sticky-header .sticky-like {
-    width: 125px;
-    height: 30px;
-    padding-top: 6px;
+.sticky .sticky-header .sticky-vote {
+    top: -5px;
     position: absolute;
-    right: 3px;
-    top: 9px;
-    text-align: center;
-    cursor: pointer;
+    left: 5px;
+    padding: 2px 10px;
+    font-size: 12px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.4);
     display: none;
-    background-color: rgba(255, 255, 255, .8);
 }
 
-.sticky-single .sticky-header .sticky-like {
-    top: 2px;
-}
-
-.sticky:hover .sticky-header .sticky-like {
-    display: block;
-}
-
-.sticky .sticky-header .sticky-like:hover {
-    background-color: rgba(166, 2255, 77, .8);
-}
-
-.sticky .sticky-header .sticky-like:hover .sticky-vote {
-    background-position: left -24px;
-    
-}
-
-.sticky .sticky-header .like-count {
-    font-size: 11px;
-    font-weight: bold;
-    text-align: center;
-    width: 20px;
-    height: 20px;
-    line-height: 18px;
-    position: absolute;
-    color: #006600;
-    top: -3px;
-    right: -3px;
-    background: url(../images/sticky-count.png) no-repeat left top;
-}
-
-.sticky .sticky-header .sticky-like .sticky-vote {
-    background: url(../images/sticky-vote.png) no-repeat left top;
-    width: 21px;
-    height: 24px;
+.sticky:hover .sticky-vote {
     display: inline-block;
 }
 
 
+.sticky .sticky-header .like-count {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    width: 22px;
+    height: 22px;
+    line-height: 21px;
+    position: absolute;
+    color: #006600;
+    top: -5px;
+    right: -5px;
+    background: url(../images/sticky-count.png) no-repeat left top;
+}
+
 .sticky-single .sticky-body {
-    padding: 0 5px 5px 5px;
+    padding: 5px 10px 5px 10px;
     background: transparent url(../images/sticky-single-bg.png) no-repeat right bottom;
     min-height: 100px
 }
@@ -294,7 +277,7 @@ header .separator {
 
 
 .sticky-multi .sticky-body {
-    padding: 0 5px 5px 12px;
+    padding: 0px 10px 5px 15px;
     background: transparent url(../images/sticky-multi-bg.png) no-repeat right bottom;
     min-height: 100px
 }
@@ -305,8 +288,8 @@ header .separator {
 
 div.sticky-multi div.sticky-body span {
     display: block;
-    padding: 5px 5px 5px 12px;
-    background: transparent url(../images/sticky-bullet.png) no-repeat left 11px;
+    padding: 2px 5px 5px 12px;
+    background: transparent url(../images/sticky-bullet.png) no-repeat left 9px;
 }
 
 
@@ -352,7 +335,22 @@ div.sticky-multi div.sticky-body span {
 }
 
 .message-container {
-    margin: 0 20px 0 20px;
+    
+}
+
+.message {
+    text-align: right;
+    font-size: 11px;
+    padding: 3px 25px;
+    float: right;
+    color: #4AF310;
+    font-family: Andale_Mono;
+    background-image: -webkit-linear-gradient(top, #333, #111);
+    background-image: -o-linear-gradient(top, #333, #111);
+    background-image: -moz-linear-gradient(top, #333, #111);
+    background-image: -linear-gradient(top, #333, #111);
+    border-top-left-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .footer {

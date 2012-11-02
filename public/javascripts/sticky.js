@@ -25,10 +25,10 @@
     
     StickyView = Backbone.View.extend({
         className: "sticky sticky-single",
-        template: _.template('<div class="sticky-header"><div class="sticky-like"><div class="sticky-vote"></div></div><span class="like-count"><%=voteCount%></span></div><div class="sticky-body"><%=content%></div>'),
+        template: _.template('<div class="sticky-header"><div class="sticky-vote btn btn-success"><i class="icon-thumbs-up icon-white"></i> Vote</div><span class="like-count"><%=voteCount%></span></div><div class="sticky-body"><%=content%></div>'),
         
         events: {
-            'click .sticky-like': 'vote'
+            'click .sticky-vote': 'vote'
         },
         
         initialize: function() {
@@ -79,11 +79,11 @@
     StickyGroupView = Backbone.View.extend({
         className: "sticky sticky-multi",
         
-        template: _.template('<div class="sticky-header"><s></s><div class="sticky-like"><div class="sticky-vote"></div></div><span class="like-count"><%=voteCount%></span></div><div class="sticky-body"></div>'),
+        template: _.template('<div class="sticky-header"><s></s><div class="sticky-vote btn btn-success"><i class="icon-thumbs-up icon-white"></i> Vote</div><span class="like-count"><%=voteCount%></span></div><div class="sticky-body"></div>'),
         eachTemplate: _.template('<span><%=content%></span>'),
         
         events: {
-            'click .sticky-like': 'vote'
+            'click .sticky-vote': 'vote'
         },
         
         initialize: function() {
