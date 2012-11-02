@@ -4,61 +4,60 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<meta http-equiv="content-language" content="en-US">
 		<title>Join the Meeting | GoToMeeting</title>
-		<link rel="stylesheet" href="/css/default.css" type="text/css">
-		<!--[if lte IE 9]>
-		<link rel="stylesheet" href="/fec/css/join/IE.css" type="text/css">
-		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/global.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/homepage.css"/>
 	</head>
-	<body >
+	<body>
 		<header>
-        	<div class="brand">
-        		<a href="#">Team Retrospective</a>
-        	</div>
-        	<div class="tagline">
-        		Online Agile Retrospective
-        	</div>
-        	<hr>
+            <div class="page-header clearfix">
+                <h1 class="brand">&nbsp;Retrospective&nbsp;<small>Build and Improve Team Continuously</small></h1>
+            </div>
         </header>
 		<div class="container">
-			
-    		<h1>Join the Retrospective</h1>
-    		<section class="form">
-    			<form action="/join" method="post">
-    				<h2>To join an online retrospective, enter the retrospective ID provided by the organizer.</h2>
-    				<ul>
-    					<li>
-    						<label for="retrospectiveId">Retrospective ID</label>
-    						<input type="text" name="retrospectiveId" id="retrospectiveId" class="required eventId" title="Please enter a valid Retrospective ID">
-    					</li>
-    					<li class="button">
-    						<input type="submit" value="Continue">
-    					</li>
-    				</ul>
-    				<div class="clearBoth"></div>
-    			</form>
-    		</section>
-    		<section>
-                <h2>Create an online retrospective for the team right now!</h2>
+
+            <div class="row">
+
+                <div class="span6">
+                    
+                    <div class="sticky-sample"></div>
+
+                </div>
+
+        <div class="join span3">
+            <h3>Join the Retrospective</h3>
+            <section class="form">
+                <form action="/join" method="post">
+                    <h5>To join an online retrospective, enter the retrospective ID provided by the organizer.</h5>
+                    <label for="retrospectiveId">Retrospective ID</label>
+                    <input type="text" name="retrospectiveId" id="retrospectiveId" class="required eventId" title="Please enter a valid Retrospective ID">
+                    <input type="submit" value="Continue" class="btn">
+                </form>
+            </section>
+        </div>
+
+            <div class="create span3">
+                <section>
+                <h5>Create an online retrospective for your team right now!</h5>
                 <form action="/retrospectives" method="post">
                     <input type="hidden" name="_method" value="put" />
-        			<ul>
-        				<li><input type="submit" value="Create a new retrospective"></input></li>
-        			</ul>
+                    <input type="submit" value="Create a new retrospective" class="btn"></input>
                 </form>
-    		</section>
-    		<div class="clearBoth"></div>
+            </section>
+
+            </div>
+
+            </div>
+
+            
+			
 		</div>
 		<footer>
-    		<hr>
-    		<ul class="copyright">
-    			<li>
-    				&copy; 2012 Team-Care, LLC. All rights reserved. <a href="#" rel="popup">Privacy Policy</a>
-    			</li>
-    		</ul>
-    		<div class="logo">
-    			<a href="http://www.team-care.com" rel="external"><img src="/images/stickies_icon_32.png" alt="Team-Care"></a>
-		</div>
-    	</footer>
+            <div class="footer">
+                <small>&copy; 2012 Team-Cares</small>
+            </div>
+        </footer>
 		<div id="lightbox-container"><div id="lightbox-border"></div></div>
     </body>
 </html>

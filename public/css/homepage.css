@@ -1,0 +1,15 @@
+body {
+    background: url(../images/low_contrast_linen.png) repeat left top;
+    color: #eee;
+}
+
+.container {
+    min-height: 500px;
+    margin-top: 50px;
+}
+
+.sticky-sample {
+    width: 312px;
+    height: 312px;
+    background: url(../images/sticky-sample.png) no-repeat left top;
+}
