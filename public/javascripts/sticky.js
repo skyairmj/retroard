@@ -46,6 +46,9 @@
                 cursor: "move",
                 drag: function(event, ui) {
                     ui.helper.css('z-index', 100)
+                },
+                stop: function(event, ui) {
+                    ui.helper.css('z-index', 2)
                 }
             });
             this.$el.droppable({
@@ -106,6 +109,9 @@
                 cursor: "move",
                 drag: function(event, ui) {
                     ui.helper.css('z-index', 100)
+                },
+                stop: function(event, ui) {
+                    ui.helper.css('z-index', 2)
                 }
             });
             this.$el.droppable({
