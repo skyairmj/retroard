@@ -1,17 +1,8 @@
-var Listener = (function() {
-
-    function updateSticky(content) {
-
-    }
-
-    var messageHandlerTable = {
-        'sticky': {
-            'save': updateSticky
-        }
-    }
-
-    return {
-        initialize: function(board) {
+(function(){
+    Listener = new (Backbone.Model.extend({
+        listen: function(board) {
+            this.board = board;
+            that = this;
             Connection.onMessage(function(message) {
 				var messageJSON = $.parseJSON(message.data);
                 var uriRegex = /^\/retrospectives\/(\d+)\/([\w|\s]+)\/notes\/([\w|-]+)$/
@@ -25,13 +16,14 @@ var Listener = (function() {
                 var expectedNoteId = match[3]
                 switch(messageJSON.method){
                     case 'put':
-                    board.getSection(expectedCategoryTitle).synchronize(expectedNoteId, messageJSON.data);
+                    that.board.getSection(expectedCategoryTitle).synchronize(expectedNoteId, messageJSON.data);
+                    MessageBox.append(new Message({message: 'A new sticky has been post by xxx2.'}).render())
                     break;
                     case 'post':
-                    board.synchronize(expectedNoteId, messageJSON.data);
+                    that.board.synchronize(expectedNoteId, messageJSON.data);
                     break;
                 }
             });
         }
-    }
+    }));
 })();

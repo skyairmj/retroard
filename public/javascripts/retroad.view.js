@@ -26,6 +26,6 @@
             });
         });
  	});
-	Connection.initialize(option['serverHost'], option['serverPort']);
-    Listener.initialize(board);
+	Connection.connect(option['serverHost'], option['serverPort']);
+    Listener.listen(board);
 }());

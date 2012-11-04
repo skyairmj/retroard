@@ -4,8 +4,6 @@
         
         initialize: function() {
             this.sections = {}
-            this.history = new History();
-            this.history.initialize2();
         },
         
         add: function(title, section) {

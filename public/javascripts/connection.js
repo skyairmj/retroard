@@ -1,27 +1,25 @@
-var Connection = (function() {
-	var websocket_server_address = "localhost";
-	var websocket_server_port_number = "3000";
-	var websocket_mount_point = "ws";
-    function connect(connectionUrl) {
-        var socket;
-        try {
+(function() {
+    Connection = new (Backbone.Model.extend({
+    	websocket_server_address : "localhost",
+    	websocket_server_port_number : "3000",
+    	websocket_mount_point : "ws",
+        
+        initialize: function(){
             if (window.MozWebSocket) {
                 window.WebSocket = window.MozWebSocket;
             }
-            socket = new WebSocket(connectionUrl);
-            console.log(socket);
-            return socket;
-        } catch(e) {
-            console.log(e);
-        }
-    }
-
-    return {
-        initialize: function(serverHost, serverPort) {
-		    serverHost = serverHost || websocket_server_address;
-			serverPort = serverPort || websocket_server_port_number;
-            this.connectionUrl = 'ws://'+serverHost+':'+serverPort+'/'+websocket_mount_point;
-            this.socket = connect(this.connectionUrl);
+        },
+        
+        connect: function (serverHost, serverPort) {
+		    var serverHost = serverHost || this.websocket_server_address;
+			var serverPort = serverPort || this.websocket_server_port_number;
+            var connectionUrl = 'ws://'+serverHost+':'+serverPort+'/'+this.websocket_mount_point;
+            try {
+                this.socket = new window.WebSocket(connectionUrl);
+                console.log(this.socket);
+            } catch(e) {
+                console.log(e);
+            }
         },
 
         sendMessage: function(data) {
@@ -69,6 +67,6 @@ var Connection = (function() {
                     'vote': sticky.voteCount
                 }
 			}));
-		}
-    }
+        }
+    }));
 })();
