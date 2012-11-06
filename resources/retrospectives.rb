@@ -6,7 +6,7 @@ module Retroard
     set :root, File.expand_path('..', File.dirname(__FILE__))
 
     get '/' do
-        erb :index2
+        erb :index
     end
     
     post '/join' do
