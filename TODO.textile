@@ -1,0 +1,32 @@
+h1. Feature List
+
+h2. TODO
+
+h3. Backend
+
+* add haproxy as reverse proxy for plain http and websocket in production
+* add redis as shared storage and PubSub
+* refactor http and websocket handlers to reused resources
+
+h3. Frontend
+
+* add js compressor and uglifier
+* add css compressor
+* add jslint
+* refactor backbone js files to reuse AMAP
+
+h3. UI/UX
+
+* re-polish retrospective creation result page to share the theme of index page
+* polish sticky dialog input counting style and notifications
+* polish message style on the bottom right corner
+
+h2. DOING
+
+* split application to plain http(http) and websocket
+
+
+h2. DONE
+
+* add google analytics tracking
+* polish retrospective creation result page
