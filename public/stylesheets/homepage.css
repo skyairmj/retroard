@@ -13,3 +13,27 @@ body {
     height: 312px;
     background: url(../images/sticky-sample.png) no-repeat left top;
 }
+
+.retro_url {
+    font-size: 14px;
+}
+
+.retro_url .breadcrumb {
+    font-size: 16px;
+}
+
+.retro_id {
+    border-bottom: 1px dotted #666;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.retro_id h3 {
+    font-size: 16px;
+}
+
+.retro_id span {
+    color: #fc0;
+    font-size: 20px;
+    padding: 3px 10px;
+}

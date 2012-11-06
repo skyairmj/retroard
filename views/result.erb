@@ -4,37 +4,45 @@
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<meta http-equiv="content-language" content="en-US">
 		<title>Join the Meeting | GoToMeeting</title>
-		<link rel="stylesheet" href="/stylesheets/default.css" type="text/css">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.min.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/global.css"/>
+        <link rel="stylesheet" type="text/css" href="/css/homepage.css"/>
 	</head>
 	<body >
 		<header>
-        	<div class="brand">
-        		<a href="#">Team Retrospective</a>
-        	</div>
-        	<div class="tagline">
-        		Online Agile Retrospective
-        	</div>
-        	<hr>
+            <div class="page-header clearfix">
+                <h1 class="brand">&nbsp;Retrospective&nbsp;<small>Build and Improve Team Continuously</small></h1>
+            </div>
         </header>
 		<div class="container">
-    		<h2>Your Retrospective ID is <%=@retrospectiveId%></h2>
-            <%
-            retro_url = "http://#{request.host}:#{request.port}/retrospectives/#{@retrospectiveId}"
-            %>
-            <h3>You can also follow the url (<a href="<%=retro_url%>" rel="this"><%=retro_url%></a>) to get to your Retrospective, Enjoy it!</h3> 
-    		<div class="clearBoth"></div>
+
+            <div class="row">
+                <div class="span3"></div>
+                <div class="span6">
+                    <div class="retro_id">
+                        <h3>Your Retrospective ID is <span class="label label-inverse"><%=@retrospectiveId%></span></h3>
+                        <p>you can copy this ID to your teammates to invite them.</p>
+                    </div>
+                    <%
+                    retro_url = "http://#{request.host}:#{request.port}/retrospectives/#{@retrospectiveId}"
+                    %>
+                    <div class="retro_url">
+                        <p>Or, you can also follow the url: 
+                        <p class="breadcrumb"><a href="<%=retro_url%>" rel="this"><%=retro_url%></a></p>
+                        <p>to get to your Retrospective, Enjoy it!</p> 
+                    </div>
+                </div>
+                <div class="span3"></div>
+            </div>
+
+    		
 		</div>
 		<footer>
-    		<hr>
-    		<ul class="copyright">
-    			<li>
-    				&copy; 2012 Team-Care, LLC. All rights reserved. <a href="#" rel="popup">Privacy Policy</a>
-    			</li>
-    		</ul>
-    		<div class="logo">
-    			<a href="http://www.team-care.com" rel="external"><img src="/images/stickies_icon_32.png" alt="Team-Care"></a>
-		</div>
-    	</footer>
+            <div class="footer">
+                <small>&copy; 2012 Team-Cares</small>
+            </div>
+        </footer>
 		<div id="lightbox-container"><div id="lightbox-border"></div></div>
     </body>
     <script type="text/javascript" charset="utf-8">
