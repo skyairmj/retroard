@@ -25,6 +25,7 @@
 				newSticky = new Sticky(this.targetSection.title, content);
 				Connection.createSticky(newSticky);
                 this.targetSection.add(new StickyView({model: newSticky}).render());
+                MessageBox.append(new Message({message: 'Others added a new sticky under "'+expectedCategoryTitle+'".'}).render())
             }
             this.reset();
 		},
