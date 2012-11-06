@@ -31,7 +31,7 @@
         synchronize: function(uuid, data) {
 //            if (this.$(uuid).length == 0) {
                 newSticky = new Sticky(this.title, data.content, uuid);
-                this.add(new StickyView({model: newSticky}).render());
+                this.add(new StickyView({model: newSticky, isSynchronized: true}).render());
   //          } else {
                 //update the existing sticky
     //        }

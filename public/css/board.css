@@ -46,6 +46,7 @@ body {
 }
 
 #sections {
+    margin-top:20px;
     border-radius: 5px;
     box-shadow: 0 0 10px #000;
     background:url(../images/retina_dust.jpg) repeat left top;
@@ -207,13 +208,6 @@ div.sticky-multi div.sticky-body span {
     display: block;
     padding: 2px 5px 5px 12px;
     background: transparent url(../images/sticky-bullet.png) no-repeat left 9px;
-}
-
-
-.stickyCount {
-    position: absolute;
-    bottom: 2%;
-    left: 10%;
 }
 
 #stickyDialog {

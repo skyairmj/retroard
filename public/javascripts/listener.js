@@ -17,10 +17,11 @@
                 switch(messageJSON.method){
                     case 'put':
                     that.board.getSection(expectedCategoryTitle).synchronize(expectedNoteId, messageJSON.data);
-                    MessageBox.append(new Message({message: 'A new sticky has been post by xxx2.'}).render())
+                    MessageBox.append(new Message({message: 'Others updated a sticky under"'+expectedCategoryTitle+'".'}).render())
                     break;
                     case 'post':
                     that.board.synchronize(expectedNoteId, messageJSON.data);
+                    MessageBox.append(new Message({message: 'Others added a new sticky under "'+expectedCategoryTitle+'".'}).render())
                     break;
                 }
             });

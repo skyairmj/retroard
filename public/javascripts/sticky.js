@@ -31,11 +31,12 @@
             'click .sticky-vote': 'vote'
         },
         
-        initialize: function() {
+        initialize: function(options) {
             this.$el.attr('data-uuid', this.model.uuid);
             this.$el.data('view', this);
             this.$el.html(this.template({voteCount: this.model.voteCount, content: this.model.content}));
             this.model.on('change:voteCount', this.raiseVotes, this);
+            this.isSynchronized = options.isSynchronized;
         },
         
         render: function() {
