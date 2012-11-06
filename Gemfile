@@ -8,6 +8,7 @@ gem 'thin'
 gem 'sinatra'
 gem 'websocket-rack'
 gem 'uuid'
+gem 'i18n'
 
 gem 'activesupport'
 gem 'json'
