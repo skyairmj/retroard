@@ -4,4 +4,4 @@
 document
 coverage
 *.rdb
-
+.DS_Store

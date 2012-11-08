@@ -6,45 +6,6 @@ body {
     margin: 0 20px;
 }
 
-#historyHeaderButton span {
-    padding-right: 11px;
-    background: url(/images/arrow-down.png) no-repeat center right;
-}
-
-#historyDialog {
-    display: none;
-    background-color: #121212;
-    position: absolute;
-    top: 40px;
-    right: 0;
-    z-index: 2;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 1px 2px #555;
-}
-
-#historyDialog ul {
-
-}
-
-#historyDialog ul li {
-    list-style: none;
-}
-
-#historyDialog ul li a {
-    display: block;
-    padding-left: 10px;
-    padding-right: 10px;
-    line-height: 26px;
-}
-
-#historyDialog ul li a:hover {
-    background: #444;
-}
-
-#historyDialog ul li:last-child a {
-    border-radius: 0 0 8px 8px;
-}
-
 #sections {
     margin-top:20px;
     border-radius: 5px;
@@ -204,7 +165,7 @@ body {
     word-wrap: break-word;
 }
 
-div.sticky-multi div.sticky-body span {
+.sticky-multi .sticky-body span {
     display: block;
     padding: 2px 5px 5px 12px;
     background: transparent url(../images/sticky-bullet.png) no-repeat left 9px;
