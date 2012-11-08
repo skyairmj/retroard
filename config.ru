@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'thin'
 require 'rack'
+require 'rack/contrib'
 require 'rack/websocket'
 require 'json'
 require './boot'
@@ -44,6 +45,9 @@ class WebSocketApp < Rack::WebSocket::Application
     end
   end
 end
+
+use Rack::StaticCache, :urls => ["/stylesheets", "/javascripts", "/fonts", "/images", "favicon.ico","/*.html"], :root => Dir.pwd + '/public'
+use Rack::Deflater
 
 # Set service point for the websockets. This way we can run both web sockets and sinatra on the same server and port number.
 map ('/ws') {run WebSocketApp.new}

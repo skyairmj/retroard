@@ -4,6 +4,7 @@ gem 'rake'
 gem 'systemu'
 
 gem 'rack'
+gem 'rack-contrib'
 gem 'thin'
 gem 'sinatra'
 gem 'websocket-rack'
@@ -19,7 +20,6 @@ gem 'mongo_mapper'
 
 group :test do
   gem 'rspec'
-  gem 'rspec-cramp'
   gem 'jasmine'
   gem 'rcov', '0.9.10'
 end

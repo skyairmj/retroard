@@ -4,9 +4,9 @@ module Retroard
     disable :run
     
     set :root, File.expand_path('..', File.dirname(__FILE__))
-
+    
     get '/' do
-        erb :index
+      redirect '/index.html', 302
     end
     
     post '/join' do
@@ -31,10 +31,10 @@ module Retroard
       retro.categories += [well, less_well, idea, puzzle]
       retro.save
       session[:retrospectiveId] = retro.serial_no
-      redirect "/retrospectives", 303
+      redirect "/retrospectives/result", 303
     end
     
-    get '/retrospectives' do
+    get '/retrospectives/result' do
       @retrospectiveId = session[:retrospectiveId]
       session[:retrospectiveId] = nil
       erb :result
