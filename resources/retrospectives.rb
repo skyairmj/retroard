@@ -17,7 +17,12 @@ module Retroard
     get %r{^/([\w]+)$} do |retrospective_id|
       if request.xhr?
         content_type :json
-        Retrospective.find_by_serial_no(retrospective_id).to_json
+        retro = Retrospective.find_by_serial_no(retrospective_id)
+        if retro.nil? 
+          raise Sinatra::NotFound
+        else
+          retro.to_json
+        end
       end
     end
     
