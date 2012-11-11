@@ -10,7 +10,7 @@ Config.setup
 
 class WebSocketApp < Rack::WebSocket::Application
 
-  include JSonHelper
+  include Retroard::JSON
   @@connections = Array.new
 
 	def on_open(env)
@@ -26,7 +26,7 @@ class WebSocketApp < Rack::WebSocket::Application
 	def on_message(env, message)
 		puts "Received message: #{message}"
 		
-		msg = parse_json(message)
+		msg = parse(message)
 		resource_uri = msg[:resourceUri]
     method = msg[:method]
     Retroard::ResourceDispatcher.dispatch resource_uri, method, msg[:data]

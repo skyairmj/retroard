@@ -1,31 +1,35 @@
 (function(){
-	/*
-	var AppView = Backbone.View.extend({
-		
-	});
-	window.App = new AppView
-	*/
-	var board = new Board();
-	$.getJSON('/retrospectives/'+retroId, function(retrospective) {
+	AppView = Backbone.View.extend({
+		initialize: function(){
+        	var board = new Board();
+        	$.getJSON('/'+retroId, function(retrospective) {
 	 	
-        $.each(retrospective.categories, function(index, category){
-            var section = new Section({title: category.title}).render();
-            board.add(category.title, section);
+                $.each(retrospective.categories, function(index, category){
+                    var section = new Section({title: category.title}).render();
+                    board.add(category.title, section);
             
-            $.each(category.notes, function(index2, note) {
-                var sticky = new Sticky(category.title, note.content, note.uuid, note.vote);
-                if (!!note.subordinates.length){
-                    $.each(note.subordinates, function(index3, subordinate) {
-                        sticky.append(new Sticky(category.title, subordinate.content, subordinate.uuid))
+                    $.each(category.notes, function(index2, note) {
+                        var sticky = new Sticky(category.title, note.content, note.uuid, note.vote);
+                        if (!!note.subordinates.length){
+                            $.each(note.subordinates, function(index3, subordinate) {
+                                sticky.append(new Sticky(category.title, subordinate.content, subordinate.uuid))
+                            });
+                            section.add(new StickyGroupView({model: sticky}).render());
+                        }
+                        else {
+                            section.add(new StickyView({model: sticky}).render());
+                        }
                     });
-                    section.add(new StickyGroupView({model: sticky}).render());
-                }
-                else {
-                    section.add(new StickyView({model: sticky}).render());
-                }
-            });
-        });
- 	});
-	Connection.connect(option['serverHost'], option['serverPort']);
-    Listener.listen(board);
+                });
+         	});
+        	Connection.connect(window.location.host);
+            Listener.listen(board);
+		},
+        
+        reload: function() {
+            $('article#sections').remove('div')
+            this.initialize();
+        }
+	});
+	window.App = new AppView()
 }());
