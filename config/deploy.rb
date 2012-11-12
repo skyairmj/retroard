@@ -13,6 +13,7 @@ role :db, location, :primary=>true
 #role :db,  "your slave db-server here"
 
 set :user, "ubuntu"
+set :use_sudo, false
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")] 
 
 # if you want to clean up old releases on each deploy uncomment this:
