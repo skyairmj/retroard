@@ -6,3 +6,4 @@ coverage
 *.rdb
 .DS_Store
 log
+logs

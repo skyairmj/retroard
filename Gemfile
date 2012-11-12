@@ -27,4 +27,5 @@ end
 group :deploy do
   gem 'capistrano'
   gem 'capify-ec2'
+  gem 'rvm-capistrano'
 end

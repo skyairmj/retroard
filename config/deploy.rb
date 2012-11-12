@@ -13,8 +13,15 @@ role :db, location, :primary=>true
 #role :db,  "your slave db-server here"
 
 set :user, "ubuntu"
-set :use_sudo, false
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")] 
+
+# Load RVM's capistrano plugin.    
+require "rvm/capistrano"
+
+set :rvm_path, '/usr/local/rvm/'
+set :rvm_bin_path, '/usr/local/rvm/bin'
+set :rvm_ruby_string, '1.9.2-p290@retroard'
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
@@ -25,11 +32,11 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start, :roles => :app do
-    run "cd #{current_path}; bundle exec thin start -C config/environment.yml"    
+    run "cd #{current_path} && bundle exec thin start -C config/environment.yml"    
   end
   
   task :stop, :roles => :app do 
-    run "cd #{current_path}; bundle exec thin stop -C config/environment.yml"
+    run "cd #{current_path} && bundle exec thin stop -C config/environment.yml"  
   end
   
   task :restart, :roles => :app  do
