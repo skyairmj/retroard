@@ -23,14 +23,16 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
-  task :start do
+  task :start, :roles => :app do
     run "cd #{current_path}; bundle exec thin start -C config/environment.yml"    
   end
   
-  task :stop do 
+  task :stop, :roles => :app do 
     run "cd #{current_path}; bundle exec thin stop -C config/environment.yml"
   end
   
-  task :restart => [:stop, :start], :roles => :app, :except => { :no_release => true }  do
+  task :restart, :roles => :app  do
+    stop
+    start
   end
 end
