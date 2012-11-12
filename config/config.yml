@@ -1,4 +1,7 @@
 development:
-  base_uri: http://localhost:3000/
+  mongo_hostname: localhost
+  mongo_database: retroard-dev
+  
+production:
   mongo_hostname: localhost
   mongo_database: retroard-dev

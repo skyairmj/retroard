@@ -13,7 +13,6 @@ role :db, location, :primary=>true
 #role :db,  "your slave db-server here"
 
 set :user, "ubuntu"
-set :use_sudo, true
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")] 
 
 # if you want to clean up old releases on each deploy uncomment this:
@@ -23,10 +22,15 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 # these http://github.com/rails/irs_process_scripts
 
 # If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+namespace :deploy do
+  task :start do
+    run "cd #{current_path}; bundle exec thin start -C config/environment.yml"    
+  end
+  
+  task :stop do 
+    run "cd #{current_path}; bundle exec thin stop -C config/environment.yml"
+  end
+  
+  task :restart => [:stop, :start], :roles => :app, :except => { :no_release => true }  do
+  end
+end
