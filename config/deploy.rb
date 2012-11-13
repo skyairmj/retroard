@@ -1,4 +1,4 @@
-set :application, "Retroad"
+set :application, "Retroard"
 set :repository,  "git://github.com/mingjin/retroard.git"
 
 set :scm, :git
@@ -21,7 +21,6 @@ require "rvm/capistrano"
 set :rvm_path, '/usr/local/rvm/'
 set :rvm_bin_path, '/usr/local/rvm/bin'
 set :rvm_ruby_string, '1.9.2-p290@retroard'
-$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"

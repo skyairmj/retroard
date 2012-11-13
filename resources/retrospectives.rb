@@ -11,7 +11,7 @@ module Retroard
     end
     
     post '/join' do
-      redirect "/board.html/#!/#{params[:retrospectiveId]}", 303 unless params[:retrospectiveId].nil?
+      redirect "/board.html#!/#{params[:retrospectiveId]}", 303 unless params[:retrospectiveId].nil?
     end
     
     get %r{^/([\w]+)$} do |retrospective_id|
@@ -34,7 +34,7 @@ module Retroard
       puzzle = Category.new({:title => 'Puzzle'})
       retro.categories += [well, less_well, idea, puzzle]
       retro.save
-      redirect "/result.html/#!/#{retro.serial_no}", 303
+      redirect "/result.html#!/#{retro.serial_no}", 303
     end    
   end
 end
