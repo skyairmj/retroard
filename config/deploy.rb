@@ -31,7 +31,7 @@ set :rvm_ruby_string, '1.9.2-p290@retroard'
 # If you are using Passenger mod_rails uncomment this:
 namespace :deploy do
   task :start, :roles => :app do
-    run "cd #{current_path} && rm -rf tmp && rm log"
+    run "cd #{current_path} && rm -rf tmp && rm -rf log"
     run "cd #{current_path} && bundle exec thin start -C config/environment.yml"    
   end
   
