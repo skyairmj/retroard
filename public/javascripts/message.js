@@ -16,7 +16,7 @@
         
         render: function() {
             this.$el.text(this.message);
-            this.$el.slideUp(800).delay(5000000).fadeOut(600);
+            this.$el.slideUp(800).delay(5000).fadeOut(600);
             return this;
         }
     });

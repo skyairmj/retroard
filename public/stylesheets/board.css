@@ -105,8 +105,7 @@ body {
 
 .sticky {
     display: inline-block;
-    margin-top: 5px;
-    margin-left: 12px;
+    margin: 5px 0 5px 12px;
     /*background-color: #FEF791;*/
     vertical-align: top;
     position: relative;
@@ -158,17 +157,10 @@ body {
 
 
 .sticky .sticky-header .like-count {
-    font-size: 12px;
-    font-weight: bold;
-    text-align: center;
-    width: 22px;
-    height: 22px;
-    line-height: 21px;
     position: absolute;
-    color: #006600;
     top: -5px;
     right: -5px;
-    background: url(../images/sticky-count.png) no-repeat left top;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .sticky-single .sticky-body {
@@ -222,12 +214,19 @@ body {
 .buttons {
     padding: 5px 15px 5px 0;
     text-align: right;
+    line-height: 30px;
 }
 
 .buttons button {
     height: 30px;
     width: 60px;
     margin-left: 10px;
+}
+
+.input-count {
+    color: #666;
+    font-size: 14px;
+    margin-right: 10px;
 }
 
 .message-container {
