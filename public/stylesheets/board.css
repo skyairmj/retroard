@@ -21,7 +21,7 @@ body {
     width: 25%;
 }
 
-#Well {
+/*#Well {
     background-color: rgba(255,255,255,.4);
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -40,7 +40,7 @@ body {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-
+*/
 
 
 #sections [class*="span"]:first-child{
@@ -52,7 +52,7 @@ body {
     margin-bottom: 10px;
     padding-left: 16px;
     position: relative;
-    background: url(/images/section-title-bg.png) no-repeat 5px center;
+    background: url(../images/section-title-bg.png) no-repeat 5px center;
 }
 
 .section-header h3 {
@@ -66,26 +66,26 @@ body {
 }
 
 #Well .section-header h3 {
-    background-image: url(/images/face-well.png);
+    background-image: url(../images/face-well.png);
 }
 
 #LessWell .section-header h3 {
-    background-image: url(/images/face-less-well.png);
+    background-image: url(../images/face-less-well.png);
 }
 
 #Puzzle .section-header h3 {
-    background-image: url(/images/face-puzzle.png);
+    background-image: url(../images/face-puzzle.png);
 }
 
 #Idea .section-header h3 {
-    background-image: url(/images/face-idea.png);
+    background-image: url(../images/face-idea.png);
 }
 
 .add-sticky {
     height: 36px;
     width: 36px;
     display: block;
-    background-image: url(/images/add-sticky.png);
+    background-image: url(../images/add-sticky.png);
     background-position: 0 0;
     cursor: pointer;
     position: absolute;
@@ -105,7 +105,7 @@ body {
 
 .sticky {
     display: inline-block;
-    margin: 5px 0 5px 12px;
+    margin: 5px 0 5px 5px;
     /*background-color: #FEF791;*/
     vertical-align: top;
     position: relative;
@@ -113,21 +113,20 @@ body {
 }
 
 .sticky-single {
-    width: 130px;
+    width: 140px;
 }
 
 .sticky-multi {
-    width: 137px;
+    width: 145px;
 }
 
 .sticky-single .sticky-header {
-    background: transparent url(../images/sticky-single-bg.png) no-repeat right top;
-    height: 5px;
+    height: 1px;
     position: relative;
 }
 
 .sticky-multi .sticky-header {
-    background: transparent url(../images/sticky-multi-bg.png) no-repeat right top;
+    background: transparent url(../images/new-sticky-multi-bg.png) no-repeat right top;
     height: 12px;
     position: relative;
 }
@@ -164,16 +163,16 @@ body {
 }
 
 .sticky-single .sticky-body {
-    padding: 5px 10px 5px 10px;
-    background: transparent url(../images/sticky-single-bg.png) no-repeat right bottom;
-    min-height: 100px
+    padding: 10px 10px 5px 15px;
+    background: transparent url(../images/new-sticky-bg.png) no-repeat right bottom;
+    min-height: 100px;
 }
 
 
 
 .sticky-multi .sticky-body {
     padding: 0px 10px 5px 15px;
-    background: transparent url(../images/sticky-multi-bg.png) no-repeat right bottom;
+    background: transparent url(../images/new-sticky-multi-bg.png) no-repeat right bottom;
     min-height: 100px
 }
 
