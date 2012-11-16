@@ -49,7 +49,6 @@
     	var retroId = window.location.hash.substring(3);
         $('div.retro_id span').text(retroId);
         var targetUrl = window.location.protocol+'//'+window.location.host;
-        targetUrl += !!window.location.port? (':'+window.location.port) : '';
         targetUrl += '/board.html#!/'+retroId;
         $('div.retro_url .breadcrumb').html('<a href="'+targetUrl+'" rel="this">'+targetUrl+'</a>')
     </script>
