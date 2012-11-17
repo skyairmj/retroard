@@ -1,15 +1,17 @@
 (function(){
 	AppView = Backbone.View.extend({
+        
 		initialize: function(){
-        	var board = new Board();
+        	this.board = new Board();
+            that = this;
         	$.ajax({
                 url: '/'+retroId,
                 dataType: 'json', 
                 success: function(retrospective) {
                     $.each(retrospective.categories, function(index, category){
                         var section = new Section({title: category.title}).render();
-                        board.add(category.title, section);
-            
+                        that.board.add(category.title, section);
+                        
                         $.each(category.notes, function(index2, note) {
                             var sticky = new Sticky(category.title, note.content, note.uuid, note.vote);
                             if (!!note.subordinates.length){
@@ -24,7 +26,9 @@
                         });
                     });
                 	Connection.connect(window.location.host);
-                    Listener.listen(board);
+                    _.extend(Connection, Backbone.Events);
+                    Connection.on('remote:create:sticky', that.syncCreate, that);
+                    Connection.on('remote:update:sticky', that.syncUpdate, that);
              	},
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
@@ -36,6 +40,16 @@
             $('article#sections').empty();
             Connection.close();
             this.initialize();
+        },
+        
+        syncCreate: function(section, stickyId, stickyData){
+            this.board.getSection(section).synchronize(stickyId, stickyData);
+            MessageBox.append(new Message({message: 'Others added a new sticky under "'+section+'".'}).render());
+        },
+        
+        syncUpdate: function(section, stickyId, stickyData) {
+            this.board.synchronize(stickyId, stickyData);
+            MessageBox.append(new Message({message: 'Others updated a sticky under"'+section+'".'}).render());
         }
 	});
 	window.App = new AppView()

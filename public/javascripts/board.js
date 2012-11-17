@@ -15,13 +15,13 @@
             return this.sections[title];
         },
         
-        synchronize: function(baseStickyUUID, data) {
-            if (!!data.newSubordinate) {
+        synchronize: function(baseStickyUUID, sticky) {
+            if (!!sticky.newSubordinate) {
                 var dropped = this.$('div[data-uuid="'+baseStickyUUID+'"]').data('view');
-                var droppee = this.$('div[data-uuid="'+data.newSubordinate.uuid+'"]').data('view')
+                var droppee = this.$('div[data-uuid="'+sticky.newSubordinate.uuid+'"]').data('view')
                 dropped.accept(droppee);
             }
-            if (!!data.vote) {
+            if (!!sticky.vote) {
                 this.$('div[data-uuid="'+baseStickyUUID+'"]').data('view').model.vote()
             }
         }

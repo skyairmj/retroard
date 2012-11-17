@@ -14,6 +14,27 @@
             var connectionUrl = 'ws://'+serverHost+'/'+this.websocket_mount_point;
             try {
                 this.socket = new window.WebSocket(connectionUrl);
+                self = this;
+                this.socket.onmessage = function(message) {
+        			var messageJSON = $.parseJSON(message.data);
+                    var uriRegex = /^\/(\w+)\/([\w|\s]+)\/notes\/([\w|-]+)$/
+                    var match = uriRegex.exec(messageJSON.resourceUri);
+                    var expectedRetroId = match[1]
+                    if (expectedRetroId != window.retroId) {
+                        console.warn('You Are Not Supposed to Receive This Message: '+message)
+                        return;
+                    }
+                    var expectedCategoryTitle = match[2]
+                    var expectedNoteId = match[3]
+                    switch(messageJSON.method){
+                        case 'put':
+                        self.trigger('remote:create:sticky', expectedCategoryTitle, expectedNoteId, messageJSON.data);
+                        break;
+                        case 'post':
+                        self.trigger('remote:update:sticky', expectedCategoryTitle, expectedNoteId, messageJSON.data);
+                        break;
+                    }
+                }; 
                 console.log(this.socket);
             } catch(e) {
                 console.log(e);
@@ -25,11 +46,8 @@
                 this.socket.send(data);
         },
 
-        onMessage: function(handler) {
-            this.socket.onmessage = handler;
-        },
-
         close: function() {
+            this.off();
             if(!!this.socket && this.socket.readyState == this.socket.OPEN) {
                 this.socket.close();
                 this.socket = undefined;
