@@ -1,5 +1,5 @@
 body {
-    background: url(../images/low_contrast_linen.png) repeat left top;
+    background: url(../images/furley_bg.png) repeat left top;
 }
 
 .content {
@@ -8,9 +8,11 @@ body {
 
 #sections {
     margin-top:20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #000;
-    background:url(../images/retina_dust.jpg) repeat left top;
+    /*border-radius: 5px;*/
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 50px rgba(0,0,0,0.2);
+    background: -moz-linear-gradient(center top , rgba(64,198,164, 0.2), rgba(64,198,164, 0.15)) repeat scroll 0 0%, -moz-linear-gradient(left top , rgba(255, 255, 255, .1), rgba(255, 255, 255, .6) 38%, rgba(0,0,0, 0) 38%, rgba(0,0,0, 0)) repeat scroll 0 0 transparent;
+    border: 2px solid rgba(200, 200, 200, 0.1); 
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1); 
 }
 
 #sections .section {
@@ -82,8 +84,8 @@ body {
 }
 
 .add-sticky {
-    height: 36px;
-    width: 36px;
+    height: 40px;
+    width: 40px;
     display: block;
     background-image: url(../images/add-sticky.png);
     background-position: 0 0;
@@ -94,7 +96,7 @@ body {
 }
 
 .add-sticky:hover {
-    background-position: 0 -36px;
+    background-position: 0 -40px;
 }
 
 .section-body {
@@ -188,16 +190,18 @@ body {
 
 #stickyDialog {
     padding: 10px;
-    /*background-color: #FEF791;*/
-    /*border-radius: 20px 20px 30px 20px;*/
-    /*box-shadow: -1px -1px 1px #666;*/
-    background: transparent url(../images/sticky-bottom.png) no-repeat right bottom;
+    background-color: #FEF791;
+    box-shadow: -1px -1px 1px #666;
     z-index: 2;
 }
 
+.modal {
+    margin: -250px 0 0 -180px;
+}
+
 #stickyDialog textarea {
-    min-height: 120px;
-    min-width: 440px;
+    min-height: 150px;
+    min-width: 320px;
     display: block;
     margin: 5px auto;
     background: none;
@@ -224,7 +228,8 @@ body {
 
 .input-count {
     color: #666;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: bold;
     margin-right: 10px;
 }
 
