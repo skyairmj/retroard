@@ -107,9 +107,9 @@ header .separator {
 }
 
 .glass-pin-tl {top: 5px;left: 5px;}
-.glass-pin-tr {top: 5px;right: 5px;}
-.glass-pin-bl {bottom: 5px;left: 5px;}
-.glass-pin-br {bottom: 5px;right: 5px;}
+.glass-pin-tr {top: 5px;right: 4px;}
+.glass-pin-bl {bottom: 4px;left: 5px;}
+.glass-pin-br {bottom: 4px;right: 4px;}
 
 
 .brand {
