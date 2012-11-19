@@ -17,9 +17,6 @@ h3. Frontend
 
 h3. UI/UX
 
-* re-polish retrospective creation result page to share the theme of index page
-* polish sticky dialog input counting style and notifications
-
 * when sticky count > 10 (or another reasonable amount), change .badge-success to .badge-important for attraction.
 
 
@@ -33,3 +30,5 @@ h2. DONE
 * add google analytics tracking
 * polish retrospective creation result page
 * polish message style on the bottom right corner
+* re-polish retrospective creation result page to share the theme of index page
+* polish sticky dialog input counting style and notifications
