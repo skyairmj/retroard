@@ -21,29 +21,35 @@
         </header>
 		<div class="container">
             <div class="row">
-                <div class="span6">
-                    <div class="sticky-sample"></div>
+                <div class="span7">
+                    <div class="glass">
+                        <div class="sticky-sample"></div>
+                    </div>
+                    
                 </div>
-                <div class="join span3">
-                    <h3>Join the Retrospective</h3>
-                    <section class="form">
-                        <form action="/join" method="post">
-                            <h5>To join an online retrospective, enter the retrospective ID provided by the organizer.</h5>
-                            <label for="retrospectiveId">Retrospective ID</label>
-                            <input type="text" name="retrospectiveId" id="retrospectiveId" class="required eventId" title="Please enter a valid Retrospective ID">
-                            <input type="submit" value="Continue" class="btn">
-                        </form>
-                    </section>
-                </div>
+                <div class="span5 home-actions">
 
-                <div class="create span3">
+                    <h4>Create the Retrospective</h4>
                     <section>
-                        <h5>Create an online retrospective for your team right now!</h5>
+                        <h6>Create an online retrospective for your team right now!</h6>
                         <form action="/" method="post">
                             <input type="hidden" name="_method" value="put" />
-                            <input type="submit" value="Create a new retrospective" class="btn"></input>
+                            <input type="submit" value="Create a new retrospective" class="btn btn-primary btn-large"></input>
                         </form>
                     </section>
+
+                    <hr />
+
+                    <h4>Join the Retrospective</h4>
+                    <section class="form">
+                        <form action="/join" method="post">
+                            <h6>To join an online retrospective, enter the retrospective ID provided by the organizer.</h6>
+                            <label for="retrospectiveId">Retrospective ID</label>
+                            <input type="text" name="retrospectiveId" id="retrospectiveId" class="required eventId" title="Please enter a valid Retrospective ID">
+                            <input type="submit" value="Continue" class="btn" style="margin-bottom:9px">
+                        </form>
+                    </section>
+                    
                 </div>
             </div>
 		</div>

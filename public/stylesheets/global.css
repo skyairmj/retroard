@@ -91,10 +91,18 @@ header .separator {
     color: #545454;
 }
 
+.glass {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 60px rgba(0,0,0,0.2);
+    background: -moz-linear-gradient(center top , rgba(64,198,164, 0.2), rgba(64,198,164, 0.15)) repeat scroll 0 0%, -moz-linear-gradient(left top , rgba(255, 255, 255, .1), rgba(255, 255, 255, .6) 38%, rgba(0,0,0, 0) 38%, rgba(0,0,0, 0)) repeat scroll 0 0 transparent;
+    border: 1px solid rgba(200, 200, 200, 0.1); 
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1); 
+}
+
 .brand {
     background: url(../images/stickies_icon_32.png) no-repeat left center;
     padding-left: 30px;
     margin: 0;
+    font-weight: normal;
 }
 
 .title {
@@ -113,5 +121,5 @@ header .separator {
     width: auto;
     padding: 0 20px;
     line-height:60px;
-    color: #ccc;
+    color: #aaa;
 }

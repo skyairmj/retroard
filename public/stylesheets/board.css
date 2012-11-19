@@ -9,40 +9,14 @@ body {
 #sections {
     margin-top:20px;
     /*border-radius: 5px;*/
-    box-shadow: 0 1px 3px rgba(0,0,0,0.4), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 50px rgba(0,0,0,0.2);
-    background: -moz-linear-gradient(center top , rgba(64,198,164, 0.2), rgba(64,198,164, 0.15)) repeat scroll 0 0%, -moz-linear-gradient(left top , rgba(255, 255, 255, .1), rgba(255, 255, 255, .6) 38%, rgba(0,0,0, 0) 38%, rgba(0,0,0, 0)) repeat scroll 0 0 transparent;
-    border: 2px solid rgba(200, 200, 200, 0.1); 
-    border-bottom: 1px solid rgba(100, 100, 100, 0.1); 
 }
 
 #sections .section {
-    /*border-left: 1px solid #CECEBF;*/
     min-height: 600px;
     padding: 10px;
     margin-left: 0;
     width: 25%;
 }
-
-/*#Well {
-    background-color: rgba(255,255,255,.4);
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-
-#LessWell {
-    background-color: rgba(255,255,255,.6);
-}
-
-#Idea {
-    background-color: rgba(255,255,255,.4);
-}
-
-#Puzzle {
-    background-color: rgba(255,255,255,.6);
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-*/
 
 
 #sections [class*="span"]:first-child{

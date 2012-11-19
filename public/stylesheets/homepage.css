@@ -1,6 +1,5 @@
 body {
-    background: url(../images/low_contrast_linen.png) repeat left top;
-    color: #eee;
+    background: url(../images/furley_bg.png) repeat left top;
 }
 
 .container {
@@ -8,10 +7,15 @@ body {
     margin-top: 50px;
 }
 
+.home-actions hr {
+    border-top: 1px solid #ccc;
+    margin: 30px 0;
+}
+
 .sticky-sample {
-    width: 312px;
-    height: 312px;
-    background: url(../images/sticky-sample.png) no-repeat left top;
+    width: 400px;
+    height: 400px;
+    background: url(../images/sticky-sample.png) no-repeat center 20px;
 }
 
 .retro_url {
