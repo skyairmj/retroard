@@ -1,13 +1,12 @@
 source :rubygems
 
 gem 'rake'
-gem 'systemu'
-
 gem 'rack'
 gem 'rack-contrib'
 gem 'thin'
 gem 'sinatra'
 gem 'websocket-rack'
+gem 'sinatra-websocket'
 gem 'uuid'
 gem 'i18n'
 
@@ -20,6 +19,13 @@ gem 'mongo_mapper'
 
 gem "hiredis", "~> 0.4.4"
 gem "redis", "~> 2.2.0", :require => ["redis/connection/hiredis", "redis"]
+
+group :development do
+  gem "sprockets"
+  gem "yui-compressor"
+  gem "coffee-script"
+  gem "sass"
+end
 
 group :test do
   gem 'rspec'

@@ -6,6 +6,10 @@ module Retroard
     
     set :root, File.expand_path('..', File.dirname(__FILE__))
     
+    before do
+      expires 500, :public, :must_revalidate
+    end
+    
     get '/' do
       redirect '/index.html', 302
     end
