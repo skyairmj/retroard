@@ -96,7 +96,21 @@ header .separator {
     background: -moz-linear-gradient(center top , rgba(64,198,164, 0.2), rgba(64,198,164, 0.15)) repeat scroll 0 0%, -moz-linear-gradient(left top , rgba(255, 255, 255, .1), rgba(255, 255, 255, .6) 38%, rgba(0,0,0, 0) 38%, rgba(0,0,0, 0)) repeat scroll 0 0 transparent;
     border: 1px solid rgba(200, 200, 200, 0.1); 
     border-bottom: 1px solid rgba(100, 100, 100, 0.1); 
+    position: relative;
 }
+
+.glass-pin {
+    width: 14px;
+    height: 14px;
+    background: url(../images/glass-pin.png) no-repeat left top;
+    position: absolute;
+}
+
+.glass-pin-tl {top: 5px;left: 5px;}
+.glass-pin-tr {top: 5px;right: 5px;}
+.glass-pin-bl {bottom: 5px;left: 5px;}
+.glass-pin-br {bottom: 5px;right: 5px;}
+
 
 .brand {
     background: url(../images/stickies_icon_32.png) no-repeat left center;
