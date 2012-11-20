@@ -1,5 +1,5 @@
 body {
-    background: url(../images/furley_bg.png) repeat left top;
+    background: url(../images/furley_bg.jpg) repeat left top;
 }
 
 .content {
@@ -8,6 +8,7 @@ body {
 
 #sections {
     margin-top:20px;
+    min-height: 600px;
     /*border-radius: 5px;*/
 }
 
@@ -28,41 +29,28 @@ body {
     margin-bottom: 10px;
     padding-left: 16px;
     position: relative;
-    background: url(../images/section-title-bg.png) no-repeat 5px center;
+    background: url(../images/combo.png) no-repeat -299px 3px;
 }
 
 .section-header h3 {
     display: inline-block;
     line-height: 34px;
     padding-left: 36px;
-    background-position: left top;
-    background-repeat: no-repeat;
     font-family: Marydale;
     font-weight: normal;
 }
 
-#Well .section-header h3 {
-    background-image: url(../images/face-well.png);
-}
-
-#LessWell .section-header h3 {
-    background-image: url(../images/face-less-well.png);
-}
-
-#Puzzle .section-header h3 {
-    background-image: url(../images/face-puzzle.png);
-}
-
-#Idea .section-header h3 {
-    background-image: url(../images/face-idea.png);
-}
+#Well .section-header h3 { background: url(../images/combo.png) no-repeat -304px -60px; }
+#LessWell .section-header h3 { background: url(../images/combo.png) no-repeat -304px -120px; }
+#Puzzle .section-header h3 { background: url(../images/combo.png) no-repeat -304px -180px; }
+#Idea .section-header h3 { background: url(../images/combo.png) no-repeat -304px -240px; }
 
 .add-sticky {
     height: 40px;
     width: 40px;
     display: block;
-    background-image: url(../images/add-sticky.png);
-    background-position: 0 0;
+    background-image: url(../images/combo.png);
+    background-position: -304px -300px;
     cursor: pointer;
     position: absolute;
     top: 10px;
@@ -70,7 +58,7 @@ body {
 }
 
 .add-sticky:hover {
-    background-position: 0 -40px;
+    background-position: -304px -340px;
 }
 
 .section-body {
@@ -102,7 +90,7 @@ body {
 }
 
 .sticky-multi .sticky-header {
-    background: transparent url(../images/new-sticky-multi-bg.png) no-repeat right top;
+    background: transparent url(../images/combo.png) no-repeat 0 0;
     height: 12px;
     position: relative;
 }
@@ -111,7 +99,7 @@ body {
     width: 15px;
     height: 48px;
     position: absolute;
-    background: transparent url(../images/sticky-clip.png) no-repeat left top;
+    background: transparent url(../images/combo.png) no-repeat -350px -300px;
     top: -5px;
     left: 4px;
 }
@@ -140,7 +128,7 @@ body {
 
 .sticky-single .sticky-body {
     padding: 10px 10px 5px 15px;
-    background: transparent url(../images/new-sticky-bg.png) no-repeat right bottom;
+    background: transparent url(../images/combo.png) no-repeat -145px bottom;
     min-height: 100px;
 }
 
@@ -148,7 +136,7 @@ body {
 
 .sticky-multi .sticky-body {
     padding: 0px 10px 5px 15px;
-    background: transparent url(../images/new-sticky-multi-bg.png) no-repeat right bottom;
+    background: transparent url(../images/combo.png) no-repeat 0 bottom;
     min-height: 100px
 }
 
@@ -159,7 +147,7 @@ body {
 .sticky-multi .sticky-body span {
     display: block;
     padding: 2px 5px 5px 12px;
-    background: transparent url(../images/sticky-bullet.png) no-repeat left 9px;
+    background: transparent url(../images/combo.png) no-repeat -304px -391px;
 }
 
 #stickyDialog {

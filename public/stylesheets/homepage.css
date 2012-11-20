@@ -1,5 +1,5 @@
 body {
-    background: url(../images/furley_bg.png) repeat left top;
+    background: url(../images/furley_bg.jpg) repeat left top;
 }
 
 .container {
@@ -13,9 +13,9 @@ body {
 }
 
 .sticky-sample {
-    width: 400px;
+    width: 640px;
     height: 400px;
-    background: url(../images/sticky-sample.png) no-repeat center 20px;
+    background: url(../images/welcome.png) no-repeat center 30px;
 }
 
 .retro_url {
