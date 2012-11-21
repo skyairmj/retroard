@@ -25,10 +25,11 @@
     
     StickyView = Backbone.View.extend({
         className: "sticky sticky-single",
-        template: _.template('<div class="sticky-header"><div class="sticky-vote btn btn-success"><i class="icon-thumbs-up icon-white"></i> Vote</div><a class="sticky-action-btn btn btn-primary" data-original-title="What action shall we take?" data-type="text"><i class="icon-ok-sign icon-white"></i> Action</a><span class="like-count badge badge-success"><%=voteCount%></span></div><div class="sticky-body"><%=content%></div>'),
+        template: _.template('<div class="sticky-header"><div class="sticky-vote btn btn-success"><i class="icon-thumbs-up icon-white"></i> Vote</div><a class="sticky-action-btn btn btn-primary" data-original-title="What action shall we take?" data-type="text"><i class="icon-ok-sign icon-white"></i> Action</a><span class="like-count badge badge-success"><%=voteCount%></span></div><div class="sticky-body"><%=content%></div><div class="sticky-action-group"><div class="sticky-action">this is an action</div></div>'),
         
         events: {
-            'click .sticky-vote': 'vote'
+            'click .sticky-vote': 'vote',
+            'click .sticky-action-btn': 'comment'
         },
         
         initialize: function(options) {
@@ -41,6 +42,12 @@
         
         render: function() {
             var that = this;
+            this.$('.sticky-action').editable({
+                type:  'textarea',
+                name:  'comments',
+                toggle: 'manual',
+                title: 'Enter comments'
+            });
             this.$el.draggable({
                 revert: "invalid",
                 containment: "#sections",
@@ -77,6 +84,11 @@
         
         raiseVotes: function() {
             this.$('span.like-count').text(this.model.voteCount);
+        },
+        
+        comment: function(e) {
+            e.stopPropagation();
+            this.$('.sticky-action').editable('show');
         }
     });
     
@@ -87,7 +99,8 @@
         eachTemplate: _.template('<span><%=content%></span>'),
         
         events: {
-            'click .sticky-vote': 'vote'
+            'click .sticky-vote': 'vote',
+            'click .sticky-action-btn': 'comment'
         },
         
         initialize: function() {
@@ -104,6 +117,17 @@
         
         render: function(){
             var that = this;
+            this.$('.sticky-action').editable({
+                type:  'textarea',
+                name:  'comments',
+                toggle: 'manual',
+                title: 'Enter comments'
+            });
+            this.$('.sticky-action').editable({
+                type:  'textarea',
+                name:  'comments',
+                title: 'Enter comments'
+            });
             this.$el.draggable({
                 revert: "invalid",
                 containment: "#sections",
@@ -140,6 +164,11 @@
         
         raiseVotes: function() {
             this.$('span.like-count').text(this.model.voteCount);
+        },
+        
+        comment: function(e) {
+            e.stopPropagation();
+            this.$('.sticky-action').editable('show');
         }
     });
 }());
