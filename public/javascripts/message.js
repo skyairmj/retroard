@@ -8,7 +8,7 @@
     }))();
     
     Message = Backbone.View.extend({
-        className: 'message',
+        className: 'message alert alert-success',
         
         initialize: function(options) {
             this.message = options.message;
@@ -16,7 +16,7 @@
         
         render: function() {
             this.$el.text(this.message);
-            this.$el.slideUp(800).delay(5000).fadeOut(600);
+            this.$el.slideUp(800).delay(3000).fadeOut(600);
             return this;
         }
     });

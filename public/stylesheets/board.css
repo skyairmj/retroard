@@ -1,5 +1,6 @@
 body {
     background: url(../images/furley_bg.jpg) repeat left top;
+    position: relative;
 }
 
 .content {
@@ -147,7 +148,7 @@ body {
 .sticky-multi .sticky-body span {
     display: block;
     padding: 2px 5px 5px 12px;
-    background: transparent url(../images/combo.png) no-repeat -304px -391px;
+    background: transparent url(../images/combo.png) no-repeat -304px -491px;
 }
 
 #stickyDialog {
@@ -196,14 +197,17 @@ body {
 }
 
 .message-container {
-    
+    position: absolute;
+    right: 18px;
+    top: 5px;
 }
 
-.message {
+/*.message {
     text-align: right;
     font-size: 11px;
-    padding: 3px 10px 3px 30px;
+    padding: 3px 10px 3px 15px;
     float: right;
+    margin-right: 300px;
     color: #000;
     font-family: Andale_Mono;
     background-image: -webkit-linear-gradient(top, #f3f3f3, #ddd);
@@ -211,7 +215,8 @@ body {
     background-image: -moz-linear-gradient(top, #f3f3f3, #ddd);
     background-image: -linear-gradient(top, #f3f3f3, #ddd);
     border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-}
+}*/
 
 
