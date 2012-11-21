@@ -105,17 +105,25 @@ body {
     left: 4px;
 }
 
-.sticky .sticky-header .sticky-vote {
-    top: -5px;
+.sticky .sticky-header .sticky-vote, .sticky .sticky-header .sticky-action-btn {
     position: absolute;
-    left: 5px;
-    padding: 2px 10px;
+    padding: 1px 5px;
     font-size: 12px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.4);
     display: none;
 }
 
-.sticky:hover .sticky-vote {
+.sticky .sticky-header .sticky-vote {
+    top: -5px;
+    left: -3px;
+}
+
+.sticky .sticky-header .sticky-action-btn {
+    left: 55px;
+    top: -5px;
+}
+
+.sticky:hover .sticky-vote, .sticky:hover .sticky-action-btn {
     display: inline-block;
 }
 
@@ -123,12 +131,12 @@ body {
 .sticky .sticky-header .like-count {
     position: absolute;
     top: -5px;
-    right: -5px;
+    left: 123px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .sticky-single .sticky-body {
-    padding: 10px 10px 5px 15px;
+    padding: 10px 25px 5px 15px;
     background: transparent url(../images/combo.png) no-repeat -145px bottom;
     min-height: 100px;
 }
@@ -136,7 +144,7 @@ body {
 
 
 .sticky-multi .sticky-body {
-    padding: 0px 10px 5px 15px;
+    padding: 0px 25px 5px 15px;
     background: transparent url(../images/combo.png) no-repeat 0 bottom;
     min-height: 100px
 }
@@ -149,6 +157,19 @@ body {
     display: block;
     padding: 2px 5px 5px 12px;
     background: transparent url(../images/combo.png) no-repeat -304px -491px;
+}
+
+.sticky-action-group {
+    position: absolute;
+    left: 123px;
+    top: 18px;
+}
+
+.sticky-action {
+    background: url(../images/sticky-action-bg.png) no-repeat left bottom;
+    width: 112px;
+    min-height:14px;
+    padding: 5px 10px 8px 10px;
 }
 
 #stickyDialog {
