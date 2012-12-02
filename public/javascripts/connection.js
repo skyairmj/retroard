@@ -26,12 +26,13 @@
                     }
                     var expectedCategoryTitle = match[2]
                     var expectedNoteId = match[3]
+                    var expectedData = Utils.jsonifyQueryString(messageJSON.data)
                     switch(messageJSON.method){
                         case 'put':
-                        self.trigger('remote:create:sticky', expectedCategoryTitle, expectedNoteId, messageJSON.data);
+                        self.trigger('remote:create:sticky', expectedCategoryTitle, expectedNoteId, expectedData);
                         break;
                         case 'post':
-                        self.trigger('remote:update:sticky', expectedCategoryTitle, expectedNoteId, messageJSON.data);
+                        self.trigger('remote:update:sticky', expectedCategoryTitle, expectedNoteId, expectedData);
                         break;
                     }
                 }; 
@@ -58,7 +59,7 @@
 			this.sendMessage($.toJSON({
 	            'resourceUri': '/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
 	            'method': 'put',
-	            'data': 'content='+sticky.content
+	            'data': $.param({'content': sticky.content})
 	        }));
 		},
 
@@ -66,12 +67,7 @@
 			this.sendMessage($.toJSON({
 				'resourceUri': '/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
 				'method': 'post',
-				'data': {
-                    'newSubordinate': {
-                        'uuid': sticky.newSubordinate.uuid,
-                        'category': sticky.newSubordinate.category
-                    }
-                }
+				'data': $.param({'newSubordinate': {'uuid': sticky.newSubordinate.uuid,'category': sticky.newSubordinate.category}})
 			}));
 		},
         
@@ -79,9 +75,7 @@
 			this.sendMessage($.toJSON({
 				'resourceUri': '/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
 				'method': 'post',
-				'data': {
-                    'vote': sticky.voteCount
-                }
+				'data': $.param({'vote=': sticky.voteCount})
 			}));
         }
     }));

@@ -1,16 +1,15 @@
 module Retroard
   class Retrospectives < Sinatra::Base
     include GUID
-    include JSON
+    
     enable :inline_templates, :method_override, :sessions, :logging
     disable :run
     set :protection, except: :session_hijacking
     
     set :root, File.expand_path('..', File.dirname(__FILE__))
-    set :server, 'thin'
-    set :sockets, []
+    
     configure :production, :development do
-      enable :logging, :dump_errors, :raise_errors
+      enable :dump_errors, :raise_errors
     end
     
     before do
@@ -19,33 +18,6 @@ module Retroard
     
     get '/' do
       redirect '/index.html', 302
-    end
-    
-    get '/ws' do
-      if !request.websocket?
-        raise Sinatra::NotFound
-      else
-        request.websocket do |ws|
-          ws.onopen do
-            settings.sockets << ws
-            logger.info "wetbsocket #{ws} connected"
-          end
-          ws.onmessage do |message|
-            msg = parse(message)
-            resource_uri = msg[:resourceUri]
-            method = msg[:method]
-            status, headers, body = call! env.merge("PATH_INFO" => resource_uri, "REQUEST_METHOD" => method.upcase, "rack.input"=>StringIO.new(msg[:data]), "CONTENT_TYPE" =>'application/x-www-form-urlencoded')
-            logger.info "#{status}----#{headers}----#{body}"
-            [status, headers, body.map(&:upcase)]
-            #Retroard::ResourceDispatcher.dispatch resource_uri, method, msg[:data]
-            EM.next_tick { settings.sockets.each{|s| s.send(message) unless s == ws} }
-          end
-          ws.onclose do
-            logger.info "wetbsocket #{ws} disconnected"
-            settings.sockets.delete(ws)
-          end
-        end
-      end
     end
     
     put '/:retro_serial_no/:category_title/notes/:note_uuid' do

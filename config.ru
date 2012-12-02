@@ -2,12 +2,13 @@ require 'rubygems'
 require 'thin'
 require 'rack'
 require 'rack/contrib'
-#require 'rack/websocket'
 require 'json'
 require './boot'
 
 Config.setup
 
+# require 'rack/websocket'
+#
 # class WebSocketApp < Rack::WebSocket::Application
 # 
 #   include Retroard::JSON
@@ -53,5 +54,4 @@ Config.setup
 # map ('/ws') {run WebSocketApp.new}
 
 # This delegates everything other route not defined above to the Sinatra app.
-map ('/') {run Retroard::Retrospectives}
-#Retroard::Retrospectives.run!
+run Retroard::Application
