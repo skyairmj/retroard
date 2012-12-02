@@ -2,24 +2,6 @@ module Retroard
   class Retrospectives < Sinatra::Base
     include GUID
     
-    enable :inline_templates, :method_override, :sessions, :logging
-    disable :run
-    set :protection, except: :session_hijacking
-    
-    set :root, File.expand_path('..', File.dirname(__FILE__))
-    
-    configure :production, :development do
-      enable :dump_errors, :raise_errors
-    end
-    
-    before do
-      expires 500, :public, :must_revalidate
-    end
-    
-    get '/' do
-      redirect '/index.html', 302
-    end
-    
     put '/:retro_serial_no/:category_title/notes/:note_uuid' do
       retro_serial_no = params[:retro_serial_no]
       category_title = params[:category_title]
@@ -62,19 +44,15 @@ module Retroard
       retrospective.save
     end
     
-    post '/join' do
-      redirect "/board.html#!/#{params[:retrospectiveId]}", 303 unless params[:retrospectiveId].nil?
-    end
-    
     get %r{^/([\w]+)$} do |retrospective_id|
-      if request.xhr?
-        content_type :json
-        retro = Retrospective.find_by_serial_no(retrospective_id)
-        if retro.nil? 
-          raise Sinatra::NotFound
-        else
-          retro.to_json
-        end
+      return unless request.xhr?
+      
+      content_type :json
+      retro = Retrospective.find_by_serial_no(retrospective_id)
+      if retro.nil? 
+        raise Sinatra::NotFound
+      else
+        retro.to_json
       end
     end
     

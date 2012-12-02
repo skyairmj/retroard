@@ -1,7 +1,6 @@
 (function() {
     Connection = new (Backbone.Model.extend({
-    	websocket_server_address : "localhost:3000",
-    	websocket_mount_point : "ws",
+    	WEBSOCKET_MOUNT_POINT : "ws",
         
         initialize: function(){
             if (window.MozWebSocket) {
@@ -10,8 +9,7 @@
         },
         
         connect: function (serverHost) {
-		    var serverHost = serverHost || this.websocket_server_address;
-            var connectionUrl = 'ws://'+serverHost+'/'+this.websocket_mount_point;
+            var connectionUrl = 'ws://'+serverHost+'/'+this.WEBSOCKET_MOUNT_POINT;
             try {
                 this.socket = new window.WebSocket(connectionUrl);
                 self = this;

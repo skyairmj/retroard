@@ -1,11 +1,7 @@
 require 'rubygems'
-require 'thin'
 require 'rack'
 require 'rack/contrib'
-require 'json'
 require './boot'
-
-Config.setup
 
 # require 'rack/websocket'
 #
@@ -47,11 +43,13 @@ Config.setup
 #   end
 # end
 
-#use Rack::StaticCache, :urls => ["/stylesheets", "/javascripts", "/fonts", "/images", "/*.html"], :root => Dir.pwd + '/public', :duration => 3600
-#use Rack::Deflater
+use Rack::Deflater
+use Rack::StaticCache, :urls => ["/stylesheets", "/javascripts", "/fonts", "/images", "/*.html"], :root => Dir.pwd + '/public', :duration => 3600
+use Rack::ETag
 
 # Set service point for the websockets. This way we can run both web sockets and sinatra on the same server and port number.
 # map ('/ws') {run WebSocketApp.new}
 
 # This delegates everything other route not defined above to the Sinatra app.
+Config.setup
 run Retroard::Application
