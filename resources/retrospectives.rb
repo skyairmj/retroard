@@ -1,10 +1,17 @@
 module Retroard
   class Retrospectives < Sinatra::Base
     include GUID
+    include JSON
     enable :inline_templates, :method_override, :sessions, :logging
     disable :run
+    set :protection, except: :session_hijacking
     
     set :root, File.expand_path('..', File.dirname(__FILE__))
+    set :server, 'thin'
+    set :sockets, []
+    configure :production, :development do
+      enable :logging, :dump_errors, :raise_errors
+    end
     
     before do
       expires 500, :public, :must_revalidate
@@ -12,6 +19,75 @@ module Retroard
     
     get '/' do
       redirect '/index.html', 302
+    end
+    
+    get '/ws' do
+      if !request.websocket?
+        raise Sinatra::NotFound
+      else
+        request.websocket do |ws|
+          ws.onopen do
+            settings.sockets << ws
+            logger.info "wetbsocket #{ws} connected"
+          end
+          ws.onmessage do |message|
+            msg = parse(message)
+            resource_uri = msg[:resourceUri]
+            method = msg[:method]
+            status, headers, body = call! env.merge("PATH_INFO" => resource_uri, "REQUEST_METHOD" => method.upcase, "rack.input"=>StringIO.new(msg[:data]), "CONTENT_TYPE" =>'application/x-www-form-urlencoded')
+            logger.info "#{status}----#{headers}----#{body}"
+            [status, headers, body.map(&:upcase)]
+            #Retroard::ResourceDispatcher.dispatch resource_uri, method, msg[:data]
+            EM.next_tick { settings.sockets.each{|s| s.send(message) unless s == ws} }
+          end
+          ws.onclose do
+            logger.info "wetbsocket #{ws} disconnected"
+            settings.sockets.delete(ws)
+          end
+        end
+      end
+    end
+    
+    put '/:retro_serial_no/:category_title/notes/:note_uuid' do
+      retro_serial_no = params[:retro_serial_no]
+      category_title = params[:category_title]
+      note_uuid = params[:note_uuid]
+      note_content = params[:content]
+      retrospective = Retrospective.find_by_serial_no retro_serial_no
+      category = retrospective.categories.select{|c|c.title == category_title}.first
+      
+      category.notes << Note.new({:uuid=>note_uuid, :content=>note_content, :vote=>0})
+
+      retrospective.save
+    end
+    
+    post '/:retro_serial_no/:category_title/notes/:note_uuid' do
+      retro_serial_no = params[:retro_serial_no]
+      category_title = params[:category_title]
+      note_uuid = params[:note_uuid]
+      note_content = params[:content]
+      note_new_subordinate = params[:newSubordinate]
+      note_vote = params[:vote]
+      
+      retrospective = Retrospective.find_by_serial_no retro_serial_no
+      category = retrospective.categories.select{|c|c.title == category_title}.first
+
+      base_note = category.notes.select{|n|n.uuid==note_uuid}.first
+      new_subordinate = note_new_subordinate
+      unless new_subordinate.nil?
+        source_category = retrospective.categories.select{|c|c.title == new_subordinate[:category]}.first
+        new_subordinate_note = source_category.notes.select{|n|n.uuid == new_subordinate[:uuid]}.first
+        source_category.notes.delete new_subordinate_note
+        base_note.subordinates << new_subordinate_note 
+        unless new_subordinate_note.subordinates.empty?
+          base_note.subordinates += new_subordinate_note.subordinates
+          new_subordinate_note.subordinates.clear
+        end
+        base_note.vote += new_subordinate_note.vote
+      end
+      base_note.vote = note_vote.to_i unless note_vote.nil?
+    
+      retrospective.save
     end
     
     post '/join' do

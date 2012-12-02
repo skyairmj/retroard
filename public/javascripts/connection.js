@@ -58,7 +58,7 @@
 			this.sendMessage($.toJSON({
 	            'resourceUri': '/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
 	            'method': 'put',
-	            'data': {'content': sticky.content}
+	            'data': 'content='+sticky.content
 	        }));
 		},
 
