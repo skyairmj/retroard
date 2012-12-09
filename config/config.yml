@@ -1,7 +1,14 @@
+---
 development:
-  mongo_hostname: localhost
+  mongo_host: 
+    - name    : localhost
+      port    : 27017
   mongo_database: retroard-dev
   
 production:
-  mongo_hostname: localhost
-  mongo_database: retroard-dev
+  mongo_host: 
+    - name    : localhost
+      port    : 27017
+    - name    : localhost
+      port    : 27018
+  mongo_database: retroard-production

@@ -15,7 +15,19 @@ module Config
   end
 
   def self.new_mongo_connection
-    Mongo::Connection.new(environment_config["mongo_hostname"])
+    length = environment_config["mongo_host"].length
+    if length == 1
+      host = environment_config["mongo_host"][0]
+      Mongo::Connection.new(host['hostname'], host['port'])
+    else
+      hosts = Array.new length
+      (0...length).each do |index|
+        host = environment_config["mongo_host"][index]
+        hosts[index] = "#{host['name']}:#{host['port']}"
+      end
+      puts hosts
+      Mongo::ReplSetConnection.new(hosts)
+    end
   end
 
   def self.drop_database
