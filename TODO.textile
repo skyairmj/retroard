@@ -17,7 +17,7 @@ h3. Frontend
 
 h3. UI/UX
 
-* when sticky count > 10 (or another reasonable amount), change .badge-success to .badge-important for attraction.
+* when sticker count > 10 (or another reasonable amount), change .badge-success to .badge-important for attraction.
 
 
 h2. DOING
@@ -31,4 +31,4 @@ h2. DONE
 * polish retrospective creation result page
 * polish message style on the bottom right corner
 * re-polish retrospective creation result page to share the theme of index page
-* polish sticky dialog input counting style and notifications
+* polish sticker dialog input counting style and notifications

@@ -24,10 +24,10 @@ response:
     }
 }
 
-add/update sticky:
+add/update sticker:
 request:
 {
-    'resource': 'sticky',
+    'resource': 'sticker',
     'method': 'save',
     'data': {
         'teamName': 'rca'
@@ -40,7 +40,7 @@ request:
 
 response:
 {
-    'resource': 'sticky',
+    'resource': 'sticker',
     'status': 'save',
     'data': {
         'uuid': 'some uuid',

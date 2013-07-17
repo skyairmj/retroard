@@ -4,13 +4,13 @@
         className: 'section span3',
         template: _.template('<div class="section-header">'+
 						'<h3><%=title%></h3>'+
-						'<a href="#modal" data-toggle="modal" role="button" class="add-sticky"></a>'+
+						'<a href="#modal" data-toggle="modal" role="button" class="add-sticker"></a>'+
 					'</div>'+
 					'<div class="section-body">'+
                     '</div>'),
                 
         events: {
-            'click .add-sticky': 'setStickyTarget'
+            'click .add-sticker': 'setStickerTarget'
         },
         
         initialize: function(option) {
@@ -20,20 +20,20 @@
             this.$el.html(this.template({title: this.title}));
         },
     
-        setStickyTarget: function() {
-            StickyDialog.target(this);
+        setStickerTarget: function() {
+            StickerDialog.target(this);
         },
         
-        add: function(stickyView){
-            this.$('.section-body').append(stickyView.$el);
+        add: function(stickerView){
+            this.$('.section-body').append(stickerView.$el);
         },
         
         synchronize: function(uuid, data) {
 //            if (this.$(uuid).length == 0) {
-                newSticky = new Sticky(this.title, data.content, uuid);
-                this.add(new StickyView({model: newSticky, isSynchronized: true}).render());
+                newSticker = new Sticker(this.title, data.content, uuid);
+                this.add(new StickerView({model: newSticker, isSynchronized: true}).render());
   //          } else {
-                //update the existing sticky
+                //update the existing sticker
     //        }
             
         }

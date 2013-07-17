@@ -1,7 +1,7 @@
 (function(){
-	StickyDialog = new (Backbone.View.extend({
+	StickerDialog = new (Backbone.View.extend({
         MAX_LENGTH: 140,
-		el: '#stickyDialog',
+		el: '#stickerDialog',
 		
 		events: {
 			'click .cancelButton': 'reset',
@@ -23,10 +23,10 @@
 		add: function() {
 			var content = $.trim(this.textarea.val());
             if (!!content) {
-				newSticky = new Sticky(this.targetSection.title, content);
-				Connection.createSticky(newSticky);
-                this.targetSection.add(new StickyView({model: newSticky}).render());
-                MessageBox.append(new Message({message: 'You added a new sticky under "'+this.targetSection.title+'".'}).render())
+				newSticker = new Sticker(this.targetSection.title, content);
+				Connection.createSticker(newSticker);
+                this.targetSection.add(new StickerView({model: newSticker}).render());
+                MessageBox.append(new Message({message: 'You added a new sticker under "'+this.targetSection.title+'".'}).render())
             }
             this.reset();
 		},

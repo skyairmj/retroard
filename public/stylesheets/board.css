@@ -46,7 +46,7 @@ body {
 #Puzzle .section-header h3 { background: url(../images/combo.png) no-repeat -304px -180px; }
 #Idea .section-header h3 { background: url(../images/combo.png) no-repeat -304px -240px; }
 
-.add-sticky {
+.add-sticker {
     height: 40px;
     width: 40px;
     display: block;
@@ -58,7 +58,7 @@ body {
     right: 15px;
 }
 
-.add-sticky:hover {
+.add-sticker:hover {
     background-position: -304px -340px;
 }
 
@@ -68,7 +68,7 @@ body {
     margin: 0px auto;
 }
 
-.sticky {
+.sticker {
     display: inline-block;
     margin: 5px 0 5px 5px;
     /*background-color: #FEF791;*/
@@ -77,26 +77,26 @@ body {
     cursor: move;
 }
 
-.sticky-single {
+.sticker-single {
     width: 140px;
 }
 
-.sticky-multi {
+.sticker-multi {
     width: 145px;
 }
 
-.sticky-single .sticky-header {
+.sticker-single .sticker-header {
     height: 1px;
     position: relative;
 }
 
-.sticky-multi .sticky-header {
+.sticker-multi .sticker-header {
     background: transparent url(../images/combo.png) no-repeat 0 0;
     height: 12px;
     position: relative;
 }
 
-.sticky-multi .sticky-header s {
+.sticker-multi .sticker-header s {
     width: 15px;
     height: 48px;
     position: absolute;
@@ -105,7 +105,7 @@ body {
     left: 4px;
 }
 
-.sticky .sticky-header .sticky-vote, .sticky .sticky-header .sticky-action-btn {
+.sticker .sticker-header .sticker-vote, .sticker .sticker-header .sticker-action-btn {
     position: absolute;
     padding: 1px 5px;
     font-size: 12px;
@@ -113,29 +113,29 @@ body {
     display: none;
 }
 
-.sticky .sticky-header .sticky-vote {
+.sticker .sticker-header .sticker-vote {
     top: -5px;
     left: -3px;
 }
 
-.sticky .sticky-header .sticky-action-btn {
+.sticker .sticker-header .sticker-action-btn {
     left: 55px;
     top: -5px;
 }
 
-.sticky:hover .sticky-vote, .sticky:hover .sticky-action-btn {
+.sticker:hover .sticker-vote, .sticker:hover .sticker-action-btn {
     display: inline-block;
 }
 
 
-.sticky .sticky-header .like-count {
+.sticker .sticker-header .like-count {
     position: absolute;
     top: -5px;
     left: 123px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.sticky-single .sticky-body {
+.sticker-single .sticker-body {
     padding: 10px 25px 5px 15px;
     background: transparent url(../images/combo.png) no-repeat -145px bottom;
     min-height: 100px;
@@ -143,36 +143,36 @@ body {
 
 
 
-.sticky-multi .sticky-body {
+.sticker-multi .sticker-body {
     padding: 0px 25px 5px 15px;
     background: transparent url(../images/combo.png) no-repeat 0 bottom;
     min-height: 100px
 }
 
-.sticky-body {
+.sticker-body {
     word-wrap: break-word;
 }
 
-.sticky-multi .sticky-body span {
+.sticker-multi .sticker-body span {
     display: block;
     padding: 2px 5px 5px 12px;
     background: transparent url(../images/combo.png) no-repeat -304px -491px;
 }
 
-.sticky-action-group {
+.sticker-action-group {
     position: absolute;
     left: 73px;
     top: 25px;
 }
 
-.sticky-action {
-    background: url(../images/sticky-action-bg.png) no-repeat left bottom;
+.sticker-action {
+    background: url(../images/sticker-action-bg.png) no-repeat left bottom;
     width: 112px;
     min-height:14px;
     padding: 5px 10px 8px 10px;
 }
 
-#stickyDialog {
+#stickerDialog {
     padding: 10px;
     background-color: #FEF791;
     box-shadow: -1px -1px 1px #666;
@@ -183,7 +183,7 @@ body {
     margin: -250px 0 0 -180px;
 }
 
-#stickyDialog textarea {
+#stickerDialog textarea {
     min-height: 150px;
     min-width: 320px;
     display: block;
@@ -194,7 +194,7 @@ body {
     font-size: 16px;
 }
 
-#stickyDialog textarea:focus {
+#stickerDialog textarea:focus {
     background-color: #FFFFAD;
 }
 

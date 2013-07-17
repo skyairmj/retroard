@@ -27,11 +27,11 @@ describe('board', function() {
             expect(history.initialize).toHaveBeenCalled();
         });
 
-        it('should initialize sticky dialog', function() {
-            spyOn(StickyDialog, 'initialize');
+        it('should initialize sticker dialog', function() {
+            spyOn(StickerDialog, 'initialize');
             board.initialize();
 
-            expect(StickyDialog.initialize).toHaveBeenCalled();
+            expect(StickerDialog.initialize).toHaveBeenCalled();
         });
 
         it('should initialize websockt connection', function() {
@@ -66,12 +66,12 @@ describe('board', function() {
         });
     });
 
-    describe('create sticky', function() {
-        it('should pop up a sticky dialog and the modal when click add sticky', function() {
-            spyOn(StickyDialog, 'popUp');
+    describe('create sticker', function() {
+        it('should pop up a sticker dialog and the modal when click add sticker', function() {
+            spyOn(StickerDialog, 'popUp');
             board.initialize();
-            board.getSection(wellId).addStickyButton.click();
-            expect(StickyDialog.popUp).toHaveBeenCalled();
+            board.getSection(wellId).addStickerButton.click();
+            expect(StickerDialog.popUp).toHaveBeenCalled();
         });
     });
 });

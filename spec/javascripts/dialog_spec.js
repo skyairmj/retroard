@@ -1,17 +1,17 @@
 describe('dialog', function() {
-    describe('sticky dialog', function() {
-        var stickyDialog;
+    describe('sticker dialog', function() {
+        var stickerDialog;
         beforeEach(function() {
-            var fixture = '<div id="stickyDialog">'
+            var fixture = '<div id="stickerDialog">'
                                 + '<textarea></textarea>'
                                 + '<button class="okButton"></button>'
                                 + '<button class="cancelButton"></button>'
                         + '</div>'
                         + '<div id="modal"></div>';
             setFixtures(fixture);
-            StickyDialog.initialize();
-            sticky = new Sticky(function() {}, "some uuid", "some section");
-            StickyDialog.popUp(sticky);
+            StickerDialog.initialize();
+            sticker = new Sticker(function() {}, "some uuid", "some section");
+            StickerDialog.popUp(sticker);
         });
 
         afterEach(function() {
@@ -20,36 +20,36 @@ describe('dialog', function() {
 
         describe('click ok button', function() {
             beforeEach(function() {
-                StickyDialog.okButton.click();
+                StickerDialog.okButton.click();
             });
 
             it('should be able to scroll window', function() {
                 expect($('body').css('overflow')).toBe('visible');
             });
 
-            it('should hide sticky dialog and modal', function() {
-                expect(StickyDialog.dom).toBeHidden();
-                expect(StickyDialog.modal).toBeHidden();
+            it('should hide sticker dialog and modal', function() {
+                expect(StickerDialog.dom).toBeHidden();
+                expect(StickerDialog.modal).toBeHidden();
             });
         });
 
         describe("click ok button with sending message", function() {
-            it('should send socket message with sticky data', function() {
+            it('should send socket message with sticker data', function() {
                 Connection.initialize();
                 var dataHolder;
                 spyOn(Connection, 'sendMessage').andCallFake(function(data) {
                     dataHolder = $.evalJSON(data);
                 });
-                $('div#stickyDialog textarea').text("content");
+                $('div#stickerDialog textarea').text("content");
                 teamName = 'rca';
-                StickyDialog.okButton.click();
+                StickerDialog.okButton.click();
                 expect(dataHolder).toEqual({
-                    'resource': 'sticky',
+                    'resource': 'sticker',
                     'method': 'save',
                     'data': {
                         'section' : 'some section',
-                        'uuid': sticky.uuid,
-                        'lastModified': sticky.lastModified,
+                        'uuid': sticker.uuid,
+                        'lastModified': sticker.lastModified,
                         'content': "content",
                         'teamName': 'rca'
                     }
@@ -59,12 +59,12 @@ describe('dialog', function() {
 
         describe('click cancel button', function() {
             beforeEach(function() {
-                StickyDialog.cancelButton.click();
+                StickerDialog.cancelButton.click();
             });
 
-            it('should hide sticky dialog and modal when click cancel button', function() {
-                expect(StickyDialog.dom).toBeHidden();
-                expect(StickyDialog.modal).toBeHidden();
+            it('should hide sticker dialog and modal when click cancel button', function() {
+                expect(StickerDialog.dom).toBeHidden();
+                expect(StickerDialog.modal).toBeHidden();
             });
 
             it('should be able to scroll window after click ok button', function() {

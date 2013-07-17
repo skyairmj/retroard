@@ -15,14 +15,14 @@
             return this.sections[title];
         },
         
-        synchronize: function(baseStickyUUID, sticky) {
-            if (!!sticky.newSubordinate) {
-                var dropped = this.$('div[data-uuid="'+baseStickyUUID+'"]').data('view');
-                var droppee = this.$('div[data-uuid="'+sticky.newSubordinate.uuid+'"]').data('view')
+        synchronize: function(baseStickerUUID, sticker) {
+            if (!!sticker.newSubordinate) {
+                var dropped = this.$('div[data-uuid="'+baseStickerUUID+'"]').data('view');
+                var droppee = this.$('div[data-uuid="'+sticker.newSubordinate.uuid+'"]').data('view')
                 dropped.accept(droppee);
             }
-            if (!!sticky.vote) {
-                this.$('div[data-uuid="'+baseStickyUUID+'"]').data('view').model.vote()
+            if (!!sticker.vote) {
+                this.$('div[data-uuid="'+baseStickerUUID+'"]').data('view').model.vote()
             }
         }
     });

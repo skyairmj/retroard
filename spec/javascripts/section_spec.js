@@ -16,121 +16,121 @@ describe('section', function() {
             expect(section.name).toBe('section1');
         });
 
-        it('should hold an empty sticky list', function() {
+        it('should hold an empty sticker list', function() {
             expect(section.stickies).toEqual({});
             expect(section.stickiesLength).toBe(0);
         });
     });
 
-    describe('add sticky', function() {
-        it('should call update sticky with section', function() {
+    describe('add sticker', function() {
+        it('should call update sticker with section', function() {
             section = new Section('section1');
             new Section('section2');
 
-            spyOn(section, 'addSticky');
-            section.addStickyButton.click();
+            spyOn(section, 'addSticker');
+            section.addStickerButton.click();
 
-            expect(section.addSticky).toHaveBeenCalled();
+            expect(section.addSticker).toHaveBeenCalled();
         });
 
-        it('should add a new sticky', function() {
-            var newSticky = section.addSticky();
+        it('should add a new sticker', function() {
+            var newSticker = section.addSticker();
 
             expect(section.stickiesLength).toBe(1);
-            expect(section.stickies[newSticky.uuid]).toBe(newSticky);
+            expect(section.stickies[newSticker.uuid]).toBe(newSticker);
         });
 
-        it('should add a new sticky with specific uuid', function() {
-            var newSticky = section.addSticky('some uuid');
+        it('should add a new sticker with specific uuid', function() {
+            var newSticker = section.addSticker('some uuid');
 
-            expect(newSticky.uuid).toBe('some uuid');
+            expect(newSticker.uuid).toBe('some uuid');
         });
 
-        it('should add a sticky with status modifying', function() {
-            var newSticky = section.addSticky();
+        it('should add a sticker with status modifying', function() {
+            var newSticker = section.addSticker();
 
-            expect(newSticky.status).toBe('modifying');
+            expect(newSticker.status).toBe('modifying');
         });
 
-        it('should add a new sticky dom', function() {
-            section.addSticky();
+        it('should add a new sticker dom', function() {
+            section.addSticker();
 
-            expect(section.dom.find('.section-body')).toContain('.sticky');
+            expect(section.dom.find('.section-body')).toContain('.sticker');
         });
 
-        it('should bind the sticky onRemove function with onStickyRemove', function() {
-            var newSticky = section.addSticky();
+        it('should bind the sticker onRemove function with onStickerRemove', function() {
+            var newSticker = section.addSticker();
 
-            expect(newSticky.onRemove).toEqual(section.onStickyRemove)
+            expect(newSticker.onRemove).toEqual(section.onStickerRemove)
         });
     });
 
-    describe('update sticky', function() {
-        it('should update sticky if ', function() {
-            var newSticky = section.addSticky();
+    describe('update sticker', function() {
+        it('should update sticker if ', function() {
+            var newSticker = section.addSticker();
             var data = {
-                'uuid': newSticky.uuid,
+                'uuid': newSticker.uuid,
                 'lastModified': 'some time',
                 'content': 'some content'
             }
-            section.updateSticky(data);
+            section.updateSticker(data);
 
-            expect(newSticky.lastModified).toBe('some time');
-            expect(newSticky.content).toBe('some content');
+            expect(newSticker.lastModified).toBe('some time');
+            expect(newSticker.content).toBe('some content');
         });
     });
 
-    describe('update sticky in sticky dialog', function() {
-        var newSticky;
+    describe('update sticker in sticker dialog', function() {
+        var newSticker;
         beforeEach(function() {
-            StickyDialog.initialize();
-            section.addStickyButton.click();
+            StickerDialog.initialize();
+            section.addStickerButton.click();
             for (var uuid in section.stickies) {
-                newSticky = section.stickies[uuid];
+                newSticker = section.stickies[uuid];
                 break;
             }
         });
 
-        it('should bind the current sticky to sticky dialog data', function() {
-            expect(StickyDialog.currentSticky).toBe(newSticky);
+        it('should bind the current sticker to sticker dialog data', function() {
+            expect(StickerDialog.currentSticker).toBe(newSticker);
         });
 
-        it('should update sticky with input text when click ok button', function() {
-            StickyDialog.dom.find('textarea').text('some text');
-            StickyDialog.okButton.click();
+        it('should update sticker with input text when click ok button', function() {
+            StickerDialog.dom.find('textarea').text('some text');
+            StickerDialog.okButton.click();
 
-            expect(newSticky.content).toBe('some text');
+            expect(newSticker.content).toBe('some text');
         });
 
         it('should clear dialog after update', function() {
-            StickyDialog.dom.find('textarea').text('some text');
-            StickyDialog.okButton.click();
+            StickerDialog.dom.find('textarea').text('some text');
+            StickerDialog.okButton.click();
 
-            expect(StickyDialog.dom.find('textarea').val()).toBe('');
+            expect(StickerDialog.dom.find('textarea').val()).toBe('');
         });
     });
 
-    describe('remove sticky', function() {
+    describe('remove sticker', function() {
         beforeEach(function() {
-            StickyDialog.initialize();
-            section.addStickyButton.click();
+            StickerDialog.initialize();
+            section.addStickerButton.click();
         });
 
-        it('should call the sticky onRemove function', function() {
-            spyOn(StickyDialog.currentSticky, 'onRemove');
-            StickyDialog.cancelButton.click();
+        it('should call the sticker onRemove function', function() {
+            spyOn(StickerDialog.currentSticker, 'onRemove');
+            StickerDialog.cancelButton.click();
 
-            expect(StickyDialog.currentSticky.onRemove).toHaveBeenCalled();
+            expect(StickerDialog.currentSticker.onRemove).toHaveBeenCalled();
         });
 
-        it('should remove the sticky dom', function() {
-            StickyDialog.cancelButton.click();
+        it('should remove the sticker dom', function() {
+            StickerDialog.cancelButton.click();
 
             expect(section.dom.find('.section-body')).toBeEmpty();
         });
 
-        it('should remove the sticky holder', function() {
-            StickyDialog.cancelButton.click();
+        it('should remove the sticker holder', function() {
+            StickerDialog.cancelButton.click();
 
             expect(section.stickies).toEqual({});
             expect(section.stickiesLength).toBe(0);

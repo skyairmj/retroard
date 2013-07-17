@@ -19,7 +19,7 @@
                     var match = uriRegex.exec(messageJSON.resourceUri);
                     var expectedRetroId = match[1]
                     if (expectedRetroId != window.retroId) {
-                        console.warn('You Are Not Supposed to Receive This Message: '+message)
+                        console.error('What Embarrassing! A message: "'+message+'" has been mistakenly sent to you.')
                         return;
                     }
                     var expectedCategoryTitle = match[2]
@@ -27,10 +27,10 @@
                     var expectedData = Utils.jsonifyQueryString(messageJSON.data)
                     switch(messageJSON.method){
                         case 'put':
-                        self.trigger('remote:create:sticky', expectedCategoryTitle, expectedNoteId, expectedData);
+                        self.trigger('remote:create:sticker', expectedCategoryTitle, expectedNoteId, expectedData);
                         break;
                         case 'post':
-                        self.trigger('remote:update:sticky', expectedCategoryTitle, expectedNoteId, expectedData);
+                        self.trigger('remote:update:sticker', expectedCategoryTitle, expectedNoteId, expectedData);
                         break;
                     }
                 }; 
@@ -53,27 +53,27 @@
             }
         },
 
-		createSticky: function(sticky) {
+		createSticker: function(sticker) {
 			this.sendMessage($.toJSON({
-	            'resourceUri': '/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+	            'resourceUri': '/'+window.retroId+'/'+sticker.category+'/notes/'+sticker.uuid,
 	            'method': 'put',
-	            'data': $.param({'content': sticky.content})
+	            'data': $.param({'content': sticker.content})
 	        }));
 		},
 
-		updateSticky: function(sticky) {
+		updateSticker: function(sticker) {
 			this.sendMessage($.toJSON({
-				'resourceUri': '/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+				'resourceUri': '/'+window.retroId+'/'+sticker.category+'/notes/'+sticker.uuid,
 				'method': 'post',
-				'data': $.param({'newSubordinate': {'uuid': sticky.newSubordinate.uuid,'category': sticky.newSubordinate.category}})
+				'data': $.param({'newSubordinate': {'uuid': sticker.newSubordinate.uuid,'category': sticker.newSubordinate.category}})
 			}));
 		},
         
-		updateSticky2: function(sticky) {
+		updateSticker2: function(sticker) {
 			this.sendMessage($.toJSON({
-				'resourceUri': '/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
+				'resourceUri': '/'+window.retroId+'/'+sticker.category+'/notes/'+sticker.uuid,
 				'method': 'post',
-				'data': $.param({'vote': sticky.voteCount})
+				'data': $.param({'vote': sticker.voteCount})
 			}));
         }
     }));

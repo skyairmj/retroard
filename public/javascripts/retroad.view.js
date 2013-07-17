@@ -13,22 +13,22 @@
                         that.board.add(category.title, section);
                         
                         $.each(category.notes, function(index2, note) {
-                            var sticky = new Sticky(category.title, note.content, note.uuid, note.vote);
+                            var sticker = new Sticker(category.title, note.content, note.uuid, note.vote);
                             if (!!note.subordinates.length){
                                 $.each(note.subordinates, function(index3, subordinate) {
-                                    sticky.append(new Sticky(category.title, subordinate.content, subordinate.uuid))
+                                    sticker.append(new Sticker(category.title, subordinate.content, subordinate.uuid))
                                 });
-                                section.add(new StickyGroupView({model: sticky}).render());
+                                section.add(new StickerGroupView({model: sticker}).render());
                             }
                             else {
-                                section.add(new StickyView({model: sticky}).render());
+                                section.add(new StickerView({model: sticker}).render());
                             }
                         });
                     });
                 	Connection.connect(window.location.host);
                     _.extend(Connection, Backbone.Events);
-                    Connection.on('remote:create:sticky', that.syncCreate, that);
-                    Connection.on('remote:update:sticky', that.syncUpdate, that);
+                    Connection.on('remote:create:sticker', that.syncCreate, that);
+                    Connection.on('remote:update:sticker', that.syncUpdate, that);
              	},
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
@@ -42,14 +42,14 @@
             this.initialize();
         },
         
-        syncCreate: function(section, stickyId, stickyData){
-            this.board.getSection(section).synchronize(stickyId, stickyData);
-            MessageBox.append(new Message({message: 'Others added a new sticky under "'+section+'".'}).render());
+        syncCreate: function(section, stickerId, stickerData){
+            this.board.getSection(section).synchronize(stickerId, stickerData);
+            MessageBox.append(new Message({message: 'Others added a new sticker under "'+section+'".'}).render());
         },
         
-        syncUpdate: function(section, stickyId, stickyData) {
-            this.board.synchronize(stickyId, stickyData);
-            MessageBox.append(new Message({message: 'Others updated a sticky under"'+section+'".'}).render());
+        syncUpdate: function(section, stickerId, stickerData) {
+            this.board.synchronize(stickerId, stickerData);
+            MessageBox.append(new Message({message: 'Others updated a sticker under"'+section+'".'}).render());
         }
 	});
 	window.App = new AppView()

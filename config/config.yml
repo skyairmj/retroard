@@ -6,7 +6,7 @@ development:
   mongo_database: retroard-dev
   
 production:
-  mongo_host: 
+  mongo_host:
     - name    : localhost
       port    : 27017
     - name    : localhost
