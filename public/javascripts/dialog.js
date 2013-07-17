@@ -1,5 +1,6 @@
 (function(){
 	StickyDialog = new (Backbone.View.extend({
+        MAX_LENGTH: 140,
 		el: '#stickyDialog',
 		
 		events: {
@@ -16,7 +17,7 @@
 		
 		reset: function() {
 			this.textarea.val('');
-            this.inputCount.text(140);
+            this.inputCount.text(this.MAX_LENGTH);
 		},
 	
 		add: function() {
@@ -31,7 +32,7 @@
 		},
         
         type: function (event) {
-            this.inputCount.text(140 - event.srcElement.textLength);
+            this.inputCount.text(this.MAX_LENGTH - this.textarea.val().length);
             if (parseInt(this.inputCount.text()) < 0) {
                 this.okButton.attr('disabled', 'disabled');
             } else {

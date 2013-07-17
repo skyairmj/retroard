@@ -73,7 +73,7 @@
 			this.sendMessage($.toJSON({
 				'resourceUri': '/'+window.retroId+'/'+sticky.category+'/notes/'+sticky.uuid,
 				'method': 'post',
-				'data': $.param({'vote=': sticky.voteCount})
+				'data': $.param({'vote': sticky.voteCount})
 			}));
         }
     }));
