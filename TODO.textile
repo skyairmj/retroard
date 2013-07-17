@@ -4,25 +4,23 @@ h2. TODO
 
 h3. Backend
 
-* add haproxy as reverse proxy for plain http and websocket in production
-* add redis as shared storage and PubSub
+* use redis as shared storage and PubSub service provider
 * refactor http and websocket handlers to reused resources
 
 h3. Frontend
 
-* add js compressor and uglifier
-* add css compressor
+* asset pipeline for js/css
+** add js compressor and uglifier
+** add css compressor
+
 * add jslint
-* refactor backbone js files to reuse AMAP
+* refactor backbone js files to reuse as many as possible
 
 h3. UI/UX
 
-* when sticker count > 10 (or another reasonable amount), change .badge-success to .badge-important for attraction.
-
+* when sticker count > 10 (or another reasonable amount), change .badge-success to .badge-important for attention
 
 h2. DOING
-
-* split application to plain http(http) and websocket
 
 
 h2. DONE
@@ -32,3 +30,5 @@ h2. DONE
 * polish message style on the bottom right corner
 * re-polish retrospective creation result page to share the theme of index page
 * polish sticker dialog input counting style and notifications
+* split application to plain http(http) and websocket
+* add haproxy as reverse proxy for plain http and websocket in production

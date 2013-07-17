@@ -1,39 +1,16 @@
 (function() {
     Connection = new (Backbone.Model.extend({
-    	WEBSOCKET_MOUNT_POINT : "ws",
+        url: _.template("ws://<%=host%>/ws"),
         
         initialize: function(){
             if (window.MozWebSocket) {
                 window.WebSocket = window.MozWebSocket;
             }
-        },
-        
-        connect: function (serverHost) {
-            var connectionUrl = 'ws://'+serverHost+'/'+this.WEBSOCKET_MOUNT_POINT;
+            
             try {
-                this.socket = new window.WebSocket(connectionUrl);
+                this.socket = new window.WebSocket(this.url({host: window.location.host}));
                 self = this;
-                this.socket.onmessage = function(message) {
-        			var messageJSON = $.parseJSON(message.data);
-                    var uriRegex = /^\/(\w+)\/([\w|\s]+)\/notes\/([\w|-]+)$/
-                    var match = uriRegex.exec(messageJSON.resourceUri);
-                    var expectedRetroId = match[1]
-                    if (expectedRetroId != window.retroId) {
-                        console.error('What Embarrassing! A message: "'+message+'" has been mistakenly sent to you.')
-                        return;
-                    }
-                    var expectedCategoryTitle = match[2]
-                    var expectedNoteId = match[3]
-                    var expectedData = Utils.jsonifyQueryString(messageJSON.data)
-                    switch(messageJSON.method){
-                        case 'put':
-                        self.trigger('remote:create:sticker', expectedCategoryTitle, expectedNoteId, expectedData);
-                        break;
-                        case 'post':
-                        self.trigger('remote:update:sticker', expectedCategoryTitle, expectedNoteId, expectedData);
-                        break;
-                    }
-                }; 
+                this.socket.onmessage = function(message) {self.receiveMessage(message);}
                 console.log(this.socket);
             } catch(e) {
                 console.log(e);
@@ -41,8 +18,31 @@
         },
 
         sendMessage: function(data) {
-            if(!!this.socket && this.socket.readyState == this.socket.OPEN)
+            if(!!this.socket && this.socket.readyState == this.socket.OPEN){
                 this.socket.send(data);
+            }
+        },
+        
+        receiveMessage: function(message) {
+			var messageJSON = $.parseJSON(message.data);
+            var uriRegex = /^\/(\w+)\/([\w|\s]+)\/notes\/([\w|-]+)$/
+            var match = uriRegex.exec(messageJSON.resourceUri);
+            var expectedRetroId = match[1]
+            if (expectedRetroId != window.retroId) {
+                console.error('What Embarrassing! A message: "'+message+'" has been mistakenly sent to you.')
+                return;
+            }
+            var expectedCategoryTitle = match[2]
+            var expectedNoteId = match[3]
+            var expectedData = Utils.jsonifyQueryString(messageJSON.data)
+            switch(messageJSON.method){
+                case 'put':
+                this.trigger('remote:create:sticker', expectedCategoryTitle, expectedNoteId, expectedData);
+                break;
+                case 'post':
+                this.trigger('remote:update:sticker', expectedCategoryTitle, expectedNoteId, expectedData);
+                break;
+            }
         },
 
         close: function() {

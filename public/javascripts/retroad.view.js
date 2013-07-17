@@ -25,7 +25,6 @@
                             }
                         });
                     });
-                	Connection.connect(window.location.host);
                     _.extend(Connection, Backbone.Events);
                     Connection.on('remote:create:sticker', that.syncCreate, that);
                     Connection.on('remote:update:sticker', that.syncUpdate, that);
