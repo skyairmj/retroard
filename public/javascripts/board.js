@@ -19,10 +19,12 @@
             if (!!sticker.newSubordinate) {
                 var dropped = this.$('div[data-uuid="'+baseStickerUUID+'"]').data('view');
                 var droppee = this.$('div[data-uuid="'+sticker.newSubordinate.uuid+'"]').data('view')
-                dropped.accept(droppee);
+                dropped.accept(droppee).highlight();
             }
             if (!!sticker.vote) {
-                this.$('div[data-uuid="'+baseStickerUUID+'"]').data('view').model.vote()
+                var voted = this.$('div[data-uuid="'+baseStickerUUID+'"]').data('view');
+                voted.model.vote();
+                voted.highlight();
             }
         }
     });

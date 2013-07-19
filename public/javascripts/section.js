@@ -31,7 +31,9 @@
         synchronize: function(uuid, data) {
 //            if (this.$(uuid).length == 0) {
                 newSticker = new Sticker(this.title, data.content, uuid);
-                this.add(new StickerView({model: newSticker, isSynchronized: true}).render());
+                stickerView = new StickerView({model: newSticker, isSynchronized: true});
+                stickerView.highlight();
+                this.add(stickerView.render());
   //          } else {
                 //update the existing sticker
     //        }

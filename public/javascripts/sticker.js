@@ -75,6 +75,13 @@
             this.$el.before(groupView.el);
             this.remove();
             thatView.remove();
+            return groupView;
+        },
+        
+        highlight: function() {
+            for(i=0;i<3;i++) {
+                this.$el.fadeTo('slow', 0.5).fadeTo('fast', 1.0);
+            }
         },
         
         vote: function() {
@@ -155,6 +162,13 @@
             this.$el.before(groupView.el);
             this.remove();
             thatView.remove();
+            return groupView;
+        },
+        
+        highlight: function() {
+            for(i=0;i<3;i++) {
+                this.$el.fadeTo('slow', 0.5).fadeTo('slow', 1.0);
+            }
         },
         
         vote: function() {
