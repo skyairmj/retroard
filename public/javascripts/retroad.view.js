@@ -53,20 +53,20 @@
         
         syncCreate: function(section, stickerId, stickerData){
             this.board.getSection(section).synchronize(stickerId, stickerData);
-            MessageBox.append(new Message({message: 'Others added a new sticker under "'+section+'".'}).render());
+            MessageBox.append(new InformationMessage({message: 'Others added a new sticker under "'+section+'".'}).render());
         },
         
         syncUpdate: function(section, stickerId, stickerData) {
             this.board.synchronize(stickerId, stickerData);
-            MessageBox.append(new Message({message: 'Others updated a sticker under"'+section+'".'}).render());
+            MessageBox.append(new InformationMessage({message: 'Others updated a sticker under"'+section+'".'}).render());
         },
         
         notifyConnected: function() {
-            MessageBox.append(new Message({message: 'Congratulations, you are in the retrospective now. All your local modifications will be automatically synchronized on your teammates\' desktops and vice vesa.'}).render());
+            MessageBox.append(new SuccessMessage({message: 'You are in the retrospective. Start your journey now.'}).render());
         },
         
         notifyDisconnected: function() {
-            MessageBox.append(new Message({message: 'Sorry, you\' are disconnected with the retrospective. All you local modifications may not be saved and synchronized. Please refreash the browser.'}).render());
+            MessageBox.append(new ErrorMessage({message: 'Sorry, you\' are disconnected with the retrospective.<br/> Your modifications may not be saved and synchronized. Please refreash your browser.', fadeOut: false}).render());
         }
 	});
 	window.App = new AppView()

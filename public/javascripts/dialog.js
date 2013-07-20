@@ -26,7 +26,7 @@
 				newSticker = new Sticker(this.targetSection.title, content);
 				Connection.createSticker(newSticker);
                 this.targetSection.add(new StickerView({model: newSticker}).render());
-                MessageBox.append(new Message({message: 'You added a new sticker under "'+this.targetSection.title+'".'}).render())
+                MessageBox.append(new SuccessMessage({message: 'You added a new sticker under "'+this.targetSection.title+'".'}).render())
             }
             this.reset();
 		},

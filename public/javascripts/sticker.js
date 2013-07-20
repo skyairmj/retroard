@@ -79,7 +79,7 @@
         },
         
         highlight: function() {
-            for(i=0;i<3;i++) {
+            for(i=0;i<2;i++) {
                 this.$el.fadeTo('slow', 0.5).fadeTo('fast', 1.0);
             }
         },
@@ -166,7 +166,7 @@
         },
         
         highlight: function() {
-            for(i=0;i<3;i++) {
+            for(i=0;i<2;i++) {
                 this.$el.fadeTo('slow', 0.5).fadeTo('slow', 1.0);
             }
         },

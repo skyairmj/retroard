@@ -8,26 +8,30 @@
     }))();
     
     Message = Backbone.View.extend({
-        className: 'message alert alert-success',
+        className: 'message alert',
         
         initialize: function(options) {
             this.message = options.message;
+            this.fadeOut = options.hasOwnProperty('fadeOut') ? options.fadeOut : true;
         },
         
         render: function() {
-            this.$el.text(this.message);
-            this.$el.slideUp(800).delay(3000).fadeOut(600);
+            this.$el.html(this.message);
+            message = this.$el.slideUp(800).delay(3000);
+            if(this.fadeOut)message.fadeOut(600);
             return this;
         }
     });
     
     SuccessMessage = Message.extend({
-        tagName: 'div',
-        className: 'alert alert-success message',
-        
-        initialize: function() {
-            this.$el.html(this.model.message);
-        }
+        className: 'alert alert-success message'
     });
-    InformationMessage = Message.extend({});
+    
+    InformationMessage = Message.extend({
+        className: 'alert alert-inf message'
+    });
+    
+    ErrorMessage = Message.extend({
+        className: 'message alert alert-error'
+    });
 }());
