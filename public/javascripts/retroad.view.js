@@ -1,6 +1,12 @@
 (function(){
 	AppView = Backbone.View.extend({
-        
+/**  
+        //TODO: need to take no websocket support in browser into consideration
+        var support = "MozWebSocket" in window ? 'MozWebSocket' : ("WebSocket" in window ? 'WebSocket' : null);
+        if (!support) {
+            return;   
+        }
+   */     
 		initialize: function(){
         	this.board = new Board();
             that = this;
@@ -25,10 +31,13 @@
                             }
                         });
                     });
-                    Connection.connect(window.location.host);
                     _.extend(Connection, Backbone.Events);
                     Connection.on('remote:create:sticker', that.syncCreate, that);
                     Connection.on('remote:update:sticker', that.syncUpdate, that);
+                    Connection.on('remote:connection:ready', that.notifyConnected, that);
+                    Connection.on('remote:connection:closed', that.notifyDisconnected, that);
+                    
+                    Connection.connect(window.location.host);
              	},
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert(errorThrown);
@@ -50,6 +59,14 @@
         syncUpdate: function(section, stickerId, stickerData) {
             this.board.synchronize(stickerId, stickerData);
             MessageBox.append(new Message({message: 'Others updated a sticker under"'+section+'".'}).render());
+        },
+        
+        notifyConnected: function() {
+            MessageBox.append(new Message({message: 'Congratulations, you are in the retrospective now. All your local modifications will be automatically synchronized on your teammates\' desktops and vice vesa.'}).render());
+        },
+        
+        notifyDisconnected: function() {
+            MessageBox.append(new Message({message: 'Sorry, you\' are disconnected with the retrospective. All you local modifications may not be saved and synchronized. Please refreash the browser.'}).render());
         }
 	});
 	window.App = new AppView()

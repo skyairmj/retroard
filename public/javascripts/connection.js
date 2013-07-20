@@ -3,7 +3,7 @@
         url: _.template("ws://<%=host%>/ws"),
         
         initialize: function(){
-            if (window.MozWebSocket) {
+            if (window.MozWebSocket && !window.WebSocket) {
                 window.WebSocket = window.MozWebSocket;
             }
         },
@@ -12,6 +12,9 @@
             try {
                 this.socket = new window.WebSocket(this.url({host: serverHost}));
                 self = this;
+                this.socket.onclose = function() {
+                    self.trigger('remote:connection:closed');
+                };
                 this.socket.onmessage = function(message) {
         			var messageJSON = $.parseJSON(message.data);
                     var uriRegex = /^\/(\w+)\/([\w|\s]+)\/notes\/([\w|-]+)$/
@@ -34,6 +37,7 @@
                     }
                 }
                 console.log(this.socket);
+                this.trigger('remote:connection:ready');
             } catch(e) {
                 console.log(e);
             }
