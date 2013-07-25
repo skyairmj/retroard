@@ -1,4 +1,0 @@
-{
-  "run_list": [ "recipe[haproxy]", "recipe[redisio]", "recipe[nginx]", "recipe[rvm]", "recipe[mongodb]"],
-  "rvm": { "ruby" : { "implementation" : "ruby", "version" : "1.9.2", "patch_level" : "290" } }
-}
