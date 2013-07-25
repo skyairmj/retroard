@@ -1,0 +1,4 @@
+source 'http://ruby.taobao.org'
+
+gem 'vagrant', '1.0.7'
+gem 'chef', '10.14.4'

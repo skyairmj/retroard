@@ -38,7 +38,3 @@ group :deploy do
   gem 'capify-ec2'
   gem 'rvm-capistrano'
 end
-
-group :ops do
-  gem 'chef'
-end
