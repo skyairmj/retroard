@@ -25,7 +25,7 @@
     
     StickerView = Backbone.View.extend({
         className: "sticker sticker-single",
-        template: _.template('<div class="sticker-header"><div class="sticker-vote btn btn-success"><i class="icon-thumbs-up icon-white"></i> Vote</div><!--a class="sticker-action-btn btn btn-primary" data-original-title="What action shall we take?" data-type="text"><i class="icon-ok-sign icon-white"></i> Action</a--><span class="like-count badge badge-success"><%=voteCount%></span></div><div class="sticker-body"><%=content%></div><div class="sticker-action-group"><!--div class="sticker-action">this is an action</div></div-->'),
+        template: _.template('<div class="sticker-header"><div class="sticker-vote btn btn-success"><i class="icon-thumbs-up icon-white"></i><span class="like-count"><%=voteCount%></span></div><!--a class="sticker-action-btn btn btn-primary" data-original-title="What action shall we take?" data-type="text"><i class="icon-ok-sign icon-white"></i> Action</a--></div><div class="sticker-body"><%=content%></div><div class="sticker-action-group"><!--div class="sticker-action">this is an action</div></div-->'),
         
         events: {
             'click .sticker-vote': 'vote',
@@ -102,7 +102,7 @@
     StickerGroupView = Backbone.View.extend({
         className: "sticker sticker-multi",
         
-        template: _.template('<div class="sticker-header"><s></s><div class="sticker-vote btn btn-success"><i class="icon-thumbs-up icon-white"></i> Vote</div><!--a class="sticker-action-btn btn btn-primary" data-original-title="What action shall we take?" data-type="text"><i class="icon-ok-sign icon-white"></i> Action</a--><span class="like-count badge badge-success"><%=voteCount%></span></div><div class="sticker-body"></div><!--div class="sticker-action-group"><div class="sticker-action">this is an action<br>this is an action<br>this is an action<br>this is an action<br>this is an action<br>this is an action<br></div></div-->'),
+        template: _.template('<div class="sticker-header"><s></s><div class="sticker-vote btn btn-success"><i class="icon-thumbs-up icon-white"></i><span class="like-count"><%=voteCount%></span></div><!--a class="sticker-action-btn btn btn-primary" data-original-title="What action shall we take?" data-type="text"><i class="icon-ok-sign icon-white"></i> Action</a--></div><div class="sticker-body"></div><!--div class="sticker-action-group"><div class="sticker-action">this is an action<br>this is an action<br>this is an action<br>this is an action<br>this is an action<br>this is an action<br></div></div-->'),
         eachTemplate: _.template('<span><%=content%></span>'),
         
         events: {
