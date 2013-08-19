@@ -13,6 +13,7 @@ role :db, location, :primary=>true
 #role :db,  "your slave db-server here"
 
 set :user, "retroard"
+set :use_sudo, true
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")] 
 
 # Load RVM's capistrano plugin.    
