@@ -2,7 +2,7 @@ require 'json'
 require 'sinatra'
 
 module Retroard
-  class Resource < Base
+  class Resource #< Base
     def self.use_model(model)
       define_method(:model) do
         return model
