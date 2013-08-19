@@ -9,6 +9,6 @@ production:
   mongo_host:
     - name    : localhost
       port    : 27017
-    - name    : localhost
-      port    : 27018
+    # - name    : localhost
+    #   port    : 27018
   mongo_database: retroard-production

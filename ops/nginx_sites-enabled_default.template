@@ -7,7 +7,7 @@ upstream thin {
 
 server {
   listen   8080;
-  server_name www.retrospective.com retrospective.me;
+  server_name www.retrospective.me retrospective.me;
   root /u/apps/Retroard/current/public;
 
   access_log  /var/log/nginx/localhost.access.log;
