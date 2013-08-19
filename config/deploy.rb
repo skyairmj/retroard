@@ -5,7 +5,7 @@ set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 set :deploy_via, :remote_cache
 
-set :location, 'ec2-54-243-231-97.compute-1.amazonaws.com'
+set :location, '37.46.197.138'
 role :web, location                          # Your HTTP server, Apache/etc
 role :app, location                          # This may be the same as your `Web` server
 role :db, location, :primary=>true

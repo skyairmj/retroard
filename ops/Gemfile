@@ -1,4 +1,5 @@
 source 'http://ruby.taobao.org'
 
 gem 'vagrant', '1.0.7'
+gem 'monet', '0.6.0'
 gem 'chef', '10.14.4'
