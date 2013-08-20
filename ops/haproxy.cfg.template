@@ -35,11 +35,11 @@ backend maps_websocket_backend
     option forwardfor # This sets X-Forwarded-For
     timeout queue 86400000
     timeout server 86400000
-    timeout connect 5000
+    timeout connect 86400000
     server maps_websocket_server1 localhost:3000 weight 1 maxconn 1024 check inter 10000
-    server maps_websocket_server2 localhost:3001 weight 1 maxconn 1024 check inter 10000
-    server maps_websocket_server3 localhost:3002 weight 1 maxconn 1024 check inter 10000
-    server maps_websocket_server4 localhost:3003 weight 1 maxconn 1024 check inter 10000
+#    server maps_websocket_server2 localhost:3001 weight 1 maxconn 1024 check inter 10000
+#    server maps_websocket_server3 localhost:3002 weight 1 maxconn 1024 check inter 10000
+#    server maps_websocket_server4 localhost:3003 weight 1 maxconn 1024 check inter 10000
 
 backend www_backend
     mode http
