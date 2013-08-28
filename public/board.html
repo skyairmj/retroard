@@ -41,10 +41,10 @@
 
     	<div class="modal hide fade in" id="modal" tabindex="-1" role="dialog" aria-hidden="true" style="width: 360px; background-color: transparent; border: 0px; border-radius:0px; box-shadow:none;">
     		<div id="stickerDialog">
-    			<textarea></textarea>
+    			<textarea placeholder="post your comments..." autofocus="autofocus"></textarea>
     			<div class="buttons">
-                    <span class="input-count">140</span>
-                    <a type="image" value="Cancel" class="btn cancelButton" data-dismiss="modal" aria-hidden="true">Cancel</a>
+            <span class="input-count">140</span>
+            <a type="image" value="Cancel" class="btn cancelButton" data-dismiss="modal" aria-hidden="true">Cancel</a>
     				<a type="image" value="OK" class="btn okButton btn-success" data-dismiss="modal" aria-hidden="true"><i class="icon-ok icon-white"></i> OK</a>
     			</div>
     		</div>
@@ -75,9 +75,14 @@
     	    window.onhashchange = function(){
     	        window.retroId = window.location.hash.substring(3)
               window.App.reload()
-    	    }
+    	    };
+          
+          $('#modal').on('shown', function () {
+              $(this).find('[autofocus]:first').focus();
+          });
+          
+          $('.sticker-action').editable();
     	});
-      $('.sticker-action').editable();
     </script>
     <script type="text/javascript" charset="utf-8">
       var _gaq = _gaq || [];
