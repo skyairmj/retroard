@@ -66,7 +66,7 @@
         },
         
         notifyDisconnected: function() {
-            MessageBox.append(new ErrorMessage({message: 'Sorry, you\' are disconnected with the retrospective.<br/> Your modifications may not be saved and synchronized. Please refreash your browser.', fadeOut: false}).render());
+            MessageBox.append(new ErrorMessage({message: 'Sorry, you\' are disconnected with the retrospective.<br/> Your modifications may not be saved and synchronized. Please refresh your browser.', fadeOut: false}).render());
         }
 	});
 	window.App = new AppView()
