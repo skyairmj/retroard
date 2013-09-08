@@ -21,7 +21,7 @@
 		},
 	
 		add: function() {
-			var content = $.trim(this.textarea.val());
+			var content = Utils.stripScript($.trim(this.textarea.val()));
             if (!!content) {
 				newSticker = new Sticker(this.targetSection.title, content);
 				Connection.createSticker(newSticker);
@@ -35,8 +35,10 @@
             this.inputCount.text(this.MAX_LENGTH - this.textarea.val().length);
             if (parseInt(this.inputCount.text()) < 0) {
                 this.okButton.attr('disabled', 'disabled');
+                this.okButton.prop("disabled", true);
             } else {
                 this.okButton.removeAttr('disabled');
+                this.okButton.prop("disabled", false);
             }
         },
 		
