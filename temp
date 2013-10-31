@@ -1,0 +1,56 @@
+Robot Framework
+
+1. 安装
+1.1 安装python
+http://python.org/ftp/python/2.7.5/python-2.7.5.msi
+
+1.2 安装wxPython 2.8.12.1 with unicode support
+http://downloads.sourceforge.net/wxpython/wxPython2.8-win32-unicode-2.8.12.1-py27.exe
+
+1.2 安装JDK
+
+
+1.5 安装jython
+http://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.5.3/jython-installer-2.5.3.jar
+$> java -jar jython-installer-2.5.3.jar
+
+1.3 安装Robot Framework
+https://robotframework.googlecode.com/files/robotframework-2.8.1.win32.exe
+
+1.4 安装setuptools和pip
+setuptools: https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py
+$> python ez_setup.py
+pip: https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+$> python get-pip.py
+
+1.6 安装RIDE
+
+
+2. 示例
+
+2.1 WebDemo
+
+* install robotframework-selenium2library: pip install robotframework-selenium2library
+
+2.2 SwingDemo
+https://robotframework-swinglibrary.googlecode.com/files/SwingLibrary-1.7.0.xml
+https://robotframework-swinglibrary.googlecode.com/files/swinglibrary-1.7.0.jar
+https://robotframework-swinglibrary.googlecode.com/files/swinglibrary-demo.zip
+
+set CLASSPATH=C:/Program Files/Java/jdk1.6.0_12/lib/tools.jar;C:\robotframework\libraries\java\swinglibrary-1.7.0.jar
+
+http://www.linkedin.com/groups/Importing-SwingLibrary-into-Robot-Framework-3710899.S.215677322
+https://github.com/robotframework/SwingLibrary/downloads
+
+3. 高级
+3.1 创建定制化的Library Spec
+3.1.1 下载libdoc.py
+http://robotframework.googlecode.com/hg/tools/libdoc/libdoc.py?r=2.6.3
+https://code.google.com/p/robotframework/wiki/LibraryDocumentationTool
+https://code.google.com/p/robotframework-ride/wiki/KeywordCompletion#Using_library_specs
+
+引用
+https://code.google.com/p/robotframework/wiki/Installation#Jython_installation
+https://github.com/robotframework/RIDE/wiki/Installation-Instructions#wiki-preconditions
+http://www.pip-installer.org/en/latest/installing.html#install-or-upgrade-pip
+https://blog.codecentric.de/en/2012/04/robot-framework-tutorial-a-complete-example/
