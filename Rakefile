@@ -9,7 +9,7 @@ namespace :server do
 end
 
 task :environment do
-  Config.setup
+  RbConfig.setup
 end
 
 require 'rspec/core/rake_task'

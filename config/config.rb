@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'mongo_mapper'
 
-module Config
+module RbConfig
 
   def self.setup
     setup_mongomapper

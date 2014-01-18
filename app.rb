@@ -20,9 +20,5 @@ module Retroard
     get '/' do
       redirect '/index.html', 302
     end
-    
-    post '/join' do
-      redirect "/board.html#!/#{params[:retrospectiveId]}", 303 unless params[:retrospectiveId].nil?
-    end
   end
 end

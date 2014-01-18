@@ -11,6 +11,6 @@ base = File.dirname(__FILE__)
 $:.unshift base
 
 require 'config/config'
-Sinatra::Base.set(:config, Config.environment_config)
+Sinatra::Base.set(:config, RbConfig.environment_config)
 
 require 'app'

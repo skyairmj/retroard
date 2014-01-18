@@ -8,5 +8,5 @@ use Rack::StaticCache, :urls => ["/stylesheets", "/javascripts", "/fonts", "/ima
 use Rack::ETag
 
 # This delegates everything other route not defined above to the Sinatra app.
-Config.setup
+RbConfig.setup
 run Retroard::Application

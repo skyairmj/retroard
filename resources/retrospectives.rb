@@ -64,7 +64,7 @@ module Retroard
       puzzle = Category.new({:title => 'Puzzle'})
       retro.categories += [well, less_well, idea, puzzle]
       retro.save
-      redirect "/result.html#!/#{retro.serial_no}", 303
+      redirect "/board.html#!/#{retro.serial_no}", 303
     end    
   end
 end
