@@ -6,7 +6,7 @@
 						'<h3><%=title%></h3>'+
 						'<a href="#modal" data-toggle="modal" role="button" class="add-sticker"></a>'+
 					'</div>'+
-					'<div class="section-body">'+
+					'<div class="section-body gridster"><ul></ul>'+
                     '</div>'),
                 
         events: {

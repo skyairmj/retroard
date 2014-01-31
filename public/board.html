@@ -23,21 +23,21 @@
 
     	<div class="content">
     		<article id="sections" class="row-fluid glass">
-                <s class="glass-pin glass-pin-tl"></s>
-                <s class="glass-pin glass-pin-tr"></s>
-                <s class="glass-pin glass-pin-bl"></s>
-                <s class="glass-pin glass-pin-br"></s>
+          <s class="glass-pin glass-pin-tl"></s>
+          <s class="glass-pin glass-pin-tr"></s>
+          <s class="glass-pin glass-pin-bl"></s>
+          <s class="glass-pin glass-pin-br"></s>
     		</article>
     	</div>
     
-        <div id="messageContainer" class="message-container">
-        </div>
-    
-        <footer>
-        	<div class="footer">
-        		<small>&copy; 2013 Team-Cares</small>
-        	</div>
-        </footer>
+      <div id="messageContainer" class="message-container">
+      </div>
+  
+      <footer>
+      	<div class="footer">
+      		<small>&copy; 2013 Team-Cares</small>
+      	</div>
+      </footer>
 
     	<div class="modal hide fade in" id="modal" tabindex="-1" role="dialog" aria-hidden="true" style="width: 360px; background-color: transparent; border: 0px; border-radius:0px; box-shadow:none;">
     		<div id="stickerDialog">
@@ -57,6 +57,8 @@
     <script type="text/javascript" src="/javascripts/libs/bootstrap-editable.min.js"></script>
     <script type="text/javascript" src="/javascripts/libs/underscore-1.3.3-min.js"></script>
     <script type="text/javascript" src="/javascripts/libs/backbone-0.9.2-min.js"></script>
+    <script type="text/javascript" src="/javascripts/libs/jquery.gridster.min.js"></script>
+    <script type="text/javascript" src="/javascripts/libs/jquery.gridster.with-extras.min.js"></script>
     <script type="text/javascript" src="/javascripts/libs/uuid.min.js"></script>
     <script  type="text/javascript">
     	window.retroId = window.location.hash.substring(3)
@@ -69,7 +71,7 @@
     <script type="text/javascript" src="/javascripts/board.js"></script>
     <script type="text/javascript" src="/javascripts/message.js"></script>
     <script type="text/javascript" src="/javascripts/dialog.js"></script>
-    <script type="text/javascript" src="/javascripts/retroad.view.js"></script>
+    <script type="text/javascript" src="/javascripts/retroard.view.js"></script>
     <script  type="text/javascript">
     	$(function(){
     	    window.onhashchange = function(){
@@ -79,6 +81,10 @@
           
           $('#modal').on('shown', function () {
               $(this).find('[autofocus]:first').focus();
+          });
+          
+          $(".gridster ul").each(function(index){
+            $(this).gridster().data('gridster');
           });
           
           $('.sticker-action').editable();
